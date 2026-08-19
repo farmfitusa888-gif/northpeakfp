@@ -29,24 +29,16 @@ if(!rm&&matchMedia('(pointer:fine)').matches){
   c.addEventListener('mouseleave',()=>c.style.transform='');});
 }
 
-// animated peak topography (canvas)
-const cv=document.getElementById('peaks');
-if(cv&&!rm){
- const cx=cv.getContext('2d');let w,h,t=0;
- const rs=()=>{w=cv.width=cv.offsetWidth*devicePixelRatio;h=cv.height=cv.offsetHeight*devicePixelRatio};
- rs();addEventListener('resize',rs,{passive:true});
- const layer=(off,amp,al,sp)=>{cx.beginPath();cx.moveTo(0,h);
-  for(let x=0;x<=w;x+=8){
-    const y=h*off + Math.sin(x*0.0016+t*sp)*amp + Math.sin(x*0.0041+t*sp*1.7)*amp*0.45;
-    cx.lineTo(x,y)}
-  cx.lineTo(w,h);cx.closePath();
-  const g=cx.createLinearGradient(0,h*off-amp,0,h);
-  g.addColorStop(0,`rgba(42,143,109,${al})`);g.addColorStop(1,`rgba(14,51,38,0)`);
-  cx.fillStyle=g;cx.fill();
-  cx.strokeStyle=`rgba(184,134,11,${al*0.85})`;cx.lineWidth=1.1*devicePixelRatio;cx.stroke()};
- const loop=()=>{cx.clearRect(0,0,w,h);t+=.0055;
-  layer(.62,26*devicePixelRatio,.16,1);layer(.72,20*devicePixelRatio,.12,1.35);
-  layer(.82,15*devicePixelRatio,.09,1.7);requestAnimationFrame(loop)};loop();
+// Hero scene — loaded only after the page is fully loaded AND the browser is
+// idle, so it cannot affect LCP, FCP or Total Blocking Time. summit.js decides
+// for itself whether the device should run it at all; until then (and forever,
+// on devices that decline) the CSS gradient is the hero background.
+if(document.getElementById('summit')){
+  const boot=()=>{
+    const go=()=>import('/assets/summit.js').catch(()=>{});
+    'requestIdleCallback' in window ? requestIdleCallback(go,{timeout:2500}) : setTimeout(go,900);
+  };
+  document.readyState==='complete' ? boot() : addEventListener('load',boot,{once:true});
 }
 
 // article filter + search

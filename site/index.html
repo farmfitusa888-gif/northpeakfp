@@ -21,9 +21,8 @@
 <meta name="twitter:image" content="https://northpeakfp.com/assets/og-image.jpg">
 <meta name="theme-color" content="#0e3326">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/fraunces-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/style.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQWJKFGY3T"></script>
 <script>
@@ -84,18 +83,14 @@ gtag('config','G-CQWJKFGY3T',{anonymize_ip:true,allow_google_signals:false,allow
 <main id="main">
 
 <section class="hero">
-  <!-- OPTIONAL BACKGROUND VIDEO ---------------------------------------
-       The hero already looks complete without a video (animated gradient +
-       the moving "peaks" canvas below). To add one:
-         1. Put hero.mp4 and hero-poster.jpg in the assets folder
-         2. Delete this comment's opening and closing markers to activate
-       See Guide 01, "Background Video for the Hero" for specs.
-  <video autoplay muted loop playsinline poster="assets/hero-poster.jpg" aria-hidden="true">
-    <source src="/assets/hero.mp4" type="video/mp4">
-  </video>
-  -------------------------------------------------------------------- -->
+  <!-- Painted immediately by CSS. This is the hero's real background: the
+       WebGL scene below is an enhancement layered on top of it, and on any
+       device that declines the scene (reduced motion, Data Saver, 2g, low
+       memory, no WebGL) this gradient is what the visitor sees, permanently.
+       There is deliberately no poster image — a gradient costs zero bytes and
+       paints before the first network round trip completes. -->
   <div class="fallback" aria-hidden="true"></div>
-  <canvas id="peaks" aria-hidden="true"></canvas>
+  <canvas id="summit" aria-hidden="true"></canvas>
   <div class="wrap hero-in">
     <p class="eyebrow" style="color:#d4a437">Accounting &middot; Controller &middot; CFO Advisory</p>
     <h1>Financial Clarity.<em>Strategic Growth.</em></h1>

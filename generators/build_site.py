@@ -31,6 +31,18 @@ gtag('config','{GA4_ID}',{{anonymize_ip:true,allow_google_signals:false,allow_ad
 
 # ---------------------------------------------------------------- CSS
 CSS = r"""
+/* Self-hosted variable fonts. Previously loaded from fonts.googleapis.com,
+   which cost a render-blocking stylesheet plus DNS+TLS to two third-party
+   hosts before any text could paint. Google serves one variable file per
+   family/subset — the per-weight URLs are byte-identical — so four weights
+   are covered by a single file each. Only the latin subset is shipped; the
+   latin-ext subset added 145KB of accented glyphs this site never uses. */
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;
+  src:url('/assets/fonts/inter-var-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:400 700;font-display:swap;
+  src:url('/assets/fonts/fraunces-var-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{
   --ink:#0a1a14; --ink-2:#12261f; --soft:#4a5f56; --mute:#7b8d85;
   --paper:#fbfaf6; --paper-2:#f2efe6; --card:#ffffff;
@@ -91,14 +103,18 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
 /* ---------- hero w/ video ---------- */
 .hero{position:relative;min-height:clamp(560px,88vh,860px);display:flex;align-items:center;
   overflow:hidden;background:var(--deep);isolation:isolate}
-.hero video,.hero .fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero .fallback{position:absolute;inset:0;width:100%;height:100%;z-index:-3}
 .hero .fallback{background:
-  radial-gradient(1200px 600px at 20% 10%,#1b5741 0%,transparent 60%),
-  radial-gradient(900px 500px at 85% 80%,#14402f 0%,transparent 65%),
-  linear-gradient(160deg,#0e3326,#071d15)}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(105deg,rgba(7,29,21,.93) 0%,rgba(7,29,21,.82) 42%,rgba(7,29,21,.55) 100%)}
-#peaks{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.5}
+  radial-gradient(760px 420px at 72% 26%,rgba(212,164,55,.20) 0%,transparent 62%),
+  radial-gradient(1100px 620px at 18% 4%,#1d5c45 0%,transparent 58%),
+  radial-gradient(900px 520px at 88% 84%,#12392a 0%,transparent 66%),
+  linear-gradient(168deg,#0f3728 0%,#0a2419 52%,#061710 100%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(100deg,rgba(6,23,16,.94) 0%,rgba(6,23,16,.86) 26%,
+    rgba(6,23,16,.52) 50%,rgba(6,23,16,.16) 74%,rgba(6,23,16,.02) 100%)}
+@media(max-width:900px){.hero::after{background:linear-gradient(178deg,rgba(6,23,16,.55) 0%,
+  rgba(6,23,16,.80) 42%,rgba(6,23,16,.93) 100%)}}
+#summit{position:absolute;inset:0;width:100%;height:100%;z-index:-2;opacity:0;transition:opacity .9s ease;pointer-events:none;display:block}
 .hero-in{padding:120px 0 100px;max-width:720px;color:#fff}
 .hero h1{font-size:clamp(2.5rem,6vw,4.4rem);color:#fff;margin-bottom:22px}
 .hero h1 em{font-style:normal;color:var(--gold-2);display:block}
@@ -270,7 +286,7 @@ footer a:hover{color:var(--gold-2)}
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .rv{opacity:1;transform:none}
 }
-@media print{.nav,footer,.hero video,#peaks{display:none}}
+@media print{.nav,footer,#summit{display:none}}
 """
 
 # ---------------------------------------------------------------- JS
@@ -305,24 +321,16 @@ if(!rm&&matchMedia('(pointer:fine)').matches){
   c.addEventListener('mouseleave',()=>c.style.transform='');});
 }
 
-// animated peak topography (canvas)
-const cv=document.getElementById('peaks');
-if(cv&&!rm){
- const cx=cv.getContext('2d');let w,h,t=0;
- const rs=()=>{w=cv.width=cv.offsetWidth*devicePixelRatio;h=cv.height=cv.offsetHeight*devicePixelRatio};
- rs();addEventListener('resize',rs,{passive:true});
- const layer=(off,amp,al,sp)=>{cx.beginPath();cx.moveTo(0,h);
-  for(let x=0;x<=w;x+=8){
-    const y=h*off + Math.sin(x*0.0016+t*sp)*amp + Math.sin(x*0.0041+t*sp*1.7)*amp*0.45;
-    cx.lineTo(x,y)}
-  cx.lineTo(w,h);cx.closePath();
-  const g=cx.createLinearGradient(0,h*off-amp,0,h);
-  g.addColorStop(0,`rgba(42,143,109,${al})`);g.addColorStop(1,`rgba(14,51,38,0)`);
-  cx.fillStyle=g;cx.fill();
-  cx.strokeStyle=`rgba(184,134,11,${al*0.85})`;cx.lineWidth=1.1*devicePixelRatio;cx.stroke()};
- const loop=()=>{cx.clearRect(0,0,w,h);t+=.0055;
-  layer(.62,26*devicePixelRatio,.16,1);layer(.72,20*devicePixelRatio,.12,1.35);
-  layer(.82,15*devicePixelRatio,.09,1.7);requestAnimationFrame(loop)};loop();
+// Hero scene — loaded only after the page is fully loaded AND the browser is
+// idle, so it cannot affect LCP, FCP or Total Blocking Time. summit.js decides
+// for itself whether the device should run it at all; until then (and forever,
+// on devices that decline) the CSS gradient is the hero background.
+if(document.getElementById('summit')){
+  const boot=()=>{
+    const go=()=>import('/assets/summit.js').catch(()=>{});
+    'requestIdleCallback' in window ? requestIdleCallback(go,{timeout:2500}) : setTimeout(go,900);
+  };
+  document.readyState==='complete' ? boot() : addEventListener('load',boot,{once:true});
 }
 
 // article filter + search
@@ -417,9 +425,8 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
 <meta name="twitter:image" content="{SITE}/assets/og-image.jpg">
 <meta name="theme-color" content="#0e3326">
 <link rel="icon" href="{p}assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/fraunces-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{p}assets/style.css">
 {GA4_SNIPPET}
 {ld}

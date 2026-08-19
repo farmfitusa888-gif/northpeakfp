@@ -22,3 +22,11 @@
   Cache-Control: public, max-age=3600, must-revalidate
 /assets/app.js
   Cache-Control: public, max-age=3600, must-revalidate
+
+# summit.js and the three bundle are not content-hashed either, so they follow
+# the same revalidate rule as the other scripts. Serving them immutable would
+# strand visitors on an old scene after a rebuild.
+/assets/summit.js
+  Cache-Control: public, max-age=3600, must-revalidate
+/assets/vendor/three.summit.js
+  Cache-Control: public, max-age=86400, must-revalidate

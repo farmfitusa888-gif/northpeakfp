@@ -45,9 +45,33 @@ def run(script: str, note: str) -> None:
         raise SystemExit(f"BUILD FAILED at {script} (exit {r.returncode})")
 
 
+def clean() -> None:
+    """Empty the output directory before building.
+
+    Everything in site/ comes from either a generator or generators/static/, so
+    wiping it is safe and it is the only way to guarantee the deploy contains no
+    stale files. Without this, renaming or dropping an asset leaves the old copy
+    behind forever — it is still on disk, still committed, and still served.
+    (That is exactly how a superseded 1.2MB three.module.js survived a rebuild
+    here and would have shipped.)
+    """
+    if not ROOT.exists():
+        return
+    removed = 0
+    for child in sorted(ROOT.iterdir()):
+        if child.is_dir():
+            removed += sum(1 for _ in child.rglob("*") if _.is_file())
+            shutil.rmtree(child)
+        else:
+            removed += 1
+            child.unlink()
+    print(f"cleaned {removed} file(s) from previous build")
+
+
 def main() -> None:
     print(f"Output: {ROOT}")
     ROOT.mkdir(parents=True, exist_ok=True)
+    clean()
     for script, note in STAGES:
         run(script, note)
 

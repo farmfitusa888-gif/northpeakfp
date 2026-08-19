@@ -602,4 +602,12 @@ def build(outdir=None):
     return ARTICLES
 
 if __name__ == "__main__":
-    build()
+    raise SystemExit(
+        "\n  generate_articles_northpeak.py is the DATA MODULE, not a build step.\n"
+        "  Running it calls build(), which overwrites all 25 article pages with the\n"
+        "  legacy standalone TEMPLATE at the top of this file — no site nav, no\n"
+        "  footer, no analytics, and og:image URLs pointing at /images/<slug>.jpg\n"
+        "  which do not exist. The real article builder is build_articles_shell.py,\n"
+        "  which renders the same ARTICLES data through the shared site shell.\n\n"
+        "  Build the site with:  python3 generators/build.py\n"
+    )

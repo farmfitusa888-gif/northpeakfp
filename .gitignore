@@ -13,3 +13,6 @@ __pycache__/
 # Local tooling
 .netlify/
 node_modules/
+
+# Playwright verification screenshots — regenerate with tools/, not worth versioning
+tools/preview/

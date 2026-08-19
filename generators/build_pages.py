@@ -25,22 +25,18 @@ I_USERS = '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy=
 I_CALC = '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8" y2="11"/><line x1="12" y1="11" x2="12" y2="11"/><line x1="16" y1="11" x2="16" y2="11"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="12" y1="16" x2="12" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/>'
 
 # ============================================================ HOME
-HERO_VIDEO = f"""  <!-- OPTIONAL BACKGROUND VIDEO ---------------------------------------
-       The hero already looks complete without a video (animated gradient +
-       the moving "peaks" canvas below). To add one:
-         1. Put hero.mp4 and hero-poster.jpg in the assets folder
-         2. Delete this comment's opening and closing markers to activate
-       See Guide 01, "Background Video for the Hero" for specs.
-  <video autoplay muted loop playsinline poster="assets/hero-poster.jpg" aria-hidden="true">
-    <source src="assets/hero.mp4" type="video/mp4">
-  </video>
-  -------------------------------------------------------------------- -->
+HERO_BACKDROP = """  <!-- Painted immediately by CSS. This is the hero's real background: the
+       WebGL scene below is an enhancement layered on top of it, and on any
+       device that declines the scene (reduced motion, Data Saver, 2g, low
+       memory, no WebGL) this gradient is what the visitor sees, permanently.
+       There is deliberately no poster image — a gradient costs zero bytes and
+       paints before the first network round trip completes. -->
   <div class="fallback" aria-hidden="true"></div>
-  <canvas id="peaks" aria-hidden="true"></canvas>"""
+  <canvas id="summit" aria-hidden="true"></canvas>"""
 
 home_body = f"""
 <section class="hero">
-{HERO_VIDEO}
+{HERO_BACKDROP}
   <div class="wrap hero-in">
     <p class="eyebrow" style="color:#d4a437">Accounting &middot; Controller &middot; CFO Advisory</p>
     <h1>Financial Clarity.<em>Strategic Growth.</em></h1>
