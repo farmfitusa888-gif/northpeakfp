@@ -77,7 +77,7 @@ check /articles/llc-vs-s-corp.html 301 /articles/llc-vs-s-corp
 echo
 echo "Legacy Squarespace URLs must 301 straight to the final URL, no chain:"
 check /new-page   301 /about
-check /new-page-1 301 /articles
+check /new-page-1 301 /articles/
 check /submit     301 /contact
 check /cart       301 /services
 
