@@ -27,6 +27,7 @@ https://www.northpeakfp.com/*   https://northpeakfp.com/:splat   301!
 /contact.html           /contact          301!
 /resources.html         /resources        301!
 /articles/index.html      /articles         301!
+/articles/                /articles         301!
 /articles/tax-deductions-small-business.html /articles/tax-deductions-small-business 301!
 /articles/llc-vs-s-corp.html /articles/llc-vs-s-corp 301!
 /articles/quarterly-estimated-taxes.html /articles/quarterly-estimated-taxes 301!
@@ -69,6 +70,7 @@ https://www.northpeakfp.com/*   https://northpeakfp.com/:splat   301!
 /articles/first-year-self-employed-taxes.html /articles/first-year-self-employed-taxes 301!
 
 /service-areas/index.html   /service-areas    301!
+/service-areas/             /service-areas    301!
 /service-areas/wilmette.html /service-areas/wilmette 301!
 /service-areas/evanston.html /service-areas/evanston 301!
 /service-areas/skokie.html  /service-areas/skokie  301!
@@ -91,9 +93,7 @@ https://www.northpeakfp.com/*   https://northpeakfp.com/:splat   301!
 /services                 /services.html     200
 /contact                  /contact.html      200
 /resources                /resources.html    200
-/articles                 /articles/index.html   200
-/articles/                /articles/index.html   200
+/articles                 /articles.html         200
 /articles/:slug           /articles/:slug.html   200
-/service-areas            /service-areas/index.html  200
-/service-areas/           /service-areas/index.html  200
+/service-areas            /service-areas.html    200
 /service-areas/:slug      /service-areas/:slug.html  200

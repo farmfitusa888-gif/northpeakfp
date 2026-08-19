@@ -59,12 +59,12 @@ if(!rm&&matchMedia('(pointer:fine)').matches){
 }
 
 // Hero scene — loaded only after the page is fully loaded AND the browser is
-// idle, so it cannot affect LCP, FCP or Total Blocking Time. summit.js decides
+// idle, so it cannot affect LCP, FCP or Total Blocking Time. summit.25f1cf630f.js decides
 // for itself whether the device should run it at all; until then (and forever,
 // on devices that decline) the CSS gradient is the hero background.
 if(document.getElementById('summit')){
   const boot=()=>{
-    const go=()=>import('/assets/summit.js').catch(()=>{});
+    const go=()=>import('/assets/summit.25f1cf630f.js').catch(()=>{});
     'requestIdleCallback' in window ? requestIdleCallback(go,{timeout:2500}) : setTimeout(go,900);
   };
   document.readyState==='complete' ? boot() : addEventListener('load',boot,{once:true});

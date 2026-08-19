@@ -25,7 +25,7 @@ import {
   MeshStandardMaterial, MeshBasicMaterial, ShaderMaterial,
   Mesh, Points, Group, HemisphereLight, DirectionalLight,
   CanvasTexture, AdditiveBlending
-} from './vendor/three.summit.js';
+} from './vendor/three.summit.970e701f2f.js';
 
 /* ------------------------------------------------------------------ noise */
 // Deterministic value noise, seeded so the range is identical on every load.

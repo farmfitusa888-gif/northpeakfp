@@ -65,6 +65,7 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
 .lead{font-size:1.18rem;color:var(--soft);line-height:1.65}
 
 /* ---------- skip link + a11y ---------- */
+.links .nav-short{display:none}
 .vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .skip{position:absolute;left:-9999px;top:0;background:var(--deep);color:#fff;padding:12px 20px;z-index:999}
 .skip:focus{left:0}
@@ -102,19 +103,30 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
    page body already carry one), and "Service Areas" shortens to "Areas" via the
    .nav-long span. Measured to fit down to 320px. */
 @media(max-width:900px){
-  .nav-in{padding:11px 0;gap:12px}
+  .nav-in{padding:10px 0;gap:8px;flex-wrap:nowrap}
   .brand span{display:none}
-  .nav-cta{display:none}
-  .links{gap:11px;flex:1;justify-content:flex-end;overflow:visible}
-  .links a{font-size:.8rem;padding:3px 0;letter-spacing:-.005em}
-  .nav-long{display:none}
+  .links .nav-long{display:none}
+  .links .nav-short{display:inline}
+  /* Contact leaves the row on phones; the Book button goes to the same page and
+     asks for the action instead of naming it. */
+  .links a.nav-contact{display:none}
+  .links{gap:10px;flex:1;justify-content:flex-end;min-width:0;flex-wrap:nowrap}
+  .links a{font-size:.78rem;padding:3px 0;letter-spacing:-.005em;white-space:nowrap}
+  .links a.nav-cta{display:inline-flex;padding:7px 13px;font-size:.76rem;border-radius:7px;
+    box-shadow:none;flex-shrink:0}
+  .links a.nav-cta:hover{transform:none}
 }
-@media(max-width:420px){
-  .nav .wrap{padding:0 14px}
+@media(max-width:430px){
+  .nav .wrap{padding:0 12px}
   .links{gap:8px}
-  .links a{font-size:.735rem}
+  .links a{font-size:.715rem}
+  .links a.nav-cta{padding:6px 10px;font-size:.71rem}
 }
-@media(max-width:350px){.links{gap:6px}.links a{font-size:.69rem}}
+@media(max-width:360px){
+  .links{gap:6px}
+  .links a{font-size:.665rem}
+  .links a.nav-cta{padding:6px 9px;font-size:.665rem}
+}
 
 /* ---------- nav: adopts the section behind it ----------
    Over a dark section the bar goes dark with light text; over paper it returns
@@ -616,14 +628,16 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
     p = "../" * depth
     # The second element of the label tuple is the part that is dropped on
     # narrow screens, so seven destinations still fit on one non-scrolling row.
-    nav_items = [("Services", "", "services.html"),
-                 ("Areas", "Service ", "service-areas/index.html"),
-                 ("About", "", "about.html"), ("Articles", "", "articles/index.html"),
-                 ("Resources", "", "resources.html"), ("Contact", "", "contact.html")]
+    nav_items = [("Services", "", "services.html", ""),
+                 ("Areas", "Service ", "service-areas.html", ""),
+                 ("About", "", "about.html", ""), ("Articles", "", "articles.html", ""),
+                 ("Resources", "", "resources.html", ""),
+                 ("Contact", "", "contact.html", "nav-contact")]
     links = "".join(
-        f'<a href="{p}{h}"{" aria-current=\"page\"" if active in (n, pre + n) else ""}>'
+        f'<a href="{p}{h}"{f" class=\"{cls}\"" if cls else ""}'
+        f'{" aria-current=\"page\"" if active in (n, pre + n) else ""}>'
         f'{f"<span class=\"nav-long\">{pre}</span>" if pre else ""}{n}</a>'
-        for n, pre, h in nav_items)
+        for n, pre, h, cls in nav_items)
     ld = f'<script type="application/ld+json">\n{json.dumps(jsonld, indent=2)}\n</script>' if jsonld else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -662,7 +676,7 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
   <div class="wrap nav-in">
     <a class="brand" href="{p}index.html">{LOGO}<span><b>NorthPeak</b><span>Financial Partners</span></span></a>
     <nav class="links" aria-label="Main">{links}
-      <a href="{p}contact.html" class="btn nav-cta" style="color:#fff">Book a Consultation</a>
+      <a href="{p}contact.html" class="btn nav-cta" style="color:#fff"><span class="nav-long">Book a Consultation</span><span class="nav-short">Book</span></a>
     </nav>
     <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -693,9 +707,9 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
         <li><a href="{p}services.html#cfo">CFO Package</a></li>
         <li><a href="{p}services.html">Compare Plans</a></li></ul></div>
       <div><h2>Learn</h2><ul>
-        <li><a href="{p}articles/index.html">All Articles</a></li>
+        <li><a href="{p}articles.html">All Articles</a></li>
         <li><a href="{p}resources.html">Free Tools</a></li>
-        <li><a href="{p}service-areas/index.html">Service Areas</a></li>
+        <li><a href="{p}service-areas.html">Service Areas</a></li>
         <li><a href="{p}about.html">About Us</a></li>
         <li><a href="{p}contact.html#faq">FAQ</a></li></ul></div>
       <div><h2>Contact</h2><ul>

@@ -76,6 +76,82 @@ def clean() -> None:
     print(f"cleaned {removed} file(s) from previous build")
 
 
+def fingerprint() -> None:
+    """Rename cache-sensitive assets to include a hash of their contents.
+
+    style.css, app.js and the 3D bundle had stable filenames, so a visitor
+    holding a cached copy could receive NEW html against an OLD stylesheet. That
+    is not theoretical — it happened on a real phone during this project: the
+    new nav markup laid out by the old rules overflowed the viewport, and the 3D
+    hero never appeared because the cached app.js contained no loader for it.
+
+    Hashing the filename makes a changed file a different URL, so that mismatch
+    cannot occur, and lets these be cached immutably for a year instead of
+    revalidated hourly.
+
+    ORDER IS LOAD-BEARING. Each file must have every reference it contains
+    rewritten BEFORE it is hashed, or its own hash describes stale content:
+
+        vendor bundle   hashed first (references nothing)
+        summit.js       rewrite its import of the bundle, then hash
+        app.js          rewrite its dynamic import of summit.js, then hash
+        style.css       hashed last (references nothing)
+        html/_headers   rewritten at the end, once every name is final
+    """
+    import hashlib
+
+    renames: dict[str, str] = {}
+
+    def rewrite(path: pathlib.Path) -> None:
+        if not path.exists() or not renames:
+            return
+        txt = original = path.read_text()
+        for old, new in renames.items():
+            txt = txt.replace(old, new)
+            # JS imports use relative specifiers, not absolute paths
+            txt = txt.replace(old.rsplit("/", 1)[1], new.rsplit("/", 1)[1])
+        if txt != original:
+            path.write_text(txt)
+
+    def rename(rel_path: str) -> None:
+        src = ROOT / rel_path
+        if not src.exists():
+            return
+        h = hashlib.sha256(src.read_bytes()).hexdigest()[:10]
+        dst = src.with_name(f"{src.stem}.{h}{src.suffix}")
+        src.rename(dst)
+        renames["/" + rel_path] = "/" + str(dst.relative_to(ROOT))
+
+    rename("assets/vendor/three.summit.js")
+    rewrite(ROOT / "assets/summit.js")
+    rename("assets/summit.js")
+    rewrite(ROOT / "assets/app.js")
+    rename("assets/app.js")
+    rename("assets/style.css")
+
+    touched = 0
+    for f in list(ROOT.rglob("*.html")) + [ROOT / "_headers"]:
+        if not f.exists():
+            continue
+        before = f.read_text()
+        rewrite(f)
+        if f.read_text() != before:
+            touched += 1
+
+    headers = ROOT / "_headers"
+    if headers.exists() and renames:
+        extra = "\n".join(
+            f"{new}\n  Cache-Control: public, max-age=31536000, immutable"
+            for new in renames.values())
+        headers.write_text(headers.read_text().rstrip() + "\n\n"
+                           "# Content-hashed: the filename changes when the bytes change,\n"
+                           "# so these can never be served stale.\n" + extra + "\n")
+
+    for old, new in renames.items():
+        print(f"   {old}  ->  {new}")
+    print(f"   rewrote references in {touched} page(s)")
+
+
 def main() -> None:
     print(f"Output: {ROOT}")
     ROOT.mkdir(parents=True, exist_ok=True)
@@ -94,6 +170,9 @@ def main() -> None:
                 dst.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(src, dst)
                 print(f"   {src.relative_to(static)}")
+
+    print("\n\033[1m── fingerprint\033[0m")
+    fingerprint()
 
     pages = sorted(ROOT.rglob("*.html"))
     print(f"\n\033[1m✓ build complete\033[0m — {len(pages)} HTML pages in {ROOT}")

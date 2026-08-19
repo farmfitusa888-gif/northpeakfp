@@ -11,7 +11,7 @@
   # the attack this actually defends against. Style is inline throughout.
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://formspree.io; form-action 'self' https://formspree.io; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
 
-# Hashed-by-content assets are safe to cache forever. style.css and app.js are
+# Hashed-by-content assets are safe to cache forever. style.80843567e4.css and app.0ab8538b2a.js are
 # NOT content-hashed, so they get a short cache with revalidation instead —
 # otherwise a rebuild would leave visitors on a stale stylesheet for a year.
 /assets/*.jpg
@@ -23,15 +23,26 @@
 /assets/*.svg
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/style.css
+/assets/style.80843567e4.css
   Cache-Control: public, max-age=3600, must-revalidate
-/assets/app.js
+/assets/app.0ab8538b2a.js
   Cache-Control: public, max-age=3600, must-revalidate
 
-# summit.js and the three bundle are not content-hashed either, so they follow
+# summit.25f1cf630f.js and the three bundle are not content-hashed either, so they follow
 # the same revalidate rule as the other scripts. Serving them immutable would
 # strand visitors on an old scene after a rebuild.
-/assets/summit.js
+/assets/summit.25f1cf630f.js
   Cache-Control: public, max-age=3600, must-revalidate
-/assets/vendor/three.summit.js
+/assets/vendor/three.summit.970e701f2f.js
   Cache-Control: public, max-age=86400, must-revalidate
+
+# Content-hashed: the filename changes when the bytes change,
+# so these can never be served stale.
+/assets/vendor/three.summit.970e701f2f.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/summit.25f1cf630f.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/app.0ab8538b2a.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/style.80843567e4.css
+  Cache-Control: public, max-age=31536000, immutable

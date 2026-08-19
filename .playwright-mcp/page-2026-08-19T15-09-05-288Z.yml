@@ -1,0 +1,151 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "NorthPeak Financial Partners" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e10]:
+          - text: NorthPeak
+          - generic [ref=e11]: Financial Partners
+      - navigation "Main" [ref=e12]:
+        - link "Services" [ref=e13] [cursor=pointer]:
+          - /url: /services
+        - link "Service Areas" [ref=e14] [cursor=pointer]:
+          - /url: /service-areas
+        - link "About" [ref=e15] [cursor=pointer]:
+          - /url: /about
+        - link "Articles" [ref=e16] [cursor=pointer]:
+          - /url: /articles
+        - link "Resources" [ref=e17] [cursor=pointer]:
+          - /url: /resources
+        - link "Contact" [ref=e18] [cursor=pointer]:
+          - /url: /contact
+        - link "Book a Consultation" [ref=e19] [cursor=pointer]:
+          - /url: /contact
+  - main [ref=e20]:
+    - generic [ref=e23]:
+      - paragraph [ref=e24]: Accounting · Controller · CFO Advisory
+      - heading [level=1] [ref=e25]:
+        - text: Financial Clarity.
+        - emphasis [ref=e26]: Strategic Growth.
+      - paragraph [ref=e27]: Most businesses don't struggle because they lack revenue — they struggle because they lack financial clarity. NorthPeak brings structure, accurate reporting, and CFO-level insight to growing companies.
+      - generic [ref=e28]:
+        - link "Book a Free Consultation" [ref=e29] [cursor=pointer]:
+          - /url: /contact
+        - link "Compare Packages" [ref=e30] [cursor=pointer]:
+          - /url: /services
+      - generic [ref=e31]:
+        - generic [ref=e32]: Controller-level experience
+        - generic [ref=e35]: Fixed quotes agreed in writing
+        - generic [ref=e38]: Wilmette, IL — serving clients nationwide
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - paragraph [ref=e45]: What We Do
+        - heading "Beyond bookkeeping — financial leadership" [level=2] [ref=e46]
+        - paragraph [ref=e47]: We help owners move past basic data entry and actually understand what their numbers are telling them, so decisions get made on evidence instead of instinct.
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - generic [ref=e51]: "01"
+          - heading "Accounting & Bookkeeping" [level=3] [ref=e52]
+          - paragraph [ref=e53]: Clean, reconciled books you can trust — transaction categorization, monthly closes, and reporting delivered on a predictable schedule.
+          - link "Details →" [ref=e54] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=e55]:
+          - generic [ref=e56]: "02"
+          - heading "Controller Services" [level=3] [ref=e57]
+          - paragraph [ref=e58]: Oversight, structured month-end close, budget-vs-actual reporting, and KPI tracking that turns raw data into visibility.
+          - link "Details →" [ref=e59] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=e60]:
+          - generic [ref=e61]: "03"
+          - heading "CFO Advisory" [level=3] [ref=e62]
+          - paragraph [ref=e63]: Cash-flow forecasting, margin analysis, strategic modeling, and decision support — executive financial leadership without a full-time hire.
+          - link "Details →" [ref=e64] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=e65]:
+          - generic [ref=e66]: "04"
+          - heading "Tax Planning & Prep" [level=3] [ref=e67]
+          - paragraph [ref=e68]: Proactive planning through the year, not just filing in April. Entity strategy, deduction capture, and quarterly estimate management.
+          - link "Details →" [ref=e69] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=e70]:
+          - generic [ref=e71]: "05"
+          - heading "Internal Controls" [level=3] [ref=e72]
+          - paragraph [ref=e73]: Process and safeguard design that protects your business from errors, leakage, and the surprises that catch growing companies off guard.
+          - link "Details →" [ref=e74] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=e75]:
+          - generic [ref=e76]: "06"
+          - heading "Individuals & Families" [level=3] [ref=e77]
+          - paragraph [ref=e78]: Personal tax preparation and planning, coordinated with your business so both sides of the picture work together.
+          - link "Details →" [ref=e79] [cursor=pointer]:
+            - /url: /services
+    - generic [ref=e83]:
+      - heading "Let's get your numbers working for you" [level=2] [ref=e84]
+      - paragraph [ref=e85]: Book a free 30-minute consultation. No pressure, no obligation — just a clear read on where you stand and what would help most.
+      - link "Book a Free Consultation" [ref=e87] [cursor=pointer]:
+        - /url: /contact
+  - contentinfo [ref=e88]:
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - link "NorthPeak Financial Partners" [ref=e92] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e97]:
+              - text: NorthPeak
+              - generic [ref=e98]: Financial Partners
+          - paragraph [ref=e99]: Accounting, controller, and CFO-level advisory that gives growing businesses real financial clarity.
+        - generic [ref=e100]:
+          - heading "Services" [level=2] [ref=e101]
+          - list [ref=e102]:
+            - listitem [ref=e103]:
+              - link "Starter Package" [ref=e104] [cursor=pointer]:
+                - /url: /services#starter
+            - listitem [ref=e105]:
+              - link "Growth Package" [ref=e106] [cursor=pointer]:
+                - /url: /services#growth
+            - listitem [ref=e107]:
+              - link "CFO Package" [ref=e108] [cursor=pointer]:
+                - /url: /services#cfo
+            - listitem [ref=e109]:
+              - link "Compare Plans" [ref=e110] [cursor=pointer]:
+                - /url: /services
+        - generic [ref=e111]:
+          - heading "Learn" [level=2] [ref=e112]
+          - list [ref=e113]:
+            - listitem [ref=e114]:
+              - link "All Articles" [ref=e115] [cursor=pointer]:
+                - /url: /articles
+            - listitem [ref=e116]:
+              - link "Free Tools" [ref=e117] [cursor=pointer]:
+                - /url: /resources
+            - listitem [ref=e118]:
+              - link "Service Areas" [ref=e119] [cursor=pointer]:
+                - /url: /service-areas
+            - listitem [ref=e120]:
+              - link "About Us" [ref=e121] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e122]:
+              - link "FAQ" [ref=e123] [cursor=pointer]:
+                - /url: /contact#faq
+        - generic [ref=e124]:
+          - heading "Contact" [level=2] [ref=e125]
+          - list [ref=e126]:
+            - listitem [ref=e127]:
+              - link "info@northpeakfp.com" [ref=e128] [cursor=pointer]:
+                - /url: mailto:info@northpeakfp.com
+            - listitem [ref=e129]:
+              - link "(847) 644-2288" [ref=e130] [cursor=pointer]:
+                - /url: tel:+18476442288
+            - listitem [ref=e131]: Wilmette, IL
+            - listitem [ref=e132]:
+              - link "Request a Consultation" [ref=e133] [cursor=pointer]:
+                - /url: /contact
+      - generic [ref=e134]:
+        - generic [ref=e135]: © 2026 NorthPeak Financial Partners. All rights reserved.
+        - generic [ref=e136]: Informational content only — not individualized tax, legal, or investment advice.
+        - link "Site by BuiltBySam" [ref=e137] [cursor=pointer]:
+          - /url: https://builtbysamski.com
+          - generic [ref=e138]: Site by
+          - img "BuiltBySam" [ref=e139]
