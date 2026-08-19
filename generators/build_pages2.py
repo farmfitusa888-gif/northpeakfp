@@ -510,10 +510,13 @@ urls += "".join(f"  <url>\n    <loc>{SITE}/articles/{a['slug']}</loc>\n    <chan
 
 # Service-area URLs. Imported from build_areas rather than restated, so adding a
 # town cannot leave the sitemap or the redirects behind.
-from build_areas import TOWNS as _TOWNS, TOWN_PAGES_READY as _TOWN_PAGES
+from build_areas import (TOWNS as _TOWNS, TOWN_PAGES_READY as _TOWN_PAGES,
+                         LOCAL_GUIDES as _GUIDES)
 urls += f"  <url>\n    <loc>{SITE}/service-areas</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n"
 urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{t[1]}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
                 for t in (_TOWNS if _TOWN_PAGES else []))
+urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{g[0]}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
+                for g in _GUIDES)
 W("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
 
 # ============================================================ _redirects
@@ -563,6 +566,7 @@ redir += ["",
          [f"/service-areas/{t[1]}.html{' ' * max(1, 8 - len(t[1]))}"
           f"/service-areas/{t[1]}{' ' * max(1, 8 - len(t[1]))}301!"
           for t in (_TOWNS if _TOWN_PAGES else [])] + \
+         [f"/service-areas/{g[0]}.html   /service-areas/{g[0]}   301!" for g in _GUIDES] + \
          ["",
           "# 4. Clean URL → file. Serves content without changing the address bar.",
           "/                         /index.html            200"]

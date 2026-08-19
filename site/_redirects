@@ -54,6 +54,9 @@ https://www.northpeakfp.com/*   https://northpeakfp.com/:splat   301!
 /articles/personal-tax-tips.html /articles/personal-tax-tips 301!
 
 /service-areas/index.html   /service-areas    301!
+/service-areas/cook-county-property-tax-appeals.html   /service-areas/cook-county-property-tax-appeals   301!
+/service-areas/cook-county-vs-lake-county.html   /service-areas/cook-county-vs-lake-county   301!
+/service-areas/wheeling-sales-tax-lake-cook-road.html   /service-areas/wheeling-sales-tax-lake-cook-road   301!
 
 # 4. Clean URL → file. Serves content without changing the address bar.
 /                         /index.html            200
