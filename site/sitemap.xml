@@ -236,6 +236,66 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://northpeakfp.com/service-areas/wilmette</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/service-areas/evanston</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/service-areas/skokie</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/service-areas/glenview</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/service-areas/northbrook</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/service-areas/winnetka</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/service-areas/morton-grove</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/service-areas/niles</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/service-areas/park-ridge</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/service-areas/deerfield</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/service-areas/highland-park</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/service-areas/wheeling</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://northpeakfp.com/service-areas/cook-county-property-tax-appeals</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

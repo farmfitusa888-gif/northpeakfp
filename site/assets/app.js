@@ -1,10 +1,39 @@
 
-// nav
+// nav — sticky, and it adopts the section behind it.
+// The bar sits over a dark hero on some pages and over paper on others, and it
+// crosses dark bands mid-page. Rather than picking one colour and living with
+// the bad half, it measures which themed section is under the bar and flips.
 const nav=document.querySelector('.nav');
-addEventListener('scroll',()=>nav&&nav.classList.toggle('scrolled',scrollY>10),{passive:true});
-const bg=document.querySelector('.burger'),lk=document.querySelector('.links');
-if(bg&&lk){bg.addEventListener('click',()=>{const o=lk.classList.toggle('open');bg.setAttribute('aria-expanded',o)});
-  lk.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>lk.classList.remove('open')));}
+if(nav){
+  // Sections that render on a dark ground. Read once, then only their offsets
+  // are re-measured, so scrolling stays cheap.
+  const darkSel='.hero,.dark,.mband';
+  let bands=[],navH=nav.offsetHeight,ticking=false;
+  const measure=()=>{
+    navH=nav.offsetHeight;
+    bands=[...document.querySelectorAll(darkSel)].map(el=>{
+      const r=el.getBoundingClientRect();
+      return [r.top+scrollY, r.bottom+scrollY];
+    });
+  };
+  const apply=()=>{
+    ticking=false;
+    nav.classList.toggle('scrolled',scrollY>10);
+    // Probe just BELOW the bar's bottom edge. Sampling inside the bar's own
+    // height misses a section that starts exactly where the bar ends, which is
+    // every hero on this site.
+    const y=scrollY+navH+4;
+    let dark=false;
+    for(const [top,bot] of bands){ if(y>=top&&y<bot){dark=true;break} }
+    nav.classList.toggle('on-dark',dark);
+  };
+  const onScroll=()=>{ if(!ticking){ticking=true;requestAnimationFrame(apply)} };
+  measure(); apply();
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',()=>{measure();apply()},{passive:true});
+  // The 3D hero and lazy content change section heights after first paint.
+  addEventListener('load',()=>{measure();apply()});
+}
 
 // reveal + counters + bars
 const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;

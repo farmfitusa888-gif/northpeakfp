@@ -93,14 +93,41 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
 .btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent);box-shadow:none}
 .btn.ghost:hover{background:var(--accent);color:#fff}
 .btn.lg{padding:15px 32px;font-size:1rem}
-.burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
-.burger span{display:block;width:22px;height:2px;background:var(--ink);margin:4px 0;border-radius:2px;transition:.25s}
+.burger{display:none}
+
+/* ---------- nav: one non-scrolling row at every width ----------
+   No hamburger and no horizontal scroll, which means seven destinations have to
+   physically fit. Three things buy the space on a phone: the wordmark drops to
+   the mark alone, the CTA button leaves the bar (the hero, footer and every
+   page body already carry one), and "Service Areas" shortens to "Areas" via the
+   .nav-long span. Measured to fit down to 320px. */
 @media(max-width:900px){
-  .links{position:fixed;inset:64px 0 auto 0;flex-direction:column;background:var(--paper);
-    padding:26px;gap:18px;border-bottom:1px solid var(--rule);transform:translateY(-120%);transition:transform .3s;box-shadow:var(--shadow-lg)}
-  .links.open{transform:translateY(0)}
-  .burger{display:block}
+  .nav-in{padding:11px 0;gap:12px}
+  .brand span{display:none}
+  .nav-cta{display:none}
+  .links{gap:11px;flex:1;justify-content:flex-end;overflow:visible}
+  .links a{font-size:.8rem;padding:3px 0;letter-spacing:-.005em}
+  .nav-long{display:none}
 }
+@media(max-width:420px){
+  .nav .wrap{padding:0 14px}
+  .links{gap:8px}
+  .links a{font-size:.735rem}
+}
+@media(max-width:350px){.links{gap:6px}.links a{font-size:.69rem}}
+
+/* ---------- nav: adopts the section behind it ----------
+   Over a dark section the bar goes dark with light text; over paper it returns
+   to the translucent cream. Driven by app.js, which measures which themed
+   section sits under the bar on scroll. */
+.nav{transition:background .35s ease,border-color .35s ease,box-shadow .25s ease}
+.nav.on-dark{background:rgba(7,25,18,.78);border-bottom-color:rgba(255,255,255,.10)}
+.nav.on-dark .brand{color:#fff}
+.nav.on-dark .brand b{color:#fff}
+.nav.on-dark .brand span{color:#a9c4b9}
+.nav.on-dark .links a{color:#d7e5de}
+.nav.on-dark .links a:hover,.nav.on-dark .links a[aria-current="page"]{color:var(--gold-2)}
+.nav.on-dark .burger span{background:#fff}
 
 /* ---------- hero w/ video ---------- */
 .hero{position:relative;min-height:clamp(560px,88vh,860px);display:flex;align-items:center;
@@ -119,7 +146,8 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
 @media(max-width:900px){.hero::after{background:linear-gradient(178deg,rgba(6,23,16,.45) 0%,
   rgba(6,23,16,.74) 44%,rgba(6,23,16,.92) 100%)}}
 #summit{position:absolute;inset:0;width:100%;height:100%;z-index:-2;opacity:0;transition:opacity .9s ease;pointer-events:none;display:block}
-.hero-in{padding:120px 0 100px;max-width:720px;color:#fff}
+.hero-in{padding-top:120px;padding-bottom:100px;max-width:720px;color:#fff}
+@media(max-width:900px){.hero-in{padding-top:78px;padding-bottom:64px}}
 .hero h1{font-size:clamp(2.5rem,6vw,4.4rem);color:#fff;margin-bottom:22px}
 .hero h1 em{font-style:normal;color:var(--gold-2);display:block}
 .hero p{font-size:clamp(1.05rem,2vw,1.24rem);color:#cfe0d8;max-width:590px;margin-bottom:34px}
@@ -227,13 +255,13 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
    article pages instead of being cached once. Moved here when the local
    guides began using the same .aw / .abody container. */
 .aw{max-width:760px;margin:0 auto;padding:0 28px}
-.ahead{padding:52px 0 0}
+.ahead{padding-top:52px}
 .ahead h1{font-size:clamp(2rem,4.6vw,3rem);margin-bottom:20px;color:var(--ink-2)}
 .abyline{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 0;
   border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);font-size:.88rem;color:var(--soft);margin-bottom:8px}
 .abyline strong{color:var(--ink-2)}
 .abyline .dot{width:4px;height:4px;border-radius:50%;background:var(--gold)}
-.abody{padding:14px 0 30px;font-size:1.06rem}
+.abody{padding-top:14px;padding-bottom:30px;font-size:1.06rem}
 .abody h2{font-size:1.55rem;color:var(--deep);margin:42px 0 13px}
 .abody h2 .num{color:var(--gold);font-size:.95rem;font-weight:700;display:block;margin-bottom:5px;
   letter-spacing:.06em;font-family:'Inter',sans-serif}
@@ -401,6 +429,13 @@ footer a:hover{color:var(--gold-2)}
 @media(max-width:820px){.fgrid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.fgrid{grid-template-columns:1fr}}
 .fgrid ul{list-style:none}
+.bbs{display:inline-flex;align-items:center;gap:8px;opacity:.5;transition:opacity .2s;
+  text-decoration:none;flex-shrink:0}
+.bbs:hover{opacity:1}
+.bbs span{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#7f948b}
+.bbs img{height:20px;width:auto;display:block}
+@media(max-width:700px){.fbot{flex-direction:column;align-items:flex-start;gap:14px}
+  .bbs{margin-top:2px}}
 .fgrid li{margin-bottom:9px}
 .fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;
   gap:16px;flex-wrap:wrap;font-size:.83rem;color:#7a9087}
@@ -409,9 +444,9 @@ footer a:hover{color:var(--gold-2)}
 .soc a:hover{background:var(--accent);transform:translateY(-2px)}
 
 /* ---------- misc ---------- */
-.crumb{font-size:.83rem;color:var(--mute);padding:22px 0 0}
+.crumb{font-size:.83rem;color:var(--mute);padding-top:22px}
 .crumb a{color:var(--accent);text-decoration:none}
-.pagehead{padding:64px 0 10px}
+.pagehead{padding-top:64px;padding-bottom:10px}
 .pagehead h1{font-size:clamp(2.1rem,5vw,3.2rem);margin-bottom:16px;color:var(--ink-2)}
 .cta-band{background:linear-gradient(140deg,var(--deep),#0a2519);border-radius:6px;padding:56px 40px;text-align:center;color:#fff}
 .cta-band h2{color:#fff;font-size:clamp(1.7rem,3.6vw,2.4rem);margin-bottom:14px}
@@ -426,12 +461,41 @@ footer a:hover{color:var(--gold-2)}
 
 # ---------------------------------------------------------------- JS
 JS = r"""
-// nav
+// nav — sticky, and it adopts the section behind it.
+// The bar sits over a dark hero on some pages and over paper on others, and it
+// crosses dark bands mid-page. Rather than picking one colour and living with
+// the bad half, it measures which themed section is under the bar and flips.
 const nav=document.querySelector('.nav');
-addEventListener('scroll',()=>nav&&nav.classList.toggle('scrolled',scrollY>10),{passive:true});
-const bg=document.querySelector('.burger'),lk=document.querySelector('.links');
-if(bg&&lk){bg.addEventListener('click',()=>{const o=lk.classList.toggle('open');bg.setAttribute('aria-expanded',o)});
-  lk.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>lk.classList.remove('open')));}
+if(nav){
+  // Sections that render on a dark ground. Read once, then only their offsets
+  // are re-measured, so scrolling stays cheap.
+  const darkSel='.hero,.dark,.mband';
+  let bands=[],navH=nav.offsetHeight,ticking=false;
+  const measure=()=>{
+    navH=nav.offsetHeight;
+    bands=[...document.querySelectorAll(darkSel)].map(el=>{
+      const r=el.getBoundingClientRect();
+      return [r.top+scrollY, r.bottom+scrollY];
+    });
+  };
+  const apply=()=>{
+    ticking=false;
+    nav.classList.toggle('scrolled',scrollY>10);
+    // Probe just BELOW the bar's bottom edge. Sampling inside the bar's own
+    // height misses a section that starts exactly where the bar ends, which is
+    // every hero on this site.
+    const y=scrollY+navH+4;
+    let dark=false;
+    for(const [top,bot] of bands){ if(y>=top&&y<bot){dark=true;break} }
+    nav.classList.toggle('on-dark',dark);
+  };
+  const onScroll=()=>{ if(!ticking){ticking=true;requestAnimationFrame(apply)} };
+  measure(); apply();
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',()=>{measure();apply()},{passive:true});
+  // The 3D hero and lazy content change section heights after first paint.
+  addEventListener('load',()=>{measure();apply()});
+}
 
 // reveal + counters + bars
 const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -530,13 +594,16 @@ LOGO = ('<svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden
 def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
           depth=0, keywords="", og_type="website"):
     p = "../" * depth
-    nav_items = [("Home", "index.html"), ("Services", "services.html"),
-                 ("Service Areas", "service-areas/index.html"),
-                 ("About", "about.html"), ("Articles", "articles/index.html"),
-                 ("Resources", "resources.html"), ("Contact", "contact.html")]
+    # The second element of the label tuple is the part that is dropped on
+    # narrow screens, so seven destinations still fit on one non-scrolling row.
+    nav_items = [("Services", "", "services.html"),
+                 ("Areas", "Service ", "service-areas/index.html"),
+                 ("About", "", "about.html"), ("Articles", "", "articles/index.html"),
+                 ("Resources", "", "resources.html"), ("Contact", "", "contact.html")]
     links = "".join(
-        f'<a href="{p}{h}"{" aria-current=\"page\"" if active==n else ""}>{n}</a>'
-        for n, h in nav_items)
+        f'<a href="{p}{h}"{" aria-current=\"page\"" if active in (n, pre + n) else ""}>'
+        f'{f"<span class=\"nav-long\">{pre}</span>" if pre else ""}{n}</a>'
+        for n, pre, h in nav_items)
     ld = f'<script type="application/ld+json">\n{json.dumps(jsonld, indent=2)}\n</script>' if jsonld else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -575,7 +642,7 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
   <div class="wrap nav-in">
     <a class="brand" href="{p}index.html">{LOGO}<span><b>NorthPeak</b><span>Financial Partners</span></span></a>
     <nav class="links" aria-label="Main">{links}
-      <a href="{p}contact.html" class="btn" style="color:#fff">Book a Consultation</a>
+      <a href="{p}contact.html" class="btn nav-cta" style="color:#fff">Book a Consultation</a>
     </nav>
     <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -620,6 +687,12 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
     <div class="fbot">
       <span>&copy; <span class="yr"></span> {FIRM}. All rights reserved.</span>
       <span>Informational content only &mdash; not individualized tax, legal, or investment advice.</span>
+      <a class="bbs" href="https://builtbysamski.com" rel="noopener" target="_blank"
+         title="Site by BuiltBySam">
+        <span>Site by</span>
+        <img src="{p}assets/builtbysam-wordmark.png" alt="BuiltBySam"
+             width="110" height="20" loading="lazy" decoding="async">
+      </a>
     </div>
   </div>
 </footer>

@@ -53,25 +53,20 @@ ARTS = G.ARTICLES
 BASE_CITY = "Wilmette"
 
 COOK_ASSESS = (
-    "Property in {town} is assessed by the <strong>Cook County Assessor</strong>, "
-    "which reassesses one third of the county each year on a three-year township "
-    "cycle. In a reassessment year you get two chances to contest a value — first "
-    "at the Assessor's office, then at the independent "
-    "<a href=\"https://www.cookcountyboardofreview.com/\" rel=\"noopener\" target=\"_blank\">"
-    "Board of Review</a>. In an off year, usually only the Board of Review window "
-    "is open. If you own the building your business operates from, that cycle is "
-    "worth tracking, because the deadlines are short and they do not move."
+    "{town} is assessed by the Cook County Assessor, and it sits in the north suburban "
+    "township group &mdash; reassessed in 2016, 2019, 2022 and 2025, which puts the next "
+    "one in <strong>2028</strong>. In a reassessment year there are two chances to contest "
+    "a value; in an off year, generally one. "
+    "<a href=\"cook-county-property-tax-appeals.html\">How the Cook County appeal cycle "
+    "works &rarr;</a>"
 )
 
 LAKE_ASSESS = (
-    "{town} sits in Lake County, and that changes who you deal with. Outside Cook "
-    "County, Illinois assessments are set by the <strong>township assessor</strong>, "
-    "not a county assessor. Lake County asks property owners to contact their "
-    "township assessor before filing with the "
-    "<a href=\"https://www.lakecountyil.gov/503/Appeal-Process\" rel=\"noopener\" target=\"_blank\">"
-    "Board of Review</a> — and for factual-error and commercial-vacancy appeals, "
-    "that contact is required, not optional. It is a different first phone call "
-    "than a business owner a few miles south would make."
+    "{town} is in Lake County, which means the <strong>township assessor</strong> values "
+    "your property rather than a county assessor &mdash; Cook is the exception in Illinois, "
+    "not the rule. Lake County also asks you to contact that township assessor before "
+    "filing with the Board of Review. "
+    "<a href=\"cook-county-vs-lake-county.html\">What changes at the county line &rarr;</a>"
 )
 
 # name, slug, county, township, assessment paragraph, neighbours, extra fact
@@ -142,10 +137,9 @@ TOWNS = [
      "County Assessment Office handles assessment and the Lake County Treasurer "
      "collects. The village publishes this split itself, along with the sales tax "
      "consequence: the "
-     "<a href=\"https://www.wheelingil.gov/245/Sales-Tax\" rel=\"noopener\" target=\"_blank\">"
-     "Cook County portion carries a 10% total sales tax rate and the Lake County "
-     "portion 8%</a>. If you sell taxable goods in Wheeling, which side of Lake Cook "
-     "Road your counter sits on is a real number on your return.",
+     "<a href=\"wheeling-sales-tax-lake-cook-road.html\">Cook portion carries a 10% total "
+     "sales tax rate and the Lake portion 8% &mdash; which side of the road you are on "
+     "is a real number on your return &rarr;</a>",
      ["northbrook", "deerfield", "glenview"],
      None),
 ]
@@ -175,7 +169,7 @@ TOWNS = [
 # assessment table on it is unique, useful, and not something a competitor can
 # copy without doing the same research.
 # ---------------------------------------------------------------------------
-TOWN_PAGES_READY = False
+TOWN_PAGES_READY = True
 
 
 # ---------------------------------------------------------------------------
@@ -381,6 +375,123 @@ the general mechanics.</p>
    ["sales-tax-guide", "bookkeeping-basics", "cash-flow-management"]),
 ]
 
+# ---------------------------------------------------------------------------
+# LOCAL BUSINESS REGISTRATION REQUIREMENTS
+#
+# This is what makes each town page a different document rather than the same
+# page with a name swapped. Every village sets its own rule, and they genuinely
+# diverge: who needs a licence at all, whether home-based businesses are
+# exempt, and when the licence year turns over. Across these twelve
+# neighbouring communities the renewal date alone lands on five different days.
+#
+# All verified against the municipality's own published material, 2026-08-19.
+# Fee amounts are deliberately NOT stated -- they change, and a stale fee on a
+# client's site is worse than no fee. Structure is stated; the link carries the
+# current number.
+#
+# (name, requirement_html, source_url)
+LICENSING = {
+ "wilmette": (
+   "Wilmette requires an annual business licence for <strong>all businesses located in "
+   "the village</strong>, and the fee is set by the gross interior square footage of the "
+   "premises rather than a flat rate &mdash; so the same business pays differently "
+   "depending on the space it takes. The licence year runs from <strong>January 1</strong>. "
+   "New businesses other than home occupations also need an occupancy inspection before "
+   "opening.",
+   "https://www.wilmette.gov/400/Starting-A-Business-in-Wilmette"),
+
+ "evanston": (
+   "Evanston is one of the broadest in the area: <strong>every for-profit business</strong> "
+   "operating within the city must register, explicitly including home-based occupations "
+   "and businesses already licensed under state or federal law. Registration renews "
+   "annually by <strong>April 1</strong>, and the city states a penalty of $500 for each "
+   "day a business operates unregistered &mdash; which makes this one of the more expensive "
+   "things to overlook in the north suburbs.",
+   "https://www.cityofevanston.org/business/business-licenses"),
+
+ "skokie": (
+   "Skokie takes the opposite approach to Evanston on the question that matters most to "
+   "small operators: <strong>most home-based businesses do not need a village licence</strong>, "
+   "with childcare operations the notable exception. For businesses that do need one, "
+   "licences expire on <strong>April 30</strong> each year.",
+   "https://www.skokie.org/213/Certificates-of-Occupancy-and-Business-L"),
+
+ "glenview": (
+   "Glenview requires a licence for any business with a location inside the village, and it "
+   "has an unusual structure: the general business licence is issued once and "
+   "<strong>does not require annual renewal</strong>. A new licence is triggered instead by "
+   "a change of location, name, or ownership. Certain categories &mdash; food "
+   "establishments, day care, massage therapy &mdash; do renew annually and carry different "
+   "fees.",
+   "https://www.glenview.il.us/658/Business-Licenses-Registration"),
+
+ "northbrook": (
+   "Northbrook does not licence everyone. A general business licence is required only of "
+   "<strong>specific categories</strong> of business, which makes the first question in "
+   "Northbrook \"does this apply to me at all?\" rather than \"how much?\". Licences and "
+   "registrations run on a year beginning <strong>May 1</strong> and ending April 30.",
+   "https://www.northbrook.il.us/367/Business-Licenses"),
+
+ "winnetka": (
+   "Winnetka runs a business <strong>registration</strong> rather than a licence in the "
+   "usual sense, handled through the village's Economic Development Coordinator. The "
+   "village states the purpose plainly: keeping accurate information about the local "
+   "business community, and making sure public safety officials have correct contact "
+   "details for commercial tenants in an emergency.",
+   "https://www.villageofwinnetka.org/268/Existing-Business-Services"),
+
+ "morton-grove": (
+   "Morton Grove is among the most comprehensive: <strong>all industrial, commercial and "
+   "home-based businesses</strong> are required to hold an active licence and renew it "
+   "annually, on a licence year running <strong>January 1 to December 31</strong>. The "
+   "village is explicit that the licence is a compliance check &mdash; it verifies the "
+   "business against local zoning, building, health and fire codes, not just its existence.",
+   "https://www.mortongroveil.org/business-development/doing-business-in-morton-grove/"),
+
+ "niles": (
+   "Niles requires a written application to operate in the village, and the process is "
+   "<strong>inspection-led</strong>: required inspections are scheduled through Community "
+   "Development as part of licensing rather than handled separately afterwards. Worth "
+   "building into an opening timeline rather than treating as a formality at the end.",
+   "https://www.vniles.com/173/Business-Licensing"),
+
+ "park-ridge": (
+   "Park Ridge handles licences and registration through its business services department. "
+   "One requirement worth flagging specifically, because it catches trades and building "
+   "businesses: <strong>contractor registration</strong> carries a fee per firm, waived for "
+   "contractors already licensed by the State of Illinois. Confirm what applies to your "
+   "specific activity with the city directly &mdash; the categories are narrower than the "
+   "blanket rules some neighbouring villages use.",
+   "https://www.parkridge.us/business_services/licenses_and_registration/index.php"),
+
+ "deerfield": (
+   "Deerfield requires registration by law, with a stated penalty of up to $500 for "
+   "non-compliance. The sequence matters here more than in most villages: the village asks "
+   "you to <strong>confirm zoning with Community Development before</strong> submitting the "
+   "registration, so the use is verified as permitted first. Retailers are also directed to "
+   "obtain an Illinois Business Tax number and register the business name with the "
+   "Secretary of State.",
+   "https://www.deerfield.il.us/400/New-Existing-Businesses"),
+
+ "highland-park": (
+   "Highland Park ties registration to occupancy: businesses occupying commercial property "
+   "must register <strong>within 30 days of opening</strong>, after the Certificate of "
+   "Occupancy is issued. Registration then renews annually with a deadline of "
+   "<strong>December 31</strong>, and the fee is prorated depending on which half of the "
+   "year you register in.",
+   "https://www.cityhpil.com/business/licenses_registration_and_permits/business_registration.php"),
+
+ "wheeling": (
+   "Wheeling requires a valid Business Certificate under its municipal code "
+   "<strong>before operations begin</strong>, on a licence year running May 1 to April 30. "
+   "Two practical details: <strong>home-based businesses do not need the licence</strong>, "
+   "though some need a zoning certificate from Community Development &mdash; and the "
+   "village advises a <strong>minimum six-week processing time</strong>, which is by some "
+   "distance the longest lead time in this group. If you are signing a lease in Wheeling, "
+   "start this before you need it.",
+   "https://www.wheelingil.gov/2046/Business-License"),
+}
+
 SLUGS = {t[1]: t[0] for t in TOWNS}
 
 SERVICES = [
@@ -400,37 +511,50 @@ SERVICES = [
 
 # Articles most worth surfacing from a local page: the ones aimed at an owner
 # deciding whether they need help at all.
+# Rotated per town rather than fixed, so the related-reading block is not the
+# same three links on twelve pages — which both flattens the internal link graph
+# and pushes every page's text closer together.
 LOCAL_READS = ["when-to-hire-accountant", "quarterly-estimated-taxes",
                "tax-deductions-small-business", "bookkeeping-basics",
-               "llc-vs-s-corp", "cash-flow-management"]
+               "llc-vs-s-corp", "cash-flow-management", "sales-tax-guide",
+               "1099-vs-w2", "choosing-business-entity", "payroll-setup-guide",
+               "how-to-calculate-estimated-taxes", "business-expense-categories",
+               "cash-vs-accrual", "financial-statements-explained",
+               "first-year-self-employed-taxes", "ira-options-self-employed",
+               "estimated-tax-safe-harbor", "tax-planning-vs-tax-prep"]
 ART_BY_SLUG = {a["slug"]: a for a in ARTS}
 
 
 def faq_for(town, county, township, extra):
-    """Only questions whose ANSWER changes with the town.
-
-    The two generic ones that used to live here — "do you meet in person" and
-    "what does it cost" — were identical on all twelve pages and are already
-    answered on /contact. Repeating them made every page look like the last one.
-    """
+    """Only questions whose ANSWER changes with the town."""
+    lic, _src = LICENSING[town_slug(town)]
+    plain = _strip_tags(lic)
     return [
+        (f"Do I need a business licence to operate in {town}?",
+         plain),
         (f"Which county and township handle assessment for a {town} business?",
          f"{town} is in {county} County, {township}. That decides who values your "
          f"property, which appeal window applies, and who you call first — and it is "
          f"not the same answer a few miles away."),
-        (f"Do you work with {town} businesses in person or remotely?",
-         f"Both. The practice is in {BASE_CITY}, so {town} is a short drive when a "
-         f"conversation is better had in the same room. Ongoing work runs remotely "
-         f"because it is faster for everyone. See "
-         f"<a href=\"../contact.html\">contact</a> for what happens after the first call."),
     ]
+
+
+def town_slug(name):
+    return {t[0]: t[1] for t in TOWNS}[name]
+
+
+def _strip_tags(h):
+    import re as _re
+    return _re.sub(r"\s+", " ", _re.sub(r"<[^>]+>", "", h)).strip()
 
 
 def build():
     made = [(t[0], t[1], t[2]) for t in TOWNS]
     for name, slug, county, township, assess, neighbours, extra in (TOWNS if TOWN_PAGES_READY else []):
         assess_html = assess.format(town=name) if "{town}" in assess else assess
-        reads = [ART_BY_SLUG[s] for s in LOCAL_READS if s in ART_BY_SLUG][:3]
+        _i = [t[1] for t in TOWNS].index(slug)
+        _pool = [x for x in LOCAL_READS if x in ART_BY_SLUG]
+        reads = [ART_BY_SLUG[_pool[(_i * 3 + k) % len(_pool)]] for k in range(3)]
         faqs = faq_for(name, county, township, extra)
 
         near = "".join(
@@ -449,15 +573,16 @@ def build():
 
         extra_html = f'<p class="lead" style="max-width:58ch;margin-top:18px">{extra}</p>' if extra else ""
 
+        lic_html, lic_src = LICENSING[slug]
+
         body = f"""
 <div class="wrap crumb"><a href="../index.html">Home</a> &rsaquo;
   <a href="index.html">Service Areas</a> &rsaquo; <span>{name}</span></div>
 <div class="wrap pagehead">
   <p class="eyebrow">{county} County &middot; {township}</p>
   <h1>Accounting &amp; Tax Services in {name}, IL</h1>
-  <p class="lead" style="max-width:62ch">Bookkeeping, controller support, CFO advisory,
-  and tax work for {name} businesses and the people who own them &mdash; from a practice
-  based in {BASE_CITY}, a few minutes away.</p>
+  <p class="lead" style="max-width:60ch">Accounting, controller and tax work for {name}
+  businesses, from a practice in {BASE_CITY}.</p>
   {extra_html}
   <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
     <a href="../contact.html" class="btn gold lg">Book a Free Consultation</a>
@@ -466,6 +591,22 @@ def build():
 </div>
 
 <section class="alt pad-s">
+  <div class="wrap">
+    <div class="split rv">
+      <div class="sh"><h2>Registering a business in {name}</h2>
+        <p>Every village on the North Shore sets its own rule, and they diverge more
+        than most owners expect.</p></div>
+      <div class="sb"><p class="lead" style="max-width:62ch">{lic_html}</p>
+        <p style="margin-top:16px;font-size:.9rem">
+          <a href="{lic_src}" rel="noopener" target="_blank">{name}'s own guidance &rarr;</a>
+          &nbsp;&middot;&nbsp; Requirements and fees change; confirm with the village before
+          you rely on this.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad-s">
   <div class="wrap">
     <div class="split rv">
       <div class="sh"><h2>Property assessment in {name}</h2>
@@ -487,10 +628,11 @@ def build():
   <div class="wrap">
     <div class="split rv">
       <div class="sh"><h2>Also serving</h2>
-        <p>Neighbouring communities we work in regularly.</p></div>
+        <p>Neighbouring communities we work in regularly &mdash; each with its own
+        registration rule.</p></div>
       <div class="sb">
         <ul style="columns:2;gap:30px;list-style:none;line-height:2.1">{near}</ul>
-        <p style="margin-top:18px"><a href="index.html">See every service area &rarr;</a></p>
+        <p style="margin-top:18px"><a href="index.html">Compare every service area &rarr;</a></p>
       </div>
     </div>
   </div>
@@ -503,6 +645,7 @@ def build():
   </div>
 </section>
 """
+
         jsonld = {
             "@context": "https://schema.org",
             "@graph": [

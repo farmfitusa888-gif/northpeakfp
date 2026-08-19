@@ -54,27 +54,6 @@ home_body = f"""
   </div>
 </section>
 
-<section class="dark pad-s">
-  <div class="wrap rv">
-    <div class="figrow">
-      <div class="fighero">
-        <div class="n" data-count="82" data-suf="%">0%</div>
-        <div class="l">of small businesses fail from cash-flow problems, not lack of profit</div>
-      </div>
-      <div class="figrest">
-        <div><div class="n" data-count="21" data-suf=" hrs">0</div>
-          <div class="l">average time owners lose to bookkeeping each month</div></div>
-        <div><div class="n" data-count="30" data-suf="%">0%</div>
-          <div class="l">of eligible small businesses never claim deductions they qualify for</div></div>
-        <div><div class="n" data-count="1" data-suf=" day">0</div>
-          <div class="l">our standard response time to every inquiry</div></div>
-      </div>
-    </div>
-    <p style="font-size:.78rem;color:#7a9087;margin-top:22px;max-width:62ch">
-      Figures reflect widely reported small-business benchmarks and are illustrative, not guarantees.</p>
-  </div>
-</section>
-
 <section>
   <div class="wrap">
     <div class="split rv">
@@ -112,58 +91,6 @@ home_body = f"""
             <a class="lgo" href="services.html">Details &rarr;</a></div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wrap">
-    <div class="split rv">
-      <div class="sh">
-        <p class="eyebrow">The Data</p>
-        <h2>Where growing businesses actually lose money</h2>
-        <p>These are the gaps we're hired to close. Every one is fixable with structure and
-        consistent reporting.</p>
-      </div>
-      <div class="sb">
-        <div class="viz">
-          <h3>Owner hours lost per month</h3>
-          <p class="cap">Time spent on financial admin instead of running the business</p>
-          <div class="bar hl"><span class="lb">Bookkeeping</span><div class="track"><div class="fill" data-w="88">21 hrs</div></div></div>
-          <div class="bar"><span class="lb">Chasing invoices</span><div class="track"><div class="fill" data-w="52">12 hrs</div></div></div>
-          <div class="bar"><span class="lb">Tax prep scramble</span><div class="track"><div class="fill" data-w="40">9 hrs</div></div></div>
-          <div class="bar"><span class="lb">Report building</span><div class="track"><div class="fill" data-w="33">8 hrs</div></div></div>
-          <p style="font-size:.78rem;color:var(--mute);margin-top:14px">Illustrative benchmarks based on
-          commonly reported small-business survey ranges.</p>
-        </div>
-        <div class="viz" style="margin-top:34px">
-          <h3>Most-missed tax deductions</h3>
-          <p class="cap">Share of eligible small businesses that never claim them</p>
-          <div class="bar hl"><span class="lb">Home office</span><div class="track"><div class="fill" data-w="72">~72%</div></div></div>
-          <div class="bar"><span class="lb">Mileage</span><div class="track"><div class="fill" data-w="61">~61%</div></div></div>
-          <div class="bar"><span class="lb">Startup costs</span><div class="track"><div class="fill" data-w="55">~55%</div></div></div>
-          <div class="bar"><span class="lb">Retirement</span><div class="track"><div class="fill" data-w="44">~44%</div></div></div>
-          <p style="font-size:.78rem;color:var(--mute);margin-top:14px">Directional estimates for
-          illustration. <a href="articles/tax-deductions-small-business.html">See the full breakdown &rarr;</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="dark pad-s">
-  <div class="wrap">
-    <div class="rhead rv"><span>How It Works</span><span>Four steps</span></div>
-    <h2 class="rv" style="font-size:clamp(1.75rem,3.4vw,2.5rem);color:#fff;margin:26px 0 34px;max-width:18ch">A clear path from chaos to clarity</h2>
-    <div class="ledger rv">
-      <div class="lrow"><div class="ln">01</div><h3>Discovery Call</h3>
-        <p>A free 30-minute conversation about your business, your numbers, and where the gaps are.</p><span></span></div>
-      <div class="lrow"><div class="ln">02</div><h3>Financial Review</h3>
-        <p>We assess your current books, reporting, and structure, then show you exactly what's missing.</p><span></span></div>
-      <div class="lrow"><div class="ln">03</div><h3>Build the System</h3>
-        <p>Clean-up, chart of accounts, close process, and reporting cadence tailored to how you actually operate.</p><span></span></div>
-      <div class="lrow"><div class="ln">04</div><h3>Ongoing Insight</h3>
-        <p>Monthly reporting and review calls so you always know where you stand &mdash; and what to do next.</p><span></span></div>
     </div>
   </div>
 </section>
