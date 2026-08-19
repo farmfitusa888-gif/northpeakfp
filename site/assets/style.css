@@ -200,6 +200,25 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
   font-size:.72rem;letter-spacing:.19em;text-transform:uppercase;color:var(--mute)}
 .dark .rhead{border-color:rgba(255,255,255,.4);color:#9fbcb0}
 
+/* Service-area county groups: the assessor is stated once per county instead
+   of repeated on every row, and the township label carries the towns that share
+   it. */
+.acounty{margin-bottom:44px}
+.acounty:last-child{margin-bottom:0}
+.acounty .rhead h2{font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--mute);font-weight:600}
+.acounty .lrow{grid-template-columns:minmax(0,200px) minmax(0,1.6fr) minmax(0,150px) auto}
+.acounty .lrow .ln{font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--accent);font-weight:600}
+.acounty .lrow h3{font-family:'Inter',sans-serif;font-size:1rem;font-weight:500;letter-spacing:0}
+.acounty .lrow h3 a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule)}
+.acounty .lrow h3 a:hover{color:var(--accent);border-color:var(--accent)}
+.acounty .lrow p{font-size:.8rem;color:var(--mute)}
+@media(max-width:760px){.acounty .rhead h2{font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--mute);font-weight:600}
+.acounty .lrow{grid-template-columns:1fr}
+  .acounty .lrow p{grid-column:1}}
+
 /* Mountain band: full-bleed, the 3D scene at full strength as its own moment
    in the page rather than only as hero wallpaper. */
 .mband{position:relative;background:var(--deep);overflow:hidden;isolation:isolate;

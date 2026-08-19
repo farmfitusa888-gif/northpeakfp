@@ -733,23 +733,49 @@ def build():
     print(f"local guides: {len(LOCAL_GUIDES)}")
 
     # ---------------------------------------------------------------- hub
-    # The hub's substance is this table. County, township and WHO assesses
-    # genuinely differ across these twelve communities, and that difference has
-    # practical consequences for an owner who holds their own building. It is
-    # the one thing on the page a competitor cannot copy without doing the work.
-    def who(county):
-        if county == "Cook":
-            return ("Cook County Assessor", "Triennial township cycle; Assessor then Board of Review")
-        if county == "Lake":
-            return ("Township assessor", "Contact township assessor first, then Board of Review")
-        return ("Both, split at Lake Cook Road", "Cook system south of the road, Lake system north")
+    # The hub's substance is who assesses property where. A flat 12-row table
+    # said "Cook County" nine times and "Cook County Assessor" nine times, which
+    # buried the point under its own repetition. Grouping by county states the
+    # assessor once per group, and grouping by township inside it surfaces the
+    # thing the flat table actually hid: which towns share a township, and
+    # therefore share a reassessment cycle. No data is dropped — the same
+    # twelve communities, the same counties, the same townships.
+    def _short(tw):
+        """Drop the word Township; the grouping label already says it."""
+        return (tw.replace(" Townships", "").replace(" Township", "")
+                  .replace("split across ", "").replace(" and ", " & "))
 
-    rows = "".join(
-        f'<tr><th scope="row" style="text-align:left;padding:13px 12px;font-weight:600">{name}</th>'
-        f'<td style="padding:13px 12px;color:var(--soft)">{county} County</td>'
-        f'<td style="padding:13px 12px;color:var(--soft)">{township}</td>'
-        f'<td style="padding:13px 12px;color:var(--soft)">{who(county)[0]}</td></tr>'
-        for name, slug, county, township, *_ in TOWNS)
+    GROUPS = [
+        ("Cook County", "Cook",
+         "Assessed by the <strong>Cook County Assessor</strong>. Every one of these "
+         "sits in the north suburban triennial group — reassessed 2016, 2019, 2022 "
+         "and 2025, so the next is <strong>2028</strong>."),
+        ("Lake County", "Lake",
+         "Assessed by the <strong>township assessor</strong>, not a county assessor. "
+         "Cook is the exception in Illinois; every other county works this way, and "
+         "Lake asks you to contact that township office before filing an appeal."),
+        ("Both counties", "Cook and Lake",
+         "Split at <strong>Lake Cook Road</strong> — Cook County system to the south, "
+         "Lake County system to the north, with different sales tax rates either side."),
+    ]
+
+    blocks = ""
+    for label, key, note in GROUPS:
+        members = [t for t in TOWNS if t[2] == key]
+        if not members:
+            continue
+        by_tw = {}
+        for name, slug, _c, tw, *_ in members:
+            by_tw.setdefault(_short(tw), []).append((name, slug))
+        rows = "".join(
+            f'<div class="lrow"><div class="ln">{tw}</div>'
+            f'<h3>{" · ".join(f"<a href=\"{sl}.html\">{nm}</a>" for nm, sl in towns)}</h3>'
+            f'<p>{"Shares a reassessment cycle" if len(towns) > 1 else ""}</p><span></span></div>'
+            for tw, towns in by_tw.items())
+        blocks += (f'<div class="acounty rv"><div class="rhead"><h2>{label}</h2>'
+                   f'<span>{len(members)} communities</span></div>'
+                   f'<p class="lead" style="max-width:64ch;margin:16px 0 4px">{note}</p>'
+                   f'<div class="ledger">{rows}</div></div>')
 
     guide_rows = "".join(
         f'<a class="entry" href="{g[0]}.html"><span class="ec">Local guide</span>'
@@ -773,23 +799,7 @@ def build():
 
 <section style="padding-top:34px">
   <div class="wrap">
-    <div class="rhead rv"><span>North suburban communities</span><span>{len(TOWNS)} areas</span></div>
-    <div class="viz rv" style="overflow-x:auto;margin-top:26px">
-      <table style="width:100%;border-collapse:collapse;min-width:640px">
-        <caption style="text-align:left;font-size:.86rem;color:var(--mute);padding-bottom:14px">
-          Who assesses property, by community. Cook County reassesses one third of the
-          county each year on a three-year township cycle through the County Assessor;
-          every Illinois county outside Cook &mdash; including Lake &mdash; assesses through
-          the <em>township</em> assessor instead.</caption>
-        <thead><tr style="border-bottom:2px solid var(--rule)">
-          <th scope="col" style="text-align:left;padding:14px 12px;font-size:.86rem;color:var(--mute)">Community</th>
-          <th scope="col" style="text-align:left;padding:14px 12px;font-size:.86rem;color:var(--mute)">County</th>
-          <th scope="col" style="text-align:left;padding:14px 12px;font-size:.86rem;color:var(--mute)">Township</th>
-          <th scope="col" style="text-align:left;padding:14px 12px;font-size:.86rem;color:var(--mute)">Assessed by</th>
-        </tr></thead>
-        <tbody>{rows}</tbody>
-      </table>
-    </div>
+    {blocks}
   </div>
 </section>
 
