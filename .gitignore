@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+._*
+
+# Original delivery archives — kept on disk as a safety copy, not in the repo
+claude handoff/
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+
+# Local tooling
+.netlify/
+node_modules/
