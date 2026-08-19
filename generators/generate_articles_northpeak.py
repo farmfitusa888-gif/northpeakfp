@@ -609,10 +609,20 @@ def build(outdir=None):
 from articles_retirement import ARTICLES as _RETIREMENT
 ARTICLES.extend(_RETIREMENT)
 
+# Quarterly estimated tax cluster. Same rationale as the retirement one: eight
+# distinct queries were landing on a single page at position 74.2 with 132
+# impressions and zero clicks. See articles_quarterly.py for the query data and
+# the IRS sourcing note.
+from articles_quarterly import ARTICLES as _QUARTERLY
+ARTICLES.extend(_QUARTERLY)
+
 SEO_TITLES.update({
     "solo-401k-vs-sep-ira-switch": "When to Move From a SEP-IRA to a Solo 401(k)",
     "403b-vs-sep-ira": "403(b) vs. SEP-IRA: Using Both With a Side Business",
     "sep-ira-contribution-rules": "How a SEP-IRA Contribution Is Actually Calculated",
+    "first-year-self-employed-taxes": "First Year Self-Employed: When Quarterly Taxes Start",
+    "how-to-calculate-estimated-taxes": "How to Work Out What You Owe in Quarterly Taxes",
+    "uneven-income-estimated-taxes": "Estimated Taxes When Your Income Is Uneven",
 })
 
 if __name__ == "__main__":

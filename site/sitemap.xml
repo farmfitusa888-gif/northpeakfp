@@ -196,6 +196,41 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://northpeakfp.com/articles/how-to-calculate-estimated-taxes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/articles/estimated-tax-safe-harbor</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/articles/1099-quarterly-taxes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/articles/missed-quarterly-tax-payment</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/articles/how-to-pay-estimated-taxes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/articles/uneven-income-estimated-taxes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://northpeakfp.com/articles/first-year-self-employed-taxes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://northpeakfp.com/service-areas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
