@@ -22,3 +22,6 @@ tools/preview/
 # duplicates mid-build. Five of them reached a commit before this rule existed.
 * [0-9].*
 *\ [0-9].*
+
+# Playwright/browser verification artifacts — regenerate, never version
+.playwright-mcp/
