@@ -20,6 +20,12 @@ FOUNDER    = "Chaudhry Ahmad"
 FOUNDER_TITLE = "Founder &amp; Principal"
 SHOW_DATE  = False       # visible post date hidden; schema dates still used
 PUBDATE    = "2026-07-29"
+# Set at build time. Every page is regenerated from these sources on each
+# build, so "modified today" is literally true. If builds ever become
+# frequent WITHOUT content changing, switch this to a per-article date
+# derived from git history rather than letting it drift upward for free.
+import datetime as _dt
+LASTMOD    = _dt.date.today().isoformat()
 SEO_TITLES = {'quarterly-estimated-taxes': 'Quarterly Estimated Taxes: A Guide for the Self-Employed', 'bookkeeping-basics': 'Bookkeeping Basics: What New Business Owners Must Track', 'sales-tax-guide': 'Sales Tax for Small Business: When You Owe & How to Collect', 'cash-vs-accrual': 'Cash vs. Accrual Accounting: Which Fits Your Business?', 'business-expense-categories': 'Business Expense Categories for Maximum Deductions', 'home-office-deduction': 'Home Office Deduction: Do You Qualify & How to Claim It', 'section-179-deduction': 'Section 179: Deduct Equipment the Year You Buy It', 'retirement-plans-self-employed': 'Self-Employed Retirement: SEP-IRA vs. Solo 401(k)', 'mileage-deduction-guide': 'Mileage Deduction: How to Track & Claim Business Driving', 'deductible-vs-nondeductible': 'Deductible vs. Non-Deductible Business Expenses', 'choosing-business-entity': 'Choosing a Business Entity: Sole Prop, LLC, or Corp'}
 
 

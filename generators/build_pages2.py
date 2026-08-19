@@ -550,19 +550,19 @@ W("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 
 pages = [("", "1.0", "weekly"), ("services", "0.9", "monthly"), ("about", "0.7", "monthly"),
          ("articles", "0.9", "weekly"), ("resources", "0.8", "monthly"), ("contact", "0.8", "monthly")]
-urls = "".join(f"  <url>\n    <loc>{SITE}/{p}</loc>\n    <changefreq>{c}</changefreq>\n    <priority>{pr}</priority>\n  </url>\n"
+urls = "".join(f"  <url>\n    <loc>{SITE}/{p}</loc>\n    <lastmod>{G.LASTMOD}</lastmod>\n    <changefreq>{c}</changefreq>\n    <priority>{pr}</priority>\n  </url>\n"
                for p, pr, c in pages)
-urls += "".join(f"  <url>\n    <loc>{SITE}/articles/{a['slug']}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
+urls += "".join(f"  <url>\n    <loc>{SITE}/articles/{a['slug']}</loc>\n    <lastmod>{G.LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
                 for a in ARTS)
 
 # Service-area URLs. Imported from build_areas rather than restated, so adding a
 # town cannot leave the sitemap or the redirects behind.
 from build_areas import (TOWNS as _TOWNS, TOWN_PAGES_READY as _TOWN_PAGES,
                          LOCAL_GUIDES as _GUIDES)
-urls += f"  <url>\n    <loc>{SITE}/service-areas</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n"
-urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{t[1]}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
+urls += f"  <url>\n    <loc>{SITE}/service-areas</loc>\n    <lastmod>{G.LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n"
+urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{t[1]}</loc>\n    <lastmod>{G.LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
                 for t in (_TOWNS if _TOWN_PAGES else []))
-urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{g[0]}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
+urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{g[0]}</loc>\n    <lastmod>{G.LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
                 for g in _GUIDES)
 W("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
 

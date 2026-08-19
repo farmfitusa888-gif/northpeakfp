@@ -61,11 +61,24 @@ for i, a in enumerate(ARTS):
                    "worksFor": {"@type": "Organization", "name": FIRM, "url": SITE}},
         "publisher": {"@type": "Organization", "name": FIRM,
                       "logo": {"@type": "ImageObject", "url": f"{SITE}/assets/favicon.svg"}},
-        "datePublished": G.PUBDATE, "dateModified": G.PUBDATE,
+        "datePublished": G.PUBDATE, "dateModified": G.LASTMOD,
         "articleSection": a["cat"],
         "mainEntityOfPage": {"@type": "WebPage", "@id": f"{SITE}/articles/{a['slug']}"},
         "isPartOf": {"@type": "WebSite", "name": FIRM, "url": SITE},
     }
+
+    # Articles sit two levels deep, so the hierarchy is worth stating explicitly
+    # rather than leaving Google to infer it. BreadcrumbList is also the cheapest
+    # rich-result surface available to a page like this.
+    jsonld.pop("@context", None)
+    jsonld = {"@context": "https://schema.org", "@graph": [
+        jsonld,
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
+            {"@type": "ListItem", "position": 2, "name": "Articles",
+             "item": f"{SITE}/articles"},
+            {"@type": "ListItem", "position": 3, "name": a["title"],
+             "item": f"{SITE}/articles/{a['slug']}"}]}]}
 
     seo_t = G.SEO_TITLES.get(a["slug"], a["title"])
     full = f"{seo_t} | NorthPeak"
