@@ -53,6 +53,8 @@ https://www.northpeakfp.com/*   https://northpeakfp.com/:splat   301!
 /articles/choosing-business-entity.html /articles/choosing-business-entity 301!
 /articles/personal-tax-tips.html /articles/personal-tax-tips 301!
 
+/service-areas/index.html   /service-areas    301!
+
 # 4. Clean URL → file. Serves content without changing the address bar.
 /                         /index.html            200
 /about                    /about.html        200
@@ -62,3 +64,6 @@ https://www.northpeakfp.com/*   https://northpeakfp.com/:splat   301!
 /articles                 /articles/index.html   200
 /articles/                /articles/index.html   200
 /articles/:slug           /articles/:slug.html   200
+/service-areas            /service-areas/index.html  200
+/service-areas/           /service-areas/index.html  200
+/service-areas/:slug      /service-areas/:slug.html  200

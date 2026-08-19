@@ -221,8 +221,13 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
 @media print{.mband{min-height:0}#summit-band{display:none}}
 
 /* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
-.rv.in{opacity:1;transform:none}
+/* Reveal-on-scroll, as progressive enhancement rather than a dependency.
+   The hidden state is scoped to html.js, a class added by an inline script in
+   the head ONLY when IntersectionObserver exists to remove it again. Before
+   this, .rv set opacity:0 unconditionally — so if app.js failed to load, was
+   blocked, or errored, 34 elements of page content stayed invisible forever. */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
 
 /* ---------- sections ---------- */
 section{padding:96px 0}
@@ -523,6 +528,7 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
 <link rel="icon" href="{p}assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/fraunces-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>if("IntersectionObserver" in window)document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="{p}assets/style.css">
 {GA4_SNIPPET}
 {ld}
@@ -567,6 +573,7 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
       <div><h4>Learn</h4><ul>
         <li><a href="{p}articles/index.html">All Articles</a></li>
         <li><a href="{p}resources.html">Free Tools</a></li>
+        <li><a href="{p}service-areas/index.html">Service Areas</a></li>
         <li><a href="{p}about.html">About Us</a></li>
         <li><a href="{p}contact.html#faq">FAQ</a></li></ul></div>
       <div><h4>Contact</h4><ul>

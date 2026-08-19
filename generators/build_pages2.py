@@ -507,6 +507,13 @@ urls = "".join(f"  <url>\n    <loc>{SITE}/{p}</loc>\n    <changefreq>{c}</change
                for p, pr, c in pages)
 urls += "".join(f"  <url>\n    <loc>{SITE}/articles/{a['slug']}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
                 for a in ARTS)
+
+# Service-area URLs. Imported from build_areas rather than restated, so adding a
+# town cannot leave the sitemap or the redirects behind.
+from build_areas import TOWNS as _TOWNS, TOWN_PAGES_READY as _TOWN_PAGES
+urls += f"  <url>\n    <loc>{SITE}/service-areas</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n"
+urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{t[1]}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
+                for t in (_TOWNS if _TOWN_PAGES else []))
 W("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
 
 # ============================================================ _redirects
@@ -552,6 +559,11 @@ redir += ["/articles/index.html      /articles         301!"]
 redir += [f"/articles/{a['slug']}.html{' ' * max(1, 12 - len(a['slug']))}"
           f"/articles/{a['slug']}{' ' * max(1, 12 - len(a['slug']))}301!" for a in ARTS]
 redir += ["",
+          "/service-areas/index.html   /service-areas    301!"] + \
+         [f"/service-areas/{t[1]}.html{' ' * max(1, 8 - len(t[1]))}"
+          f"/service-areas/{t[1]}{' ' * max(1, 8 - len(t[1]))}301!"
+          for t in (_TOWNS if _TOWN_PAGES else [])] + \
+         ["",
           "# 4. Clean URL → file. Serves content without changing the address bar.",
           "/                         /index.html            200"]
 redir += [f"/{p}{' ' * max(1, 25 - len(p))}/{p}.html{' ' * max(1, 13 - len(p))}200"
@@ -559,6 +571,9 @@ redir += [f"/{p}{' ' * max(1, 25 - len(p))}/{p}.html{' ' * max(1, 13 - len(p))}2
 redir += ["/articles                 /articles/index.html   200",
           "/articles/                /articles/index.html   200",
           "/articles/:slug           /articles/:slug.html   200",
+          "/service-areas            /service-areas/index.html  200",
+          "/service-areas/           /service-areas/index.html  200",
+          "/service-areas/:slug      /service-areas/:slug.html  200",
           ""]
 W("_redirects", "\n".join(redir))
 

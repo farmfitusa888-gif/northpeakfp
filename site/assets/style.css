@@ -189,8 +189,13 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
 @media print{.mband{min-height:0}#summit-band{display:none}}
 
 /* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
-.rv.in{opacity:1;transform:none}
+/* Reveal-on-scroll, as progressive enhancement rather than a dependency.
+   The hidden state is scoped to html.js, a class added by an inline script in
+   the head ONLY when IntersectionObserver exists to remove it again. Before
+   this, .rv set opacity:0 unconditionally — so if app.js failed to load, was
+   blocked, or errored, 34 elements of page content stayed invisible forever. */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
 
 /* ---------- sections ---------- */
 section{padding:96px 0}
