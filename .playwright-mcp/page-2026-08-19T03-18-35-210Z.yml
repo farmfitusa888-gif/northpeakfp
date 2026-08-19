@@ -1,0 +1,223 @@
+- generic [active] [ref=f29e1]:
+  - link "Skip to content" [ref=f29e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f29e3]:
+    - generic [ref=f29e4]:
+      - link "NorthPeak Financial Partners" [ref=f29e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f29e10]:
+          - text: NorthPeak
+          - generic [ref=f29e11]: Financial Partners
+      - navigation "Main" [ref=f29e12]:
+        - link "Home" [ref=f29e13] [cursor=pointer]:
+          - /url: /
+        - link "Services" [ref=f29e14] [cursor=pointer]:
+          - /url: /services
+        - link "About" [ref=f29e15] [cursor=pointer]:
+          - /url: /about
+        - link "Articles" [ref=f29e16] [cursor=pointer]:
+          - /url: /articles
+        - link "Resources" [ref=f29e17] [cursor=pointer]:
+          - /url: /resources
+        - link "Contact" [ref=f29e18] [cursor=pointer]:
+          - /url: /contact
+        - link "Book a Consultation" [ref=f29e19] [cursor=pointer]:
+          - /url: /contact
+  - main [ref=f29e20]:
+    - generic [ref=f29e23]:
+      - paragraph [ref=f29e24]: Accounting · Controller · CFO Advisory
+      - heading [level=1] [ref=f29e25]:
+        - text: Financial Clarity.
+        - emphasis [ref=f29e26]: Strategic Growth.
+      - paragraph [ref=f29e27]: Most businesses don't struggle because they lack revenue — they struggle because they lack financial clarity. NorthPeak brings structure, accurate reporting, and CFO-level insight to growing companies.
+      - generic [ref=f29e28]:
+        - link "Book a Free Consultation" [ref=f29e29] [cursor=pointer]:
+          - /url: /contact
+        - link "Compare Packages" [ref=f29e30] [cursor=pointer]:
+          - /url: /services
+      - generic [ref=f29e31]:
+        - generic [ref=f29e32]: Controller-level experience
+        - generic [ref=f29e35]: Fixed quotes agreed in writing
+        - generic [ref=f29e38]: Wilmette, IL — serving clients nationwide
+    - generic [ref=f29e42]:
+      - generic [ref=f29e43]:
+        - generic [ref=f29e44]:
+          - generic [ref=f29e45]: 0%
+          - generic [ref=f29e46]: of small businesses fail from cash-flow problems, not lack of profit
+        - generic [ref=f29e47]:
+          - generic [ref=f29e48]:
+            - generic [ref=f29e49]: "0"
+            - generic [ref=f29e50]: average time owners lose to bookkeeping each month
+          - generic [ref=f29e51]:
+            - generic [ref=f29e52]: 0%
+            - generic [ref=f29e53]: of eligible small businesses never claim deductions they qualify for
+          - generic [ref=f29e54]:
+            - generic [ref=f29e55]: "0"
+            - generic [ref=f29e56]: our standard response time to every inquiry
+      - paragraph [ref=f29e57]: Figures reflect widely reported small-business benchmarks and are illustrative, not guarantees.
+    - generic [ref=f29e60]:
+      - generic [ref=f29e61]:
+        - paragraph [ref=f29e62]: What We Do
+        - heading "Beyond bookkeeping — financial leadership" [level=2] [ref=f29e63]
+        - paragraph [ref=f29e64]: We help owners move past basic data entry and actually understand what their numbers are telling them, so decisions get made on evidence instead of instinct.
+      - generic [ref=f29e66]:
+        - generic [ref=f29e67]:
+          - generic [ref=f29e68]: "01"
+          - heading "Accounting & Bookkeeping" [level=3] [ref=f29e69]
+          - paragraph [ref=f29e70]: Clean, reconciled books you can trust — transaction categorization, monthly closes, and reporting delivered on a predictable schedule.
+          - link "Details →" [ref=f29e71] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=f29e72]:
+          - generic [ref=f29e73]: "02"
+          - heading "Controller Services" [level=3] [ref=f29e74]
+          - paragraph [ref=f29e75]: Oversight, structured month-end close, budget-vs-actual reporting, and KPI tracking that turns raw data into visibility.
+          - link "Details →" [ref=f29e76] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=f29e77]:
+          - generic [ref=f29e78]: "03"
+          - heading "CFO Advisory" [level=3] [ref=f29e79]
+          - paragraph [ref=f29e80]: Cash-flow forecasting, margin analysis, strategic modeling, and decision support — executive financial leadership without a full-time hire.
+          - link "Details →" [ref=f29e81] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=f29e82]:
+          - generic [ref=f29e83]: "04"
+          - heading "Tax Planning & Prep" [level=3] [ref=f29e84]
+          - paragraph [ref=f29e85]: Proactive planning through the year, not just filing in April. Entity strategy, deduction capture, and quarterly estimate management.
+          - link "Details →" [ref=f29e86] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=f29e87]:
+          - generic [ref=f29e88]: "05"
+          - heading "Internal Controls" [level=3] [ref=f29e89]
+          - paragraph [ref=f29e90]: Process and safeguard design that protects your business from errors, leakage, and the surprises that catch growing companies off guard.
+          - link "Details →" [ref=f29e91] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=f29e92]:
+          - generic [ref=f29e93]: "06"
+          - heading "Individuals & Families" [level=3] [ref=f29e94]
+          - paragraph [ref=f29e95]: Personal tax preparation and planning, coordinated with your business so both sides of the picture work together.
+          - link "Details →" [ref=f29e96] [cursor=pointer]:
+            - /url: /services
+    - generic [ref=f29e99]:
+      - generic [ref=f29e100]:
+        - paragraph [ref=f29e101]: The Data
+        - heading "Where growing businesses actually lose money" [level=2] [ref=f29e102]
+        - paragraph [ref=f29e103]: These are the gaps we're hired to close. Every one is fixable with structure and consistent reporting.
+      - generic [ref=f29e104]:
+        - generic [ref=f29e105]:
+          - heading "Owner hours lost per month" [level=4] [ref=f29e106]
+          - paragraph [ref=f29e107]: Time spent on financial admin instead of running the business
+          - generic [ref=f29e108]:
+            - generic [ref=f29e109]: Bookkeeping
+            - generic [ref=f29e110]: 21 hrs
+          - generic [ref=f29e112]:
+            - generic [ref=f29e113]: Chasing invoices
+            - generic [ref=f29e114]: 12 hrs
+          - generic [ref=f29e116]:
+            - generic [ref=f29e117]: Tax prep scramble
+            - generic [ref=f29e118]: 9 hrs
+          - generic [ref=f29e120]:
+            - generic [ref=f29e121]: Report building
+            - generic [ref=f29e122]: 8 hrs
+          - paragraph [ref=f29e124]: Illustrative benchmarks based on commonly reported small-business survey ranges.
+        - generic [ref=f29e125]:
+          - heading "Most-missed tax deductions" [level=4] [ref=f29e126]
+          - paragraph [ref=f29e127]: Share of eligible small businesses that never claim them
+          - generic [ref=f29e128]:
+            - generic [ref=f29e129]: Home office
+            - generic [ref=f29e130]: ~72%
+          - generic [ref=f29e132]:
+            - generic [ref=f29e133]: Mileage
+            - generic [ref=f29e134]: ~61%
+          - generic [ref=f29e136]:
+            - generic [ref=f29e137]: Startup costs
+            - generic [ref=f29e138]: ~55%
+          - generic [ref=f29e140]:
+            - generic [ref=f29e141]: Retirement
+            - generic [ref=f29e142]: ~44%
+          - paragraph [ref=f29e144]:
+            - text: Directional estimates for illustration.
+            - link "See the full breakdown →" [ref=f29e145] [cursor=pointer]:
+              - /url: /articles/tax-deductions-small-business
+    - generic [ref=f29e147]:
+      - generic [ref=f29e148]:
+        - generic [ref=f29e149]: How It Works
+        - generic [ref=f29e150]: Four steps
+      - heading "A clear path from chaos to clarity" [level=2] [ref=f29e151]
+      - generic [ref=f29e152]:
+        - generic [ref=f29e153]:
+          - generic [ref=f29e154]: "01"
+          - heading "Discovery Call" [level=3] [ref=f29e155]
+          - paragraph [ref=f29e156]: A free 30-minute conversation about your business, your numbers, and where the gaps are.
+        - generic [ref=f29e157]:
+          - generic [ref=f29e158]: "02"
+          - heading "Financial Review" [level=3] [ref=f29e159]
+          - paragraph [ref=f29e160]: We assess your current books, reporting, and structure, then show you exactly what's missing.
+        - generic [ref=f29e161]:
+          - generic [ref=f29e162]: "03"
+          - heading "Build the System" [level=3] [ref=f29e163]
+          - paragraph [ref=f29e164]: Clean-up, chart of accounts, close process, and reporting cadence tailored to how you actually operate.
+        - generic [ref=f29e165]:
+          - generic [ref=f29e166]: "04"
+          - heading "Ongoing Insight" [level=3] [ref=f29e167]
+          - paragraph [ref=f29e168]: Monthly reporting and review calls so you always know where you stand — and what to do next.
+    - generic [ref=f29e172]:
+      - heading "Let's get your numbers working for you" [level=2] [ref=f29e173]
+      - paragraph [ref=f29e174]: Book a free 30-minute consultation. No pressure, no obligation — just a clear read on where you stand and what would help most.
+      - link "Book a Free Consultation" [ref=f29e176] [cursor=pointer]:
+        - /url: /contact
+  - contentinfo [ref=f29e177]:
+    - generic [ref=f29e178]:
+      - generic [ref=f29e179]:
+        - generic [ref=f29e180]:
+          - link "NorthPeak Financial Partners" [ref=f29e181] [cursor=pointer]:
+            - /url: /
+            - generic [ref=f29e186]:
+              - text: NorthPeak
+              - generic [ref=f29e187]: Financial Partners
+          - paragraph [ref=f29e188]: Accounting, controller, and CFO-level advisory that gives growing businesses real financial clarity.
+        - generic [ref=f29e189]:
+          - heading "Services" [level=4] [ref=f29e190]
+          - list [ref=f29e191]:
+            - listitem [ref=f29e192]:
+              - link "Starter Package" [ref=f29e193] [cursor=pointer]:
+                - /url: /services#starter
+            - listitem [ref=f29e194]:
+              - link "Growth Package" [ref=f29e195] [cursor=pointer]:
+                - /url: /services#growth
+            - listitem [ref=f29e196]:
+              - link "CFO Package" [ref=f29e197] [cursor=pointer]:
+                - /url: /services#cfo
+            - listitem [ref=f29e198]:
+              - link "Compare Plans" [ref=f29e199] [cursor=pointer]:
+                - /url: /services
+        - generic [ref=f29e200]:
+          - heading "Learn" [level=4] [ref=f29e201]
+          - list [ref=f29e202]:
+            - listitem [ref=f29e203]:
+              - link "All Articles" [ref=f29e204] [cursor=pointer]:
+                - /url: /articles
+            - listitem [ref=f29e205]:
+              - link "Free Tools" [ref=f29e206] [cursor=pointer]:
+                - /url: /resources
+            - listitem [ref=f29e207]:
+              - link "About Us" [ref=f29e208] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=f29e209]:
+              - link "FAQ" [ref=f29e210] [cursor=pointer]:
+                - /url: /contact#faq
+        - generic [ref=f29e211]:
+          - heading "Contact" [level=4] [ref=f29e212]
+          - list [ref=f29e213]:
+            - listitem [ref=f29e214]:
+              - link "info@northpeakfp.com" [ref=f29e215] [cursor=pointer]:
+                - /url: mailto:info@northpeakfp.com
+            - listitem [ref=f29e216]:
+              - link "(847) 644-2288" [ref=f29e217] [cursor=pointer]:
+                - /url: tel:+18476442288
+            - listitem [ref=f29e218]: Wilmette, IL
+            - listitem [ref=f29e219]:
+              - link "Request a Consultation" [ref=f29e220] [cursor=pointer]:
+                - /url: /contact
+      - generic [ref=f29e221]:
+        - generic [ref=f29e222]: © 2026 NorthPeak Financial Partners. All rights reserved.
+        - generic [ref=f29e223]: Informational content only — not individualized tax, legal, or investment advice.

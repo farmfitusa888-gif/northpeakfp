@@ -323,8 +323,8 @@ if (!frugal) {
   // win, so it sits back in fog at low opacity with sparse snow. In the band
   // lower down it is the subject of the section and runs at full strength.
   const MOUNTS = [
-    ['summit',      { max: 0.78, snowO: 0.62, snow: 620,  fov: 54, fog: 0.0040,
-                      wire: 0.06, flake: [1.5, 2.6], cam: [10, 24, 40], at: [0, 17, -78] }],
+    ['summit',      { max: 1.00, snowO: 0.85, snow: 1050, fov: 52, fog: 0.0034,
+                      wire: 0.09, flake: [1.8, 3.2], cam: [8, 22, 37],  at: [0, 16, -79] }],
     ['summit-band', { max: 1.00, snowO: 0.85, snow: 1050, fov: 50, fog: 0.0034,
                       wire: 0.09, flake: [1.8, 3.2], cam: [4, 20, 34],  at: [0, 15, -80] }],
   ];

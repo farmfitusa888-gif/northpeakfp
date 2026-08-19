@@ -110,10 +110,12 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
   radial-gradient(900px 520px at 88% 84%,#12392a 0%,transparent 66%),
   linear-gradient(168deg,#0f3728 0%,#0a2419 52%,#061710 100%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(100deg,rgba(6,23,16,.90) 0%,rgba(6,23,16,.74) 26%,
-    rgba(6,23,16,.34) 52%,rgba(6,23,16,.06) 76%,rgba(6,23,16,0) 100%)}
-@media(max-width:900px){.hero::after{background:linear-gradient(178deg,rgba(6,23,16,.55) 0%,
-  rgba(6,23,16,.80) 42%,rgba(6,23,16,.93) 100%)}}
+  background:
+    radial-gradient(115% 88% at 20% 52%,rgba(6,23,16,.93) 0%,rgba(6,23,16,.80) 30%,
+      rgba(6,23,16,.42) 55%,rgba(6,23,16,.10) 74%,rgba(6,23,16,0) 88%),
+    linear-gradient(0deg,rgba(6,23,16,.55) 0%,rgba(6,23,16,.12) 26%,rgba(6,23,16,0) 52%)}
+@media(max-width:900px){.hero::after{background:linear-gradient(178deg,rgba(6,23,16,.45) 0%,
+  rgba(6,23,16,.74) 44%,rgba(6,23,16,.92) 100%)}}
 #summit{position:absolute;inset:0;width:100%;height:100%;z-index:-2;opacity:0;transition:opacity .9s ease;pointer-events:none;display:block}
 .hero-in{padding:120px 0 100px;max-width:720px;color:#fff}
 .hero h1{font-size:clamp(2.5rem,6vw,4.4rem);color:#fff;margin-bottom:22px}
