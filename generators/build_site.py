@@ -65,6 +65,7 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
 .lead{font-size:1.18rem;color:var(--soft);line-height:1.65}
 
 /* ---------- skip link + a11y ---------- */
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .skip{position:absolute;left:-9999px;top:0;background:var(--deep);color:#fff;padding:12px 20px;z-index:999}
 .skip:focus{left:0}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
@@ -302,7 +303,7 @@ section{padding:96px 0}
 .tier.feat{border:1.5px solid var(--gold);box-shadow:0 2px 6px rgba(10,26,20,.06),0 26px 60px rgba(184,134,11,.16)}
 .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#1a1405;
   font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;border-radius:20px;white-space:nowrap}
-.tier h3{font-size:1.4rem;margin-bottom:6px}
+.tier h2{font-size:1.4rem;margin-bottom:6px}
 .tier .who{color:var(--mute);font-size:.87rem;margin-bottom:20px;min-height:38px}
 .price{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:600;color:var(--ink-2);letter-spacing:-.03em;line-height:1}
 .price small{font-size:.9rem;color:var(--mute);font-family:'Inter',sans-serif;font-weight:500;letter-spacing:0}
@@ -317,7 +318,7 @@ section{padding:96px 0}
 
 /* ---------- charts ---------- */
 .viz{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:28px;box-shadow:none}
-.viz h4{font-size:1.03rem;margin-bottom:4px;color:var(--ink-2)}
+.viz h2,.viz h3{font-size:1.03rem;margin-bottom:4px;color:var(--ink-2)}
 .viz .cap{font-size:.82rem;color:var(--mute);margin-bottom:22px}
 .bar{display:flex;align-items:center;gap:14px;margin-bottom:15px}
 .bar .lb{width:112px;font-size:.85rem;color:var(--soft);flex-shrink:0;text-align:right}
@@ -381,7 +382,7 @@ section{padding:96px 0}
 
 /* ---------- calculator ---------- */
 .calc{background:linear-gradient(150deg,var(--deep),#0a2519);border-radius:6px;padding:36px;color:#fff;box-shadow:none}
-.calc h3{color:#fff;font-size:1.4rem;margin-bottom:8px}
+.calc h2{color:#fff;font-size:1.4rem;margin-bottom:8px}
 .calc .sub{color:#a9c4b9;font-size:.92rem;margin-bottom:26px}
 .calc label{display:block;font-size:.85rem;color:#cfe0d8;margin-bottom:8px;font-weight:500}
 .calc input[type=range]{width:100%;accent-color:var(--gold-2);margin-bottom:6px}
@@ -393,7 +394,7 @@ section{padding:96px 0}
 
 /* ---------- footer ---------- */
 footer{background:var(--ink);color:#9db3aa;padding:64px 0 30px;font-size:.9rem}
-footer h4{color:#fff;font-size:1rem;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:0}
+footer h2{color:#fff;font-size:1rem;margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:0}
 footer a{color:#9db3aa;text-decoration:none}
 footer a:hover{color:var(--gold-2)}
 .fgrid{display:grid;gap:38px;grid-template-columns:1.6fr 1fr 1fr 1fr;margin-bottom:40px}
@@ -599,18 +600,18 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
         </div>
         -->
       </div>
-      <div><h4>Services</h4><ul>
+      <div><h2>Services</h2><ul>
         <li><a href="{p}services.html#starter">Starter Package</a></li>
         <li><a href="{p}services.html#growth">Growth Package</a></li>
         <li><a href="{p}services.html#cfo">CFO Package</a></li>
         <li><a href="{p}services.html">Compare Plans</a></li></ul></div>
-      <div><h4>Learn</h4><ul>
+      <div><h2>Learn</h2><ul>
         <li><a href="{p}articles/index.html">All Articles</a></li>
         <li><a href="{p}resources.html">Free Tools</a></li>
         <li><a href="{p}service-areas/index.html">Service Areas</a></li>
         <li><a href="{p}about.html">About Us</a></li>
         <li><a href="{p}contact.html#faq">FAQ</a></li></ul></div>
-      <div><h4>Contact</h4><ul>
+      <div><h2>Contact</h2><ul>
         <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
         <li><a href="tel:+18476442288">(847) 644-2288</a></li>
         <li>Wilmette, IL</li>

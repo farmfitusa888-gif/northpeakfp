@@ -46,7 +46,7 @@ for tid, name, price, per, who, feats, fit, feat in TIERS:
     pcls = "price quote" if price == "Custom" else "price"
     tier_html += f"""
       <div class="{cls} rv" id="{tid}">{tag}
-        <h3>{name}</h3>
+        <h2>{name}</h2>
         <p class="who">{who}</p>
         <div class="{pcls}">{price}<small> {per}</small></div>
         <ul>{"".join(f"<li>{f}</li>" for f in feats)}</ul>
@@ -166,7 +166,7 @@ about_body = f"""
         </figcaption>
       </figure>
       <div class="viz">
-      <h4>What you get with NorthPeak</h4>
+      <h3>What you get with NorthPeak</h3>
       <p class="cap">The four outcomes every engagement is built around</p>
       <ul style="list-style:none">
         {"".join(f'<li style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--rule);align-items:flex-start"><span style="color:var(--accent);flex-shrink:0;margin-top:3px">{TICK}</span><span style="font-size:.95rem;color:var(--soft)"><strong style="color:var(--ink-2)">{t}</strong><br>{d}</span></li>' for t,d in [
@@ -252,6 +252,7 @@ hub_body = f"""
     <label for="asearch" class="visually-hidden" style="position:absolute;left:-9999px">Search articles</label>
     <input class="search" id="asearch" type="search" placeholder="Search articles &mdash; try &lsquo;deductions&rsquo;, &lsquo;payroll&rsquo;, &lsquo;LLC&rsquo;&hellip;">
     <div class="filters">{chips}</div>
+    <h2 class="vh">All guides</h2>
     <div class="elist">{cards}</div>
     <p id="nores" style="display:none;text-align:center;color:var(--mute);padding:44px 0">
       No articles match that search. Try a different term or clear the filter.</p>
@@ -288,7 +289,7 @@ res_body = f"""
 <section style="padding-top:44px">
   <div class="wrap grid g2" style="gap:36px;align-items:start">
     <div class="calc rv">
-      <h3>Clarity Value Estimator</h3>
+      <h2>Clarity Value Estimator</h2>
       <p class="sub">Estimate what disorganized financials cost you annually</p>
       <label for="rev">Annual revenue</label>
       <input type="range" id="rev" min="100000" max="10000000" step="50000" value="1200000">
@@ -311,7 +312,7 @@ res_body = f"""
     </div>
     <div class="rv">
       <div class="viz" style="margin-bottom:24px">
-        <h4>Month-End Close Checklist</h4>
+        <h2>Month-End Close Checklist</h2>
         <p class="cap">Run this every month and tax season stops being an event</p>
         <ul style="list-style:none">
         {"".join(f'<li style="display:flex;gap:11px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:.93rem;color:var(--soft)"><span style="color:var(--accent);flex-shrink:0">{TICK}</span>{x}</li>' for x in [
@@ -328,7 +329,7 @@ res_body = f"""
         </ul>
       </div>
       <div class="viz">
-        <h4>Records Retention Quick Guide</h4>
+        <h2>Records Retention Quick Guide</h2>
         <p class="cap">General guidance &mdash; confirm specifics for your situation</p>
         <ul style="list-style:none">
         {"".join(f'<li style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:.92rem"><span style="color:var(--soft)">{k}</span><strong style="color:var(--ink-2);white-space:nowrap">{v}</strong></li>' for k,v in [
@@ -393,7 +394,7 @@ contact_body = f"""
 
     <div class="rv">
       <div class="viz" style="margin-bottom:22px">
-        <h4>What happens next</h4>
+        <h2>What happens next</h2>
         <p class="cap">From first message to first report</p>
         <ol style="list-style:none;counter-reset:cs;margin:0">
         <li style="counter-increment:cs;position:relative;padding:0 0 20px 44px;border-left:2px solid var(--rule);margin-left:13px">
@@ -412,7 +413,7 @@ contact_body = f"""
         </ol>
       </div>
       <div class="viz">
-        <h4>Prefer to talk now?</h4>
+        <h2>Prefer to talk now?</h2>
         <p class="cap">Direct line and email</p>
         <p style="font-family:Fraunces,serif;font-size:1.5rem;color:var(--deep);margin-bottom:6px">
           <a href="tel:+18476442288" style="text-decoration:none;color:inherit">(847) 644-2288</a></p>

@@ -127,7 +127,7 @@ home_body = f"""
       </div>
       <div class="sb">
         <div class="viz">
-          <h4>Owner hours lost per month</h4>
+          <h3>Owner hours lost per month</h3>
           <p class="cap">Time spent on financial admin instead of running the business</p>
           <div class="bar hl"><span class="lb">Bookkeeping</span><div class="track"><div class="fill" data-w="88">21 hrs</div></div></div>
           <div class="bar"><span class="lb">Chasing invoices</span><div class="track"><div class="fill" data-w="52">12 hrs</div></div></div>
@@ -137,7 +137,7 @@ home_body = f"""
           commonly reported small-business survey ranges.</p>
         </div>
         <div class="viz" style="margin-top:34px">
-          <h4>Most-missed tax deductions</h4>
+          <h3>Most-missed tax deductions</h3>
           <p class="cap">Share of eligible small businesses that never claim them</p>
           <div class="bar hl"><span class="lb">Home office</span><div class="track"><div class="fill" data-w="72">~72%</div></div></div>
           <div class="bar"><span class="lb">Mileage</span><div class="track"><div class="fill" data-w="61">~61%</div></div></div>
