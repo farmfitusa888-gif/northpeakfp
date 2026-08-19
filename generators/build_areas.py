@@ -577,7 +577,7 @@ def build():
 
         body = f"""
 <div class="wrap crumb"><a href="../index.html">Home</a> &rsaquo;
-  <a href="../service-areas.html">Service Areas</a> &rsaquo; <span>{name}</span></div>
+  <a href="index.html">Service Areas</a> &rsaquo; <span>{name}</span></div>
 <div class="wrap pagehead">
   <p class="eyebrow">{county} County &middot; {township}</p>
   <h1>Accounting &amp; Tax Services in {name}, IL</h1>
@@ -632,7 +632,7 @@ def build():
         registration rule.</p></div>
       <div class="sb">
         <ul style="columns:2;gap:30px;list-style:none;line-height:2.1">{near}</ul>
-        <p style="margin-top:18px"><a href="../service-areas.html">Compare every service area &rarr;</a></p>
+        <p style="margin-top:18px"><a href="index.html">Compare every service area &rarr;</a></p>
       </div>
     </div>
   </div>
@@ -693,7 +693,7 @@ def build():
 
         body = f"""
 <div class="wrap crumb"><a href="../index.html">Home</a> &rsaquo;
-  <a href="../service-areas.html">Service Areas</a> &rsaquo; <span>{html.escape(title.split(":")[0])}</span></div>
+  <a href="index.html">Service Areas</a> &rsaquo; <span>{html.escape(title.split(":")[0])}</span></div>
 <div class="wrap pagehead">
   <p class="eyebrow">North suburbs &middot; Guide</p>
   <h1>{html.escape(title)}</h1>
@@ -769,7 +769,7 @@ def build():
             by_tw.setdefault(_short(tw), []).append((name, slug))
         rows = "".join(
             f'<div class="lrow"><div class="ln">{tw}</div>'
-            f'<h3>{" · ".join(f"<a href=\"service-areas/{sl}.html\">{nm}</a>" for nm, sl in towns)}</h3>'
+            f'<h3>{" · ".join(f"<a href=\"{sl}.html\">{nm}</a>" for nm, sl in towns)}</h3>'
             f'<p>{"Shares a reassessment cycle" if len(towns) > 1 else ""}</p><span></span></div>'
             for tw, towns in by_tw.items())
         blocks += (f'<div class="acounty rv"><div class="rhead"><h2>{label}</h2>'
@@ -778,12 +778,12 @@ def build():
                    f'<div class="ledger">{rows}</div></div>')
 
     guide_rows = "".join(
-        f'<a class="entry" href="service-areas/{g[0]}.html"><span class="ec">Local guide</span>'
+        f'<a class="entry" href="{g[0]}.html"><span class="ec">Local guide</span>'
         f'<div><h3>{html.escape(g[1])}</h3><p>{html.escape(g[2][:120])}&hellip;</p></div>'
         f'<span class="er">Read &rarr;</span></a>' for g in LOCAL_GUIDES)
 
     hub_body = f"""
-<div class="wrap crumb"><a href="index.html">Home</a> &rsaquo; <span>Service Areas</span></div>
+<div class="wrap crumb"><a href="../index.html">Home</a> &rsaquo; <span>Service Areas</span></div>
 <div class="wrap pagehead">
   <p class="eyebrow">Where we work</p>
   <h1>Service Areas</h1>
@@ -792,7 +792,7 @@ def build():
   remotely. Below is where we are most often &mdash; and, because it matters more than
   most owners expect, who actually assesses property in each one.</p>
   <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
-    <a href="contact.html" class="btn gold lg">Book a Free Consultation</a>
+    <a href="../contact.html" class="btn gold lg">Book a Free Consultation</a>
     <a href="tel:+18476442288" class="btn ghost lg">(847) 644-2288</a>
   </div>
 </div>
@@ -844,17 +844,17 @@ def build():
     remotely, so the table above is about where we turn up in person &mdash; not where we
     can help. If you are elsewhere in Illinois or in another state, the answer is almost
     always yes.</p>
-    <div style="margin-top:22px"><a href="contact.html" class="btn gold lg">Book a Free Consultation</a></div></div>
+    <div style="margin-top:22px"><a href="../contact.html" class="btn gold lg">Book a Free Consultation</a></div></div>
   </div></div>
 </section>
 """
 
-    W("service-areas.html", shell(
+    W("service-areas/index.html", shell(
         title=f"Service Areas | {FIRM}",
         desc=("Accounting, bookkeeping and tax services for businesses across Chicago's "
               "north suburbs — Evanston, Skokie, Glenview, Northbrook and more, "
               "from Wilmette, IL."),
-        canon=f"{SITE}/service-areas", body=hub_body, active="",
+        canon=f"{SITE}/service-areas/", body=hub_body, active="", depth=1,
         keywords="accountant north shore chicago, bookkeeping north suburbs, tax services wilmette",
         jsonld={"@context": "https://schema.org", "@type": "CollectionPage",
                 "name": "Service Areas", "url": f"{SITE}/service-areas",

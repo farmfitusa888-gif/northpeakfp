@@ -58,7 +58,7 @@ def url_for(p):
     if r == "index.html":
         return "/"
     if r.endswith("/index.html"):
-        return "/" + r[: -len("/index.html")]
+        return "/" + r[: -len("index.html")]
     return "/" + r[: -len(".html")]
 
 

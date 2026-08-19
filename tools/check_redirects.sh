@@ -60,7 +60,7 @@ check() {
 echo "Checking $BASE"
 echo
 echo "Canonical URLs must return 200 directly:"
-for u in / /about /services /contact /resources /articles /articles/llc-vs-s-corp; do
+for u in / /about /services /contact /resources /articles/ /service-areas/ /articles/llc-vs-s-corp; do
   check "$u" 200 -
 done
 
@@ -71,7 +71,7 @@ check /about.html            301 /about
 check /services.html         301 /services
 check /contact.html          301 /contact
 check /resources.html        301 /resources
-check /articles/index.html   301 /articles
+check /articles/index.html   301 /articles/
 check /articles/llc-vs-s-corp.html 301 /articles/llc-vs-s-corp
 
 echo

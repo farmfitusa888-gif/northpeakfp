@@ -629,8 +629,8 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
     # The second element of the label tuple is the part that is dropped on
     # narrow screens, so seven destinations still fit on one non-scrolling row.
     nav_items = [("Services", "", "services.html", ""),
-                 ("Areas", "Service ", "service-areas.html", ""),
-                 ("About", "", "about.html", ""), ("Articles", "", "articles.html", ""),
+                 ("Areas", "Service ", "service-areas/index.html", ""),
+                 ("About", "", "about.html", ""), ("Articles", "", "articles/index.html", ""),
                  ("Resources", "", "resources.html", ""),
                  ("Contact", "", "contact.html", "nav-contact")]
     links = "".join(
@@ -707,9 +707,9 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
         <li><a href="{p}services.html#cfo">CFO Package</a></li>
         <li><a href="{p}services.html">Compare Plans</a></li></ul></div>
       <div><h2>Learn</h2><ul>
-        <li><a href="{p}articles.html">All Articles</a></li>
+        <li><a href="{p}articles/index.html">All Articles</a></li>
         <li><a href="{p}resources.html">Free Tools</a></li>
-        <li><a href="{p}service-areas.html">Service Areas</a></li>
+        <li><a href="{p}service-areas/index.html">Service Areas</a></li>
         <li><a href="{p}about.html">About Us</a></li>
         <li><a href="{p}contact.html#faq">FAQ</a></li></ul></div>
       <div><h2>Contact</h2><ul>
@@ -774,7 +774,11 @@ def canonicalize_links(markup, page_path):
             if target == "index":
                 target = ""
             elif target.endswith("/index"):
-                target = target[:-len("/index")]
+                # Keep the trailing slash: Netlify serves a directory index at
+                # path/ and redirects path -> path/, so the slash form is the
+                # canonical one. Emitting the bare path caused an infinite
+                # redirect loop on /articles and /service-areas.
+                target = target[:-len("index")]
         return f'{m.group("attr")}="/{target}{suffix}"'
 
     return _LINK_RE.sub(fix, markup)
