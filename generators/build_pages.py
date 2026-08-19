@@ -54,138 +54,63 @@ home_body = f"""
   </div>
 </section>
 
-<section class="dark" style="padding:64px 0">
+<section class="dark pad-s">
   <div class="wrap rv">
-    <div class="stats">
-      <div class="stat"><div class="n" data-count="82" data-suf="%">0%</div>
-        <div class="l">of small businesses fail from cash-flow problems, not lack of profit</div></div>
-      <div class="stat"><div class="n" data-count="21" data-suf=" hrs">0</div>
-        <div class="l">average time owners lose to bookkeeping each month</div></div>
-      <div class="stat"><div class="n" data-count="30" data-suf="%">0%</div>
-        <div class="l">of eligible small businesses never claim deductions they qualify for</div></div>
-      <div class="stat"><div class="n" data-count="1" data-suf=" day">0</div>
-        <div class="l">our standard response time to every inquiry</div></div>
+    <div class="figrow">
+      <div class="fighero">
+        <div class="n" data-count="82" data-suf="%">0%</div>
+        <div class="l">of small businesses fail from cash-flow problems, not lack of profit</div>
+      </div>
+      <div class="figrest">
+        <div><div class="n" data-count="21" data-suf=" hrs">0</div>
+          <div class="l">average time owners lose to bookkeeping each month</div></div>
+        <div><div class="n" data-count="30" data-suf="%">0%</div>
+          <div class="l">of eligible small businesses never claim deductions they qualify for</div></div>
+        <div><div class="n" data-count="1" data-suf=" day">0</div>
+          <div class="l">our standard response time to every inquiry</div></div>
+      </div>
     </div>
-    <p style="text-align:center;font-size:.78rem;color:#7a9087;margin-top:20px">
+    <p style="font-size:.78rem;color:#7a9087;margin-top:22px;max-width:62ch">
       Figures reflect widely reported small-business benchmarks and are illustrative, not guarantees.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">What We Do</p>
-      <h2>Beyond bookkeeping &mdash; financial leadership</h2>
-      <p class="lead">We help owners move past basic data entry and actually understand what their numbers
-      are telling them, so decisions get made on evidence instead of instinct.</p>
-    </div>
-    <div class="grid g3">
-      <div class="card rv" data-tilt>{ico(I_DOC)}<h3>Accounting &amp; Bookkeeping</h3>
-        <p>Clean, reconciled books you can trust &mdash; transaction categorization, monthly closes, and
-        reporting delivered on a predictable schedule.</p></div>
-      <div class="card rv" data-tilt>{ico(I_CHART)}<h3>Controller Services</h3>
-        <p>Oversight, structured month-end close, budget-vs-actual reporting, and KPI tracking that turns
-        raw data into visibility.</p></div>
-      <div class="card rv" data-tilt>{ico(I_TREND)}<h3>CFO Advisory</h3>
-        <p>Cash-flow forecasting, margin analysis, strategic modeling, and decision support &mdash;
-        executive financial leadership without a full-time hire.</p></div>
-      <div class="card rv" data-tilt>{ico(I_CALC)}<h3>Tax Planning &amp; Prep</h3>
-        <p>Proactive planning through the year, not just filing in April. Entity strategy, deduction
-        capture, and quarterly estimate management.</p></div>
-      <div class="card rv" data-tilt>{ico(I_SHIELD)}<h3>Internal Controls</h3>
-        <p>Process and safeguard design that protects your business from errors, leakage, and the
-        surprises that catch growing companies off guard.</p></div>
-      <div class="card rv" data-tilt>{ico(I_USERS)}<h3>Individuals &amp; Families</h3>
-        <p>Personal tax preparation and planning, coordinated with your business so both sides of the
-        picture work together.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">The Data</p>
-      <h2>Where growing businesses actually lose money</h2>
-      <p class="lead">These are the gaps we're hired to close. Every one is fixable with structure and
-      consistent reporting.</p>
-    </div>
-    <div class="grid g2">
-      <div class="viz rv">
-        <h4>Owner hours lost per month</h4>
-        <p class="cap">Time spent on financial admin instead of running the business</p>
-        <div class="bar hl"><span class="lb">Bookkeeping</span><div class="track"><div class="fill" data-w="88">21 hrs</div></div></div>
-        <div class="bar"><span class="lb">Chasing invoices</span><div class="track"><div class="fill" data-w="52">12 hrs</div></div></div>
-        <div class="bar"><span class="lb">Tax prep scramble</span><div class="track"><div class="fill" data-w="40">9 hrs</div></div></div>
-        <div class="bar"><span class="lb">Report building</span><div class="track"><div class="fill" data-w="33">8 hrs</div></div></div>
-        <p style="font-size:.78rem;color:var(--mute);margin-top:14px">Illustrative benchmarks based on
-        commonly reported small-business survey ranges.</p>
+    <div class="split rv">
+      <div class="sh">
+        <p class="eyebrow">What We Do</p>
+        <h2>Beyond bookkeeping &mdash; financial leadership</h2>
+        <p>We help owners move past basic data entry and actually understand what their numbers
+        are telling them, so decisions get made on evidence instead of instinct.</p>
       </div>
-      <div class="viz rv">
-        <h4>Most-missed tax deductions</h4>
-        <p class="cap">Share of eligible small businesses that never claim them</p>
-        <div class="bar hl"><span class="lb">Home office</span><div class="track"><div class="fill" data-w="72">~72%</div></div></div>
-        <div class="bar"><span class="lb">Mileage</span><div class="track"><div class="fill" data-w="61">~61%</div></div></div>
-        <div class="bar"><span class="lb">Startup costs</span><div class="track"><div class="fill" data-w="55">~55%</div></div></div>
-        <div class="bar"><span class="lb">Retirement</span><div class="track"><div class="fill" data-w="44">~44%</div></div></div>
-        <p style="font-size:.78rem;color:var(--mute);margin-top:14px">Directional estimates for
-        illustration. <a href="articles/tax-deductions-small-business.html">See the full breakdown &rarr;</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="dark">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">How It Works</p>
-      <h2>A clear path from chaos to clarity</h2>
-    </div>
-    <div class="steps rv">
-      <div class="step"><h3>Discovery Call</h3><p>A free 30-minute conversation about your business,
-        your numbers, and where the gaps are.</p></div>
-      <div class="step"><h3>Financial Review</h3><p>We assess your current books, reporting, and
-        structure, then show you exactly what's missing.</p></div>
-      <div class="step"><h3>Build the System</h3><p>Clean-up, chart of accounts, close process, and
-        reporting cadence tailored to how you actually operate.</p></div>
-      <div class="step"><h3>Ongoing Insight</h3><p>Monthly reporting and review calls so you always
-        know where you stand &mdash; and what to do next.</p></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="grid g2" style="align-items:center;gap:48px">
-      <div class="rv">
-        <p class="eyebrow">Free Tool</p>
-        <h2 style="font-size:clamp(1.8rem,3.6vw,2.5rem);margin-bottom:16px">What is disorganized
-        bookkeeping costing you?</h2>
-        <p class="lead" style="margin-bottom:24px">Move the sliders to estimate the value of reclaimed
-        time and cleaner financials. It's a rough model &mdash; but the order of magnitude usually surprises people.</p>
-        <a href="resources.html" class="btn">See all free tools</a>
-      </div>
-      <div class="calc rv">
-        <h3>Clarity Value Estimator</h3>
-        <p class="sub">A conservative annual estimate</p>
-        <label for="rev">Annual revenue</label>
-        <input type="range" id="rev" min="100000" max="10000000" step="50000" value="1200000">
-        <div class="val" id="revV">$1,200,000</div>
-        <label for="hrs">Hours you spend on financial admin monthly</label>
-        <input type="range" id="hrs" min="2" max="60" step="1" value="21">
-        <div class="val" id="hrsV">21 hrs/month</div>
-        <div class="calc-out">
-          <div class="big" id="outTotal">$0</div>
-          <div class="lbl">Estimated annual value recovered</div>
-          <div style="display:flex;gap:24px;margin-top:18px;flex-wrap:wrap">
-            <div><div style="font-family:Fraunces,serif;font-size:1.2rem;color:#fff" id="outTime">$0</div>
-              <div style="font-size:.76rem;color:#a9c4b9">Time reclaimed</div></div>
-            <div><div style="font-family:Fraunces,serif;font-size:1.2rem;color:#fff" id="outBooks">$0</div>
-              <div style="font-size:.76rem;color:#a9c4b9">Cleaner financials</div></div>
-          </div>
+      <div class="sb">
+        <div class="ledger">
+          <div class="lrow"><div class="ln">01</div><h3>Accounting &amp; Bookkeeping</h3>
+            <p>Clean, reconciled books you can trust &mdash; transaction categorization, monthly closes, and
+            reporting delivered on a predictable schedule.</p>
+            <a class="lgo" href="services.html">Details &rarr;</a></div>
+          <div class="lrow"><div class="ln">02</div><h3>Controller Services</h3>
+            <p>Oversight, structured month-end close, budget-vs-actual reporting, and KPI tracking that turns
+            raw data into visibility.</p>
+            <a class="lgo" href="services.html">Details &rarr;</a></div>
+          <div class="lrow"><div class="ln">03</div><h3>CFO Advisory</h3>
+            <p>Cash-flow forecasting, margin analysis, strategic modeling, and decision support &mdash;
+            executive financial leadership without a full-time hire.</p>
+            <a class="lgo" href="services.html">Details &rarr;</a></div>
+          <div class="lrow"><div class="ln">04</div><h3>Tax Planning &amp; Prep</h3>
+            <p>Proactive planning through the year, not just filing in April. Entity strategy, deduction
+            capture, and quarterly estimate management.</p>
+            <a class="lgo" href="services.html">Details &rarr;</a></div>
+          <div class="lrow"><div class="ln">05</div><h3>Internal Controls</h3>
+            <p>Process and safeguard design that protects your business from errors, leakage, and the
+            surprises that catch growing companies off guard.</p>
+            <a class="lgo" href="services.html">Details &rarr;</a></div>
+          <div class="lrow"><div class="ln">06</div><h3>Individuals &amp; Families</h3>
+            <p>Personal tax preparation and planning, coordinated with your business so both sides of the
+            picture work together.</p>
+            <a class="lgo" href="services.html">Details &rarr;</a></div>
         </div>
-        <p class="disc">Estimate only. Assumes a $75/hour owner opportunity cost and a 1.2% recapture from
-        improved expense visibility. Not a guarantee of results or a substitute for professional advice.</p>
       </div>
     </div>
   </div>
@@ -193,34 +118,68 @@ home_body = f"""
 
 <section class="alt">
   <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Insights</p>
-      <h2>Practical guidance, no jargon</h2>
-      <p class="lead">{len(ARTS)} in-depth guides on tax, bookkeeping, payroll, and financial strategy
-      for business owners and individuals.</p>
-    </div>
-    <div class="arts rv">
-      {"".join(f'''<a class="art" href="articles/{a["slug"]}.html">
-        <span class="cat">{html.escape(a["cat"])}</span>
-        <h3>{html.escape(a["title"])}</h3>
-        <p>{html.escape(a["desc"][:120])}&hellip;</p>
-        <span class="rd">{a["read"]}</span></a>''' for a in ARTS[:6])}
-    </div>
-    <div style="text-align:center;margin-top:38px" class="rv">
-      <a href="articles/index.html" class="btn ghost lg">Browse all {len(ARTS)} articles</a>
+    <div class="split rv">
+      <div class="sh">
+        <p class="eyebrow">The Data</p>
+        <h2>Where growing businesses actually lose money</h2>
+        <p>These are the gaps we're hired to close. Every one is fixable with structure and
+        consistent reporting.</p>
+      </div>
+      <div class="sb">
+        <div class="viz">
+          <h4>Owner hours lost per month</h4>
+          <p class="cap">Time spent on financial admin instead of running the business</p>
+          <div class="bar hl"><span class="lb">Bookkeeping</span><div class="track"><div class="fill" data-w="88">21 hrs</div></div></div>
+          <div class="bar"><span class="lb">Chasing invoices</span><div class="track"><div class="fill" data-w="52">12 hrs</div></div></div>
+          <div class="bar"><span class="lb">Tax prep scramble</span><div class="track"><div class="fill" data-w="40">9 hrs</div></div></div>
+          <div class="bar"><span class="lb">Report building</span><div class="track"><div class="fill" data-w="33">8 hrs</div></div></div>
+          <p style="font-size:.78rem;color:var(--mute);margin-top:14px">Illustrative benchmarks based on
+          commonly reported small-business survey ranges.</p>
+        </div>
+        <div class="viz" style="margin-top:34px">
+          <h4>Most-missed tax deductions</h4>
+          <p class="cap">Share of eligible small businesses that never claim them</p>
+          <div class="bar hl"><span class="lb">Home office</span><div class="track"><div class="fill" data-w="72">~72%</div></div></div>
+          <div class="bar"><span class="lb">Mileage</span><div class="track"><div class="fill" data-w="61">~61%</div></div></div>
+          <div class="bar"><span class="lb">Startup costs</span><div class="track"><div class="fill" data-w="55">~55%</div></div></div>
+          <div class="bar"><span class="lb">Retirement</span><div class="track"><div class="fill" data-w="44">~44%</div></div></div>
+          <p style="font-size:.78rem;color:var(--mute);margin-top:14px">Directional estimates for
+          illustration. <a href="articles/tax-deductions-small-business.html">See the full breakdown &rarr;</a></p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section>
+<section class="dark pad-s">
   <div class="wrap">
-    <div class="cta-band rv">
-      <h2>Let's get your numbers working for you</h2>
-      <p>Book a free 30-minute consultation. No pressure, no obligation &mdash; just a clear read on
-      where you stand and what would help most.</p>
-      <a href="contact.html" class="btn gold lg">Book a Free Consultation</a>
+    <div class="rhead rv"><span>How It Works</span><span>Four steps</span></div>
+    <h2 class="rv" style="font-size:clamp(1.75rem,3.4vw,2.5rem);color:#fff;margin:26px 0 34px;max-width:18ch">A clear path from chaos to clarity</h2>
+    <div class="ledger rv">
+      <div class="lrow"><div class="ln">01</div><h3>Discovery Call</h3>
+        <p>A free 30-minute conversation about your business, your numbers, and where the gaps are.</p><span></span></div>
+      <div class="lrow"><div class="ln">02</div><h3>Financial Review</h3>
+        <p>We assess your current books, reporting, and structure, then show you exactly what's missing.</p><span></span></div>
+      <div class="lrow"><div class="ln">03</div><h3>Build the System</h3>
+        <p>Clean-up, chart of accounts, close process, and reporting cadence tailored to how you actually operate.</p><span></span></div>
+      <div class="lrow"><div class="ln">04</div><h3>Ongoing Insight</h3>
+        <p>Monthly reporting and review calls so you always know where you stand &mdash; and what to do next.</p><span></span></div>
     </div>
   </div>
+</section>
+
+<!-- The 3D range at full strength, carrying the closing call to action. The
+     hero runs the same scene at 42% opacity so the headline wins there; here
+     it is the subject of the section. -->
+<section class="mband">
+  <div class="mfall" aria-hidden="true"></div>
+  <canvas id="summit-band" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="mb-in rv">
+    <h2>Let's get your numbers working for you</h2>
+    <p>Book a free 30-minute consultation. No pressure, no obligation &mdash; just a clear read on
+    where you stand and what would help most.</p>
+    <div style="margin-top:26px"><a href="contact.html" class="btn gold lg">Book a Free Consultation</a></div>
+  </div></div>
 </section>
 """
 

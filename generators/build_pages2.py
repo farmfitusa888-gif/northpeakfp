@@ -45,7 +45,7 @@ for tid, name, price, per, who, feats, fit, feat in TIERS:
     tag = '<span class="tag">Most Popular</span>' if feat else ""
     pcls = "price quote" if price == "Custom" else "price"
     tier_html += f"""
-      <div class="{cls} rv" id="{tid}" data-tilt>{tag}
+      <div class="{cls} rv" id="{tid}">{tag}
         <h3>{name}</h3>
         <p class="who">{who}</p>
         <div class="{pcls}">{price}<small> {per}</small></div>
@@ -104,11 +104,11 @@ svc_body = f"""
 </section>
 
 <section>
-  <div class="wrap"><div class="cta-band rv">
-    <h2>Not sure where you fit?</h2>
-    <p>Tell us about your business in a free 30-minute call and we'll recommend the right level &mdash;
+  <div class="wrap"><div class="split rv">
+    <div class="sh"><h2>Not sure where you fit?</h2></div>
+    <div class="sb"><p class="lead" style="max-width:54ch">Tell us about your business in a free 30-minute call and we'll recommend the right level &mdash;
     or tell you if you're not ready for one yet.</p>
-    <a href="contact.html" class="btn gold lg">Book a Free Consultation</a>
+      <div style="margin-top:22px"><a href="contact.html" class="btn gold lg">Book a Free Consultation</a></div></div>
   </div></div>
 </section>
 """
@@ -186,7 +186,7 @@ about_body = f"""
       <h2>Built for businesses outgrowing basic accounting</h2>
       <p class="lead">We work with small to mid-sized businesses that need more than data entry.</p></div>
     <div class="grid g3">
-      {"".join(f'<div class="card rv" data-tilt><h3 style="font-size:1.12rem">{t}</h3><p>{d}</p></div>' for t,d in [
+      {"".join(f'<div class="card rv"><h3 style="font-size:1.12rem">{t}</h3><p>{d}</p></div>' for t,d in [
         ("Individuals &amp; Families","Tax preparation and year-round planning."),
         ("Service-Based Businesses","Bookkeeping, accounting, and tax compliance."),
         ("Professional Firms","Tax planning, preparation, and advisory services."),
@@ -229,12 +229,15 @@ W("about.html", shell(
 # ============================================================ ARTICLES HUB
 chips = '<button class="chip on" data-f="all">All topics</button>' + "".join(
     f'<button class="chip" data-f="{html.escape(c)}">{html.escape(c)}</button>' for c in CATS)
-cards = "".join(f"""<a class="art" href="{a['slug']}.html" data-cat="{html.escape(a['cat'])}"
+# The hub is an index, so it is built as one — a ruled list rather than a deck
+# of shadowed tiles. Same data, same filter hooks (data-cat / data-s), and it
+# scales to 50+ entries without turning into an endless wall of boxes.
+cards = "".join(f"""<a class="entry art" href="{a['slug']}.html" data-cat="{html.escape(a['cat'])}"
    data-s="{html.escape((a['title']+' '+a['desc']+' '+a['keywords']).lower())}">
-   <span class="cat">{html.escape(a['cat'])}</span>
-   <h3>{html.escape(a['title'])}</h3>
-   <p>{html.escape(a['desc'][:130])}&hellip;</p>
-   <span class="rd">{a['read']}</span></a>""" for a in ARTS)
+   <span class="ec">{html.escape(a['cat'])}</span>
+   <div><h3>{html.escape(a['title'])}</h3>
+   <p>{html.escape(a['desc'][:130])}&hellip;</p></div>
+   <span class="er">{a['read']}</span></a>""" for a in ARTS)
 
 hub_body = f"""
 {crumb([("Home","index.html"),("Articles",None)], depth=1)}
@@ -249,16 +252,18 @@ hub_body = f"""
     <label for="asearch" class="visually-hidden" style="position:absolute;left:-9999px">Search articles</label>
     <input class="search" id="asearch" type="search" placeholder="Search articles &mdash; try &lsquo;deductions&rsquo;, &lsquo;payroll&rsquo;, &lsquo;LLC&rsquo;&hellip;">
     <div class="filters">{chips}</div>
-    <div class="arts">{cards}</div>
+    <div class="elist">{cards}</div>
     <p id="nores" style="display:none;text-align:center;color:var(--mute);padding:44px 0">
       No articles match that search. Try a different term or clear the filter.</p>
   </div>
 </section>
-<section class="alt">
-  <div class="wrap"><div class="cta-band rv">
-    <h2>Questions about your own situation?</h2>
-    <p>Articles are general guidance. A 30-minute call gets you answers specific to your business.</p>
-    <a href="../contact.html" class="btn gold lg">Book a Free Consultation</a>
+<section class="alt pad-s">
+  <div class="wrap"><div class="split rv">
+    <div class="sh"><h2>Questions about your own situation?</h2></div>
+    <div class="sb">
+      <p class="lead" style="max-width:52ch">Articles are general guidance. A 30-minute call gets you answers specific to your business.</p>
+      <div style="margin-top:22px"><a href="../contact.html" class="btn gold lg">Book a Free Consultation</a></div>
+    </div>
   </div></div>
 </section>
 """

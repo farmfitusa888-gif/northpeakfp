@@ -1,0 +1,86 @@
+- generic [active] [ref=f17e1]:
+  - navigation [ref=f17e2]:
+    - generic [ref=f17e3]:
+      - generic [ref=f17e4]:
+        - text: NorthPeak
+        - generic [ref=f17e6]: Financial Partners
+      - navigation [ref=f17e7]:
+        - link "Services" [ref=f17e8] [cursor=pointer]:
+          - /url: "#"
+        - link "Approach" [ref=f17e9] [cursor=pointer]:
+          - /url: "#"
+        - link "Guides" [ref=f17e10] [cursor=pointer]:
+          - /url: "#"
+        - link "About" [ref=f17e11] [cursor=pointer]:
+          - /url: "#"
+        - link "Contact" [ref=f17e12] [cursor=pointer]:
+          - /url: "#"
+      - link "Book a consultation" [ref=f17e13] [cursor=pointer]:
+        - /url: "#"
+  - generic [ref=f17e15]:
+    - generic [ref=f17e16]:
+      - generic [ref=f17e17]: Accounting · Controller · CFO advisory
+      - heading "Every number, accounted for." [level=1] [ref=f17e18]: Every number,accounted for.
+      - paragraph [ref=f17e19]: Reconciled books. A close that lands the same day each month. Reporting that says which way the business is actually pointing — before the quarter is over.
+      - generic [ref=f17e20]:
+        - link "Book a free consultation" [ref=f17e21] [cursor=pointer]:
+          - /url: "#"
+        - link "See how we work" [ref=f17e22] [cursor=pointer]:
+          - /url: "#"
+    - generic [ref=f17e23]:
+      - generic [ref=f17e24]:
+        - generic [ref=f17e25]: Monthly close
+        - generic [ref=f17e26]: On schedule
+      - generic [ref=f17e27]:
+        - generic [ref=f17e28]: Operating cash
+        - generic [ref=f17e29]: +18.4%
+      - generic [ref=f17e30]:
+        - generic [ref=f17e31]: Gross margin
+        - generic [ref=f17e32]: 41.2%
+      - generic [ref=f17e33]:
+        - generic [ref=f17e34]: Days sales outstanding
+        - generic [ref=f17e35]: 38 d
+      - generic [ref=f17e36]:
+        - generic [ref=f17e37]: Close completed
+        - generic [ref=f17e38]: Day 6
+      - generic [ref=f17e49]: Illustrative reporting view
+  - generic [ref=f17e51]:
+    - generic [ref=f17e52]: Wilmette, Illinois — clients nationwide
+    - generic [ref=f17e53]: Chaudhry Ahmad, Founder & Principal
+    - generic [ref=f17e54]: Fixed quotes, agreed in writing
+    - generic [ref=f17e55]: One business day to every inquiry
+  - generic [ref=f17e57]:
+    - generic [ref=f17e58]:
+      - heading "What we actually do" [level=2] [ref=f17e59]
+      - paragraph [ref=f17e60]: Six services. Most clients start with one and add the next when the business asks for it.
+    - generic [ref=f17e61]:
+      - generic [ref=f17e62]:
+        - generic [ref=f17e63]: "01"
+        - generic [ref=f17e64]:
+          - heading "Bookkeeping" [level=3] [ref=f17e65]
+          - paragraph [ref=f17e66]: Reconciled monthly, categorised properly, closed on the same working day each month.
+      - generic [ref=f17e67]:
+        - generic [ref=f17e68]: "02"
+        - generic [ref=f17e69]:
+          - heading "Controller services" [level=3] [ref=f17e70]
+          - paragraph [ref=f17e71]: Budget against actual, a close process that holds under pressure, and the handful of KPIs that matter for your model.
+      - generic [ref=f17e72]:
+        - generic [ref=f17e73]: "03"
+        - generic [ref=f17e74]:
+          - heading "CFO advisory" [level=3] [ref=f17e75]
+          - paragraph [ref=f17e76]: Cash forecasting, margin analysis, and the modelling behind decisions that are expensive to reverse.
+      - generic [ref=f17e77]:
+        - generic [ref=f17e78]: "04"
+        - generic [ref=f17e79]:
+          - heading "Tax planning & preparation" [level=3] [ref=f17e80]
+          - paragraph [ref=f17e81]: Planned across the year instead of reconstructed in April. Entity strategy, quarterly estimates, filing.
+      - generic [ref=f17e82]:
+        - generic [ref=f17e83]: "05"
+        - generic [ref=f17e84]:
+          - heading "Internal controls" [level=3] [ref=f17e85]
+          - paragraph [ref=f17e86]: The unglamorous safeguards that stop money leaking quietly out of a growing business.
+      - generic [ref=f17e87]:
+        - generic [ref=f17e88]: "06"
+        - generic [ref=f17e89]:
+          - heading "Individuals & families" [level=3] [ref=f17e90]
+          - paragraph [ref=f17e91]: Personal returns coordinated with the business, so the two stop working against each other.

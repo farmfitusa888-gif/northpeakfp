@@ -78,8 +78,8 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
   radial-gradient(900px 520px at 88% 84%,#12392a 0%,transparent 66%),
   linear-gradient(168deg,#0f3728 0%,#0a2419 52%,#061710 100%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(100deg,rgba(6,23,16,.94) 0%,rgba(6,23,16,.86) 26%,
-    rgba(6,23,16,.52) 50%,rgba(6,23,16,.16) 74%,rgba(6,23,16,.02) 100%)}
+  background:linear-gradient(100deg,rgba(6,23,16,.90) 0%,rgba(6,23,16,.74) 26%,
+    rgba(6,23,16,.34) 52%,rgba(6,23,16,.06) 76%,rgba(6,23,16,0) 100%)}
 @media(max-width:900px){.hero::after{background:linear-gradient(178deg,rgba(6,23,16,.55) 0%,
   rgba(6,23,16,.80) 42%,rgba(6,23,16,.93) 100%)}}
 #summit{position:absolute;inset:0;width:100%;height:100%;z-index:-2;opacity:0;transition:opacity .9s ease;pointer-events:none;display:block}
@@ -94,12 +94,107 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
 .trust div{color:#a9c4b9;font-size:.85rem;display:flex;align-items:center;gap:8px}
 .trust svg{flex-shrink:0}
 
+/* ───────────────────────── editorial layout system ─────────────────────────
+   Added to break the repeated eyebrow -> h2 -> lead -> 3-up-card-grid rhythm
+   that ran on every section. Same palette, same type, different structure. */
+
+/* Split: a heading column that stays put while its content scrolls past.
+   Deliberately unequal — 4/12 against 7/12 with a gutter column between. */
+.split{display:grid;grid-template-columns:minmax(0,4fr) 1fr minmax(0,7fr);align-items:start}
+.split > .sh{position:sticky;top:104px}
+.split > .sh h2{font-size:clamp(1.75rem,3.2vw,2.45rem);line-height:1.08;
+  letter-spacing:-.03em;color:var(--ink-2)}
+.split > .sh p{color:var(--soft);font-size:.97rem;margin-top:14px;max-width:34ch}
+.split > .sb{grid-column:3}
+.dark .split > .sh h2{color:#fff}
+.dark .split > .sh p{color:#b6cdc3}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:34px}
+  .split > .sh{position:static}.split > .sb{grid-column:1}}
+
+/* Ledger: numbered rows on hairlines. Replaces card grids for anything that
+   is really a list — services, tiers, articles. Four unequal columns. */
+.ledger{border-top:1px solid var(--rule)}
+.lrow{display:grid;grid-template-columns:54px minmax(0,1.05fr) minmax(0,1.5fr) auto;
+  gap:26px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--rule);
+  transition:background .18s}
+.lrow:hover{background:rgba(31,111,84,.04)}
+.lrow .ln{font-family:'Fraunces',serif;font-size:.95rem;color:var(--mute);letter-spacing:.04em}
+.lrow h3{font-family:'Fraunces',serif;font-size:1.35rem;letter-spacing:-.02em;color:var(--ink-2)}
+.lrow p{color:var(--soft);font-size:.97rem;line-height:1.58}
+.lrow .lgo{font-size:.85rem;color:var(--accent);text-decoration:none;white-space:nowrap}
+.lrow .lgo:hover{text-decoration:underline}
+.dark .ledger{border-color:rgba(255,255,255,.16)}
+.dark .lrow{border-color:rgba(255,255,255,.16)}
+.dark .lrow:hover{background:rgba(255,255,255,.04)}
+.dark .lrow h3{color:#fff}.dark .lrow p{color:#b6cdc3}
+.dark .lrow .ln{color:#7f9a8e}.dark .lrow .lgo{color:var(--gold-2)}
+@media(max-width:760px){.lrow{grid-template-columns:38px 1fr;gap:8px 16px}
+  .lrow p,.lrow .lgo{grid-column:2}.lrow .lgo{margin-top:6px}}
+
+/* Figures: one dominant number carrying the point, the rest in support.
+   Replaces the four-equal-cells stat band. */
+.figrow{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,2fr);
+  gap:clamp(28px,5vw,72px);align-items:center}
+.fighero .n{font-family:'Fraunces',serif;font-size:clamp(3.6rem,9vw,6.4rem);font-weight:600;
+  color:var(--gold-2);line-height:.86;letter-spacing:-.045em}
+.fighero .l{color:#b6cdc3;font-size:1.02rem;line-height:1.45;margin-top:16px;max-width:26ch}
+.figrest{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  border-top:1px solid rgba(255,255,255,.16)}
+.figrest > div{padding:22px 24px 22px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.figrest .n{font-family:'Fraunces',serif;font-size:1.85rem;font-weight:600;color:#fff;line-height:1;
+  letter-spacing:-.03em}
+.figrest .l{font-size:.82rem;color:#9fbcb0;margin-top:9px;line-height:1.45}
+@media(max-width:900px){.figrow{grid-template-columns:1fr}}
+
+/* Entry list: articles as an index, not a deck of cards. */
+.elist{border-top:1px solid var(--rule)}
+.entry{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr) auto;gap:26px;
+  align-items:baseline;padding:24px 0;border-bottom:1px solid var(--rule);
+  text-decoration:none;color:inherit;transition:background .18s}
+.entry:hover{background:rgba(31,111,84,.04)}
+.entry .ec{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  padding-top:5px}
+.entry h3{font-family:'Fraunces',serif;font-size:1.22rem;letter-spacing:-.018em;
+  color:var(--ink-2);line-height:1.25}
+.entry p{color:var(--soft);font-size:.93rem;margin-top:7px;line-height:1.55}
+.entry .er{font-size:.8rem;color:var(--mute);white-space:nowrap}
+.entry:hover h3{color:var(--accent)}
+@media(max-width:760px){.entry{grid-template-columns:1fr;gap:6px}.entry .er{display:none}}
+
+/* Rule head: a section label sitting on a hairline instead of a centred
+   eyebrow + heading + lead stack. */
+.rhead{display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+  border-bottom:1px solid var(--ink-2);padding-bottom:11px;margin-bottom:6px;
+  font-size:.72rem;letter-spacing:.19em;text-transform:uppercase;color:var(--mute)}
+.dark .rhead{border-color:rgba(255,255,255,.4);color:#9fbcb0}
+
+/* Mountain band: full-bleed, the 3D scene at full strength as its own moment
+   in the page rather than only as hero wallpaper. */
+.mband{position:relative;background:var(--deep);overflow:hidden;isolation:isolate;
+  min-height:clamp(420px,54vh,640px);display:flex;align-items:flex-end}
+.mband .mfall{position:absolute;inset:0;z-index:-3;background:
+  radial-gradient(760px 420px at 68% 22%,rgba(212,164,55,.18) 0%,transparent 62%),
+  linear-gradient(172deg,#10402f 0%,#0a2419 58%,#061710 100%)}
+#summit-band{position:absolute;inset:0;width:100%;height:100%;z-index:-2;opacity:0;
+  transition:opacity 1s ease;pointer-events:none;display:block}
+.mband::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(0deg,rgba(6,23,16,.92) 0%,rgba(6,23,16,.45) 42%,
+    rgba(6,23,16,.06) 78%,rgba(6,23,16,0) 100%)}
+.mband > .wrap{width:100%}
+.mband .mb-in{padding:0 0 52px;color:#fff;max-width:44ch}
+.mband h2{font-size:clamp(1.7rem,3.4vw,2.5rem);letter-spacing:-.03em;line-height:1.1;color:#fff}
+.mband p{color:#c2d8ce;margin-top:14px;font-size:1.02rem}
+@media print{.mband{min-height:0}#summit-band{display:none}}
+
 /* ---------- reveal ---------- */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
 
 /* ---------- sections ---------- */
-section{padding:92px 0}
+section{padding:96px 0}
+.pad-s{padding:58px 0}
+.pad-l{padding:132px 0}
+.pad-t0{padding-top:0}
 .sec-head{max-width:660px;margin-bottom:50px}
 .sec-head h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:16px;color:var(--ink-2)}
 .alt{background:var(--paper-2)}
@@ -119,20 +214,19 @@ section{padding:92px 0}
 .grid{display:grid;gap:24px}
 .g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .g3{grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
-.card{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:30px;
-  box-shadow:var(--shadow);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s;
-  transform-style:preserve-3d;will-change:transform}
-.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.card{background:transparent;border:0;border-top:1px solid var(--rule);border-radius:0;
+  padding:30px 30px 30px 0;box-shadow:none;transition:background .2s,border-color .2s}
+.card:hover{background:rgba(31,111,84,.035);border-color:var(--accent)}
 .card h3{font-size:1.28rem;margin-bottom:10px;color:var(--ink-2)}
 .card p{color:var(--soft);font-size:.97rem}
 .icon{width:46px;height:46px;border-radius:11px;display:grid;place-items:center;margin-bottom:18px;
   background:linear-gradient(140deg,var(--accent),var(--deep));box-shadow:0 6px 16px rgba(31,111,84,.26)}
 
 /* pricing 3D tilt */
-.tier{background:var(--card);border:1px solid var(--rule);border-radius:18px;padding:34px 30px;
+.tier{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:34px 30px;
   display:flex;flex-direction:column;position:relative;box-shadow:var(--shadow);
   transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;transform-style:preserve-3d}
-.tier:hover{box-shadow:var(--shadow-lg)}
+.tier:hover{border-color:var(--accent)}
 .tier.feat{border:1.5px solid var(--gold);box-shadow:0 2px 6px rgba(10,26,20,.06),0 26px 60px rgba(184,134,11,.16)}
 .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#1a1405;
   font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;border-radius:20px;white-space:nowrap}
@@ -150,7 +244,7 @@ section{padding:92px 0}
 .fit{font-size:.83rem;color:var(--mute);border-top:1px solid var(--rule);padding-top:15px;margin-bottom:20px}
 
 /* ---------- charts ---------- */
-.viz{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:28px;box-shadow:var(--shadow)}
+.viz{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:28px;box-shadow:none}
 .viz h4{font-size:1.03rem;margin-bottom:4px;color:var(--ink-2)}
 .viz .cap{font-size:.82rem;color:var(--mute);margin-bottom:22px}
 .bar{display:flex;align-items:center;gap:14px;margin-bottom:15px}
@@ -182,7 +276,7 @@ section{padding:92px 0}
 .arts{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
 .art{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:26px;text-decoration:none;
   display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s,border-color .28s}
-.art:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:rgba(31,111,84,.32)}
+.art:hover{background:rgba(31,111,84,.04);border-color:var(--accent)}
 .art .cat{font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:11px}
 .art h3{font-size:1.14rem;line-height:1.3;margin-bottom:10px;color:var(--ink-2)}
 .art p{font-size:.9rem;color:var(--soft);flex-grow:1;margin-bottom:16px}
@@ -201,7 +295,7 @@ section{padding:92px 0}
 .faq p{padding:0 0 22px;color:var(--soft);font-size:.97rem;max-width:74ch}
 
 /* ---------- forms ---------- */
-.form{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:34px;box-shadow:var(--shadow)}
+.form{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:34px;box-shadow:none}
 .fg{margin-bottom:19px}
 .fg label{display:block;font-size:.86rem;font-weight:600;margin-bottom:7px;color:var(--ink-2)}
 .fg input,.fg select,.fg textarea{width:100%;padding:12px 15px;border:1px solid var(--rule);border-radius:9px;
@@ -214,7 +308,7 @@ section{padding:92px 0}
 .note{font-size:.83rem;color:var(--mute);margin-top:14px}
 
 /* ---------- calculator ---------- */
-.calc{background:linear-gradient(150deg,var(--deep),#0a2519);border-radius:18px;padding:36px;color:#fff;box-shadow:var(--shadow-lg)}
+.calc{background:linear-gradient(150deg,var(--deep),#0a2519);border-radius:6px;padding:36px;color:#fff;box-shadow:none}
 .calc h3{color:#fff;font-size:1.4rem;margin-bottom:8px}
 .calc .sub{color:#a9c4b9;font-size:.92rem;margin-bottom:26px}
 .calc label{display:block;font-size:.85rem;color:#cfe0d8;margin-bottom:8px;font-weight:500}
@@ -246,7 +340,7 @@ footer a:hover{color:var(--gold-2)}
 .crumb a{color:var(--accent);text-decoration:none}
 .pagehead{padding:64px 0 10px}
 .pagehead h1{font-size:clamp(2.1rem,5vw,3.2rem);margin-bottom:16px;color:var(--ink-2)}
-.cta-band{background:linear-gradient(140deg,var(--deep),#0a2519);border-radius:20px;padding:56px 40px;text-align:center;color:#fff;box-shadow:var(--shadow-lg)}
+.cta-band{background:linear-gradient(140deg,var(--deep),#0a2519);border-radius:6px;padding:56px 40px;text-align:center;color:#fff}
 .cta-band h2{color:#fff;font-size:clamp(1.7rem,3.6vw,2.4rem);margin-bottom:14px}
 .cta-band p{color:#b6cdc3;max-width:520px;margin:0 auto 28px}
 .tick{color:var(--accent);flex-shrink:0}
