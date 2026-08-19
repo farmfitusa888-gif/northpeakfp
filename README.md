@@ -53,3 +53,22 @@ Must report 0 errors before any deploy.
 - **No published pricing.** Every engagement is quoted individually.
 - **Do not touch the MX, SPF, or DKIM DNS records** at the registrar. They carry
   `info@northpeakfp.com` on Google Workspace.
+
+## Where this repo lives, and why
+
+`~/Projects/northpeakfp` — deliberately **not** on the Desktop.
+
+The Desktop on this Mac is iCloud-synced. `generators/build.py` rewrites 60+
+files in a few seconds, iCloud reads that as concurrent modification, and it
+forks conflict copies named `about 2.html`, `contact 3.html` and so on. Eighty
+of them accumulated in `site/` during one session and five reached a commit
+before anyone noticed — byte-identical orphan pages that were not in the
+sitemap, not linked from anywhere, and pure duplicate content if deployed.
+
+Three guards remain in place in case this ever ends up in a synced folder again:
+
+- `.gitignore` refuses to track `* [0-9].*`
+- `generators/build.py` names any conflict copies its clean step removes
+- `tools/validate.py` **fails** if a conflict copy exists
+
+Keep the repo outside `~/Desktop` and `~/Documents` and none of them fire.
