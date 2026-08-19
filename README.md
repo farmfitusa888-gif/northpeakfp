@@ -54,21 +54,23 @@ Must report 0 errors before any deploy.
 - **Do not touch the MX, SPF, or DKIM DNS records** at the registrar. They carry
   `info@northpeakfp.com` on Google Workspace.
 
-## Where this repo lives, and why
+## Where this repo lives
 
-`~/Projects/northpeakfp` — deliberately **not** on the Desktop.
+`~/Desktop/CHAUDHRY SITE` — on the Desktop, where it is easy to find.
 
-The Desktop on this Mac is iCloud-synced. `generators/build.py` rewrites 60+
-files in a few seconds, iCloud reads that as concurrent modification, and it
-forks conflict copies named `about 2.html`, `contact 3.html` and so on. Eighty
-of them accumulated in `site/` during one session and five reached a commit
-before anyone noticed — byte-identical orphan pages that were not in the
-sitemap, not linked from anywhere, and pure duplicate content if deployed.
+**Be aware of one consequence.** This Desktop is iCloud-synced.
+`generators/build.py` rewrites 60+ files in a few seconds, iCloud reads that as
+concurrent modification, and it forks conflict copies named `about 2.html`,
+`contact 3.html` and so on. Eighty of them accumulated in `site/` during one
+session and five reached a commit before anyone noticed — byte-identical orphan
+pages, not in the sitemap, not linked, and pure duplicate content if deployed.
 
-Three guards remain in place in case this ever ends up in a synced folder again:
+Three guards catch it, so this is a nuisance rather than a risk:
 
 - `.gitignore` refuses to track `* [0-9].*`
 - `generators/build.py` names any conflict copies its clean step removes
-- `tools/validate.py` **fails** if a conflict copy exists
+- `tools/validate.py` **fails** if a conflict copy exists, so one cannot ship
 
-Keep the repo outside `~/Desktop` and `~/Documents` and none of them fire.
+If the duplicates ever become annoying, the permanent fix is to keep the working
+copy outside `~/Desktop` and `~/Documents` and put an alias on the Desktop
+instead — the alias syncs (it is a few bytes), the project does not.
