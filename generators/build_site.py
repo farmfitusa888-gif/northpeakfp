@@ -79,7 +79,8 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
 .brand b{font-family:'Fraunces',serif;font-size:1.06rem;font-weight:600;letter-spacing:-.01em;line-height:1.15}
 .brand span{display:block;font-family:'Inter',sans-serif;font-size:.63rem;letter-spacing:.15em;
   text-transform:uppercase;color:var(--mute);font-weight:600;margin-top:2px}
-.links{display:flex;align-items:center;gap:28px}
+.links{display:flex;align-items:center;gap:22px}
+@media(min-width:901px) and (max-width:1130px){.links{gap:15px}.links a{font-size:.88rem}}
 .links a{color:var(--soft);text-decoration:none;font-size:.93rem;font-weight:500;position:relative;padding:4px 0}
 .links a:hover,.links a[aria-current="page"]{color:var(--accent)}
 .links a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--gold);border-radius:2px}
@@ -497,6 +498,7 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
           depth=0, keywords="", og_type="website"):
     p = "../" * depth
     nav_items = [("Home", "index.html"), ("Services", "services.html"),
+                 ("Service Areas", "service-areas/index.html"),
                  ("About", "about.html"), ("Articles", "articles/index.html"),
                  ("Resources", "resources.html"), ("Contact", "contact.html")]
     links = "".join(
