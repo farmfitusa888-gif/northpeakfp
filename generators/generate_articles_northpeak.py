@@ -601,6 +601,20 @@ def build(outdir=None):
     print(f"Generated {n} articles -> {OUT}")
     return ARTICLES
 
+# ---------------------------------------------------------------------------
+# Self-employed retirement cluster. Kept in its own module so the eight new
+# articles are reviewable on their own rather than buried in this file, and so
+# the reason each topic exists (a specific Search Console query) stays attached
+# to them. See articles_retirement.py for the query data and the sourcing note.
+from articles_retirement import ARTICLES as _RETIREMENT
+ARTICLES.extend(_RETIREMENT)
+
+SEO_TITLES.update({
+    "solo-401k-vs-sep-ira-switch": "When to Move From a SEP-IRA to a Solo 401(k)",
+    "403b-vs-sep-ira": "403(b) vs. SEP-IRA: Using Both With a Side Business",
+    "sep-ira-contribution-rules": "How a SEP-IRA Contribution Is Actually Calculated",
+})
+
 if __name__ == "__main__":
     raise SystemExit(
         "\n  generate_articles_northpeak.py is the DATA MODULE, not a build step.\n"
