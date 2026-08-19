@@ -5,6 +5,11 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Cross-Origin-Opener-Policy: same-origin
+  # 'unsafe-inline' is required for script-src because the GA4 config and the
+  # IntersectionObserver feature-test are inline on a static site with no
+  # nonce mechanism. It still blocks script from any host not listed, which is
+  # the attack this actually defends against. Style is inline throughout.
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://formspree.io; form-action 'self' https://formspree.io; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
 
 # Hashed-by-content assets are safe to cache forever. style.css and app.js are
 # NOT content-hashed, so they get a short cache with revalidation instead —

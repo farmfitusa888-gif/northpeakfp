@@ -392,7 +392,17 @@ W("resources.html", shell(
     title=f"Free Tools &amp; Resources | {FIRM}",
     desc="Free tools for business owners: a financial clarity value estimator, month-end close checklist, and records retention guide from NorthPeak Financial Partners.",
     canon=f"{SITE}/resources", body=res_body, active="Resources",
-    keywords="month end close checklist, records retention guide, small business financial tools"))
+    keywords="month end close checklist, records retention guide, small business financial tools",
+    jsonld={"@context":"https://schema.org","@type":"CollectionPage",
+            "name":"Free Tools & Resources","url":f"{SITE}/resources",
+            "about":{"@type":"AccountingService","name":FIRM,"url":SITE},
+            "hasPart":[
+              {"@type":"WebApplication","name":"Clarity Value Estimator",
+               "applicationCategory":"FinanceApplication","operatingSystem":"Any",
+               "url":f"{SITE}/resources",
+               "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
+              {"@type":"CreativeWork","name":"Month-End Close Checklist"},
+              {"@type":"CreativeWork","name":"Records Retention Quick Guide"}]}))
 
 # ============================================================ CONTACT
 FAQS = [
@@ -463,7 +473,8 @@ contact_body = f"""
         <h2 style="font-size:1.5rem;margin-bottom:8px">Or send an inquiry</h2>
         <p style="color:var(--soft);font-size:.95rem;margin-bottom:24px">Tell us a bit about your business
         and we'll reply within one business day.</p>
-        <form id="cform" data-endpoint="{FORM_PLACEHOLDER}" data-email="{EMAIL}"
+        <form id="cform" action="{FORM_PLACEHOLDER}" method="POST"
+            data-endpoint="{FORM_PLACEHOLDER}" data-email="{EMAIL}"
               action="{FORM_PLACEHOLDER}" method="POST">
           <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="fg"><label for="name">Name <span class="req">*</span></label>

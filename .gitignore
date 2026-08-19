@@ -16,3 +16,9 @@ node_modules/
 
 # Playwright verification screenshots — regenerate with tools/, not worth versioning
 tools/preview/
+
+# iCloud/Finder conflict copies. This Desktop is iCloud-synced and the build
+# rewrites 60+ files in seconds, so iCloud periodically forks "name 2.html"
+# duplicates mid-build. Five of them reached a commit before this rule existed.
+* [0-9].*
+*\ [0-9].*

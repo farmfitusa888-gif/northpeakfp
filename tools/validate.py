@@ -230,6 +230,17 @@ def main():
         if len(ps) > 1:
             err(", ".join(ps), f"duplicate meta description: {d[:60]!r}...")
 
+    # ---- iCloud / Finder conflict copies -----------------------------------
+    # This repo lives on an iCloud-synced Desktop, and the build rewrites 60+
+    # files in seconds. iCloud responds by forking "name 2.html" duplicates
+    # mid-build. Eighty of them accumulated once, and five reached a commit.
+    # They are byte-identical orphans: not in the sitemap, not linked, and pure
+    # duplicate content if deployed.
+    dupes = [p for p in SITE.rglob("*")
+             if p.is_file() and re.search(r" \d+(\.[A-Za-z0-9]+)?$", p.stem + p.suffix)]
+    for d in dupes:
+        err(rel(d), "iCloud/Finder conflict copy — delete it and check .gitignore")
+
     # ---- sitemap ----------------------------------------------------------
     sm = SITE / "sitemap.xml"
     if not sm.exists():

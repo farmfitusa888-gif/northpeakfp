@@ -13,6 +13,7 @@ Exit code is non-zero if any stage fails, so CI can gate on it.
 """
 import os
 import pathlib
+import re
 import runpy
 import shutil
 import subprocess
@@ -58,6 +59,12 @@ def clean() -> None:
     """
     if not ROOT.exists():
         return
+    dupes = [f for f in ROOT.rglob("*")
+             if f.is_file() and re.search(r" \d+(\.[A-Za-z0-9]+)?$", f.name)]
+    if dupes:
+        print(f"  NOTE: {len(dupes)} iCloud/Finder conflict copies found and removed "
+              f"(e.g. {dupes[0].name}). This repo is on an iCloud-synced Desktop; "
+              f"see README.")
     removed = 0
     for child in sorted(ROOT.iterdir()):
         if child.is_dir():
