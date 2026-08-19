@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build the complete NorthPeak Financial Partners website."""
-import os, sys, json, shutil, html, pathlib, pathlib
+import os, sys, json, shutil, html, pathlib, re, posixpath
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import generate_articles_northpeak as G
 
@@ -13,6 +13,21 @@ os.makedirs(ROOT, exist_ok=True)
 SITE, FIRM, EMAIL = G.SITE, G.FIRM, G.EMAIL
 CAL_PLACEHOLDER = "PASTE_YOUR_GOOGLE_CALENDAR_APPOINTMENT_URL_HERE"
 FORM_PLACEHOLDER = "https://formspree.io/f/xpqvvbqg"
+
+# Google Analytics 4 measurement ID for the northpeakfp.com web data stream
+# (stream ID 15461234948). Set to "" to strip analytics from every page.
+GA4_ID = "G-CQWJKFGY3T"
+
+# Loaded async so it never blocks first paint. IP anonymisation is on and ad
+# personalisation signals are off: this is a B2B accounting site measuring
+# consultation requests, not building advertising audiences, and the narrower
+# configuration is the one that stays defensible if privacy rules tighten.
+GA4_SNIPPET = f"""<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}
+gtag('js',new Date());
+gtag('config','{GA4_ID}',{{anonymize_ip:true,allow_google_signals:false,allow_ad_personalization_signals:false}});
+</script>""" if GA4_ID else ""
 
 # ---------------------------------------------------------------- CSS
 CSS = r"""
@@ -406,6 +421,7 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{p}assets/style.css">
+{GA4_SNIPPET}
 {ld}
 {extra_head}
 </head>
@@ -467,7 +483,54 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
 </html>"""
 
 
+_LINK_RE = re.compile(r'\b(?P<attr>href|src)="(?P<url>[^"]+)"')
+# Anything already absolute, protocol-relative, a bare fragment, or already
+# root-relative is left exactly as it is.
+_ABSOLUTE = re.compile(r'^(?:[a-z][a-z0-9+.\-]*:|//|#|/)', re.I)
+
+
+def canonicalize_links(markup, page_path):
+    """Rewrite every relative link into the canonical root-relative URL.
+
+    Every <link rel=canonical> on this site points at an extensionless URL
+    (https://northpeakfp.com/services), but the generators historically emitted
+    relative links with the extension (services.html). That put all 781 internal
+    links on URLs that differ from the canonical they resolve to, which is what
+    surfaces in Search Console as "Page with redirect" and splits link signals
+    across two URL forms for the same page.
+
+    Doing the rewrite here, at the single point where every file is written,
+    means any link any generator emits from now on is canonical by construction
+    — there is no second place to remember to update.
+
+    Resolution is relative to the page being written, so an article linking to a
+    sibling with "llc-vs-s-corp.html" and the homepage linking to
+    "articles/llc-vs-s-corp.html" both correctly produce "/articles/llc-vs-s-corp".
+    """
+    base = posixpath.dirname(page_path)
+
+    def fix(m):
+        url = m.group("url")
+        if _ABSOLUTE.match(url):
+            return m.group(0)
+        path_part, suffix = re.match(r'^([^#?]*)(.*)$', url).groups()
+        if not path_part:
+            return m.group(0)
+        target = posixpath.normpath(posixpath.join(base, path_part))
+        if target.endswith(".html"):
+            target = target[:-len(".html")]
+            if target == "index":
+                target = ""
+            elif target.endswith("/index"):
+                target = target[:-len("/index")]
+        return f'{m.group("attr")}="/{target}{suffix}"'
+
+    return _LINK_RE.sub(fix, markup)
+
+
 def W(path, content):
+    if path.endswith(".html"):
+        content = canonicalize_links(content, path)
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     open(full, "w").write(content)

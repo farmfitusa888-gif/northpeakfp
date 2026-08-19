@@ -1,0 +1,28 @@
+# Netlify build configuration for git-based continuous deploy.
+#
+# Netlify only reads the netlify.toml at the REPOSITORY ROOT, so this is the one
+# that counts once the GitHub repo is connected. Security and cache headers
+# deliberately live in generators/static/_headers instead of here: a `_headers`
+# file is read from the publish directory in both git-based deploys AND manual
+# drag-and-drop deploys, so the headers cannot silently disappear depending on
+# how the site went out. Keeping them in one place also removes the drift risk
+# of maintaining the same rules in two files.
+
+[build]
+  command = "python3 generators/build.py"
+  publish = "site"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"
+
+# Deploy previews and branch builds must never be indexed — they serve the same
+# content as production and would compete with it in search.
+[[context.deploy-preview.headers]]
+  for = "/*"
+  [context.deploy-preview.headers.values]
+    X-Robots-Tag = "noindex"
+
+[[context.branch-deploy.headers]]
+  for = "/*"
+  [context.branch-deploy.headers.values]
+    X-Robots-Tag = "noindex"
