@@ -25,6 +25,36 @@ I_USERS = '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy=
 I_CALC = '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8" y2="11"/><line x1="12" y1="11" x2="12" y2="11"/><line x1="16" y1="11" x2="16" y2="11"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="12" y1="16" x2="12" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/>'
 
 # ============================================================ HOME
+PHONE_TEL = "tel:+18476442288"
+PHONE = "(847) 644-2288"
+
+# Visible on the page as <details> and emitted as FAQPage. Only what the site
+# already says elsewhere: no fees, no outcomes, no credentials beyond the
+# founder's controller-level experience.
+HOME_FAQ = [
+    ("Do you publish prices?",
+     "No. Every engagement is quoted in writing after a free 30-minute call, as a fixed figure "
+     "for your scope. The fee depends on transaction volume, entity count, and how much clean-up "
+     "the books need, so a number printed before anyone has seen them would be either padded or wrong."),
+    ("Which level of service do I need?",
+     "Accounting services cover clean books with monthly reports and tax preparation. Controller "
+     "services add a structured month-end close, budget-versus-actual reporting and the KPIs that "
+     "describe your business. CFO advisory is for owners deciding on hiring, pricing or financing "
+     "who want forecasting behind the decision. The first call sorts this out, including if the "
+     "honest answer is that you do not need us yet."),
+    ("Do I need to be near Wilmette?",
+     "No. The practice is in Wilmette, Illinois, and meets North Shore clients in person when that "
+     "helps, but the work runs remotely through connected bank feeds and shared software, with "
+     "scheduled video reviews. Clients in other states get the same monthly rhythm."),
+    ("Who does the work?",
+     "Chaudhry Ahmad, the founder, is the person you deal with. He brings controller-level "
+     "experience to every engagement, so the bookkeeping is done with the reporting in mind and "
+     "the reports are built for the decisions you are making."),
+]
+faq_html = "".join(
+    f'<details class="faq"><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>'
+    for q, a in HOME_FAQ)
+
 HERO_BACKDROP = """  <!-- Painted immediately by CSS. This is the hero's real background: the
        WebGL scene below is an enhancement layered on top of it, and on any
        device that declines the scene (reduced motion, Data Saver, 2g, low
@@ -40,16 +70,20 @@ home_body = f"""
   <div class="wrap hero-in">
     <p class="eyebrow" style="color:#d4a437">Accounting &middot; Controller &middot; CFO Advisory</p>
     <h1>Financial Clarity.<em>Strategic Growth.</em></h1>
-    <p>Most businesses don't struggle because they lack revenue &mdash; they struggle because they lack
-    financial clarity. NorthPeak brings structure, accurate reporting, and CFO-level insight to growing companies.</p>
+    <p>NorthPeak Financial Partners gives growing businesses accurate books, reports that arrive on
+    schedule, and CFO-level advice on what the numbers mean. Three levels of service: accounting, then
+    controller services, then CFO advisory. Based in Wilmette, Illinois, working with clients nationwide.
+    Every engagement is quoted in writing after a free 30-minute call, as a fixed figure that only moves
+    if the scope does.</p>
     <div class="hero-cta">
       <a href="contact.html" class="btn gold lg">Book a Free Consultation</a>
+      <a href="{PHONE_TEL}" class="btn ghost lg">Call {PHONE}</a>
       <a href="services.html" class="btn ghost lg">Compare Packages</a>
     </div>
     <div class="trust">
       <div>{TICK} Controller-level experience</div>
       <div>{TICK} Fixed quotes agreed in writing</div>
-      <div>{TICK} Wilmette, IL &mdash; serving clients nationwide</div>
+      <div>{TICK} Wilmette, IL, serving clients nationwide</div>
     </div>
   </div>
 </section>
@@ -59,14 +93,18 @@ home_body = f"""
     <div class="split rv">
       <div class="sh">
         <p class="eyebrow">What We Do</p>
-        <h2>Beyond bookkeeping &mdash; financial leadership</h2>
+        <h2>What does NorthPeak do beyond bookkeeping?</h2>
         <p>We help owners move past basic data entry and actually understand what their numbers
-        are telling them, so decisions get made on evidence instead of instinct.</p>
+        are telling them, so decisions get made on evidence instead of instinct. Start with
+        <a href="accounting-services.html">accounting services</a>, add
+        <a href="controller-services.html">controller services</a> when the month-end close needs
+        an owner, and bring in <a href="cfo-advisory.html">CFO advisory</a> when the decisions get
+        expensive to reverse.</p>
       </div>
       <div class="sb">
         <div class="ledger">
           <div class="lrow"><div class="ln">01</div><h3>Accounting &amp; Bookkeeping</h3>
-            <p>Clean, reconciled books you can trust &mdash; transaction categorization, monthly closes, and
+            <p>Clean, reconciled books you can trust: transaction categorization, monthly closes, and
             reporting delivered on a predictable schedule.</p>
             <a class="lgo" href="accounting-services.html">Details &rarr;</a></div>
           <div class="lrow"><div class="ln">02</div><h3>Controller Services</h3>
@@ -74,8 +112,8 @@ home_body = f"""
             raw data into visibility.</p>
             <a class="lgo" href="controller-services.html">Details &rarr;</a></div>
           <div class="lrow"><div class="ln">03</div><h3>CFO Advisory</h3>
-            <p>Cash-flow forecasting, margin analysis, strategic modeling, and decision support &mdash;
-            executive financial leadership without a full-time hire.</p>
+            <p>Cash-flow forecasting, margin analysis, strategic modeling, and decision support.
+            Executive financial leadership without a full-time hire.</p>
             <a class="lgo" href="cfo-advisory.html">Details &rarr;</a></div>
           <div class="lrow"><div class="ln">04</div><h3>Tax Planning &amp; Prep</h3>
             <p>Proactive planning through the year, not just filing in April. Entity strategy, deduction
@@ -95,6 +133,14 @@ home_body = f"""
   </div>
 </section>
 
+<section class="alt pad-s" id="faq">
+  <div class="wrap narrow" style="padding:0">
+    <div class="sec-head rv" style="margin-bottom:26px"><p class="eyebrow">FAQ</p>
+      <h2>Common questions before the first call</h2></div>
+    <div class="rv">{faq_html}</div>
+  </div>
+</section>
+
 <!-- The 3D range at full strength, carrying the closing call to action. The
      hero runs the same scene at 42% opacity so the headline wins there; here
      it is the subject of the section. -->
@@ -103,7 +149,7 @@ home_body = f"""
   <canvas id="summit-band" aria-hidden="true"></canvas>
   <div class="wrap"><div class="mb-in rv">
     <h2>Let's get your numbers working for you</h2>
-    <p>Book a free 30-minute consultation. No pressure, no obligation &mdash; just a clear read on
+    <p>Book a free 30-minute consultation. No pressure and no obligation, just a clear read on
     where you stand and what would help most.</p>
     <div style="margin-top:26px"><a href="contact.html" class="btn gold lg">Book a Free Consultation</a></div>
   </div></div>
@@ -111,11 +157,17 @@ home_body = f"""
 """
 
 W("index.html", shell(
-    title="Accounting, Controller &amp; CFO Advisory | NorthPeak",
+    title="Accounting, Controller &amp; CFO | NorthPeak Financial Partners",
     desc="Accounting, controller services, and CFO-level advisory that give growing businesses real financial clarity. Book a free consultation with NorthPeak.",
     canon=f"{SITE}/", body=home_body, active="Home",
     keywords="accounting firm, controller services, fractional CFO, bookkeeping, tax planning, small business accountant",
-    jsonld={
+    jsonld=[{
+        "@context": "https://schema.org", "@type": "WebPage",
+        "name": "NorthPeak Financial Partners", "url": f"{SITE}/",
+        "datePublished": G.PUBDATE, "dateModified": G.LASTMOD,
+        "isPartOf": {"@type": "WebSite", "name": FIRM, "url": SITE},
+        "about": {"@type": "AccountingService", "name": FIRM, "url": SITE},
+    }, {
         "@context": "https://schema.org", "@type": "AccountingService",
         "name": FIRM, "url": SITE, "email": EMAIL,
         "telephone": "+1-847-644-2288",
@@ -131,6 +183,10 @@ W("index.html", shell(
         "serviceType": ["Bookkeeping", "Controller Services", "CFO Advisory",
                         "Tax Preparation", "Tax Planning"],
         "sameAs": [],
-    }))
+    }, {
+        "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}
+            for q, a in HOME_FAQ],
+    }]))
 
 print("index.html")

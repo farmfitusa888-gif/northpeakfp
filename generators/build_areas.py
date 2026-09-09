@@ -204,7 +204,7 @@ LOCAL_GUIDES = [
   ("cook-county-property-tax-appeals",
    "Cook County Property Tax Appeals: What North Suburban Business Owners Should Know",
    "Cook County reassesses the north suburbs every three years. What that means if "
-   "your business owns its building, and where an accountant stops and an attorney starts.",
+   "you own your building, and where an accountant stops and an attorney starts.",
    "cook county property tax appeal, north suburbs reassessment, business property tax illinois",
    f"""
 <p class="lead">If your business owns the building it operates from &mdash; or you are on a
@@ -324,7 +324,7 @@ number rather than a hunch.</p>
 
   ("wheeling-sales-tax-lake-cook-road",
    "Sales Tax in Wheeling: Which Side of Lake Cook Road Are You On?",
-   "Wheeling is split between Cook and Lake counties at Lake Cook Road, and the total "
+   "Wheeling is split between Cook and Lake counties at Lake Cook Road, and the "
    "sales tax rate differs by two points across it. What that means if you sell there.",
    "wheeling illinois sales tax rate, lake cook road county line, cook county sales tax rate",
    """
@@ -441,7 +441,7 @@ LICENSING = {
    "https://www.villageofwinnetka.org/268/Existing-Business-Services"),
 
  "morton-grove": (
-   "Morton Grove is among the most comprehensive: <strong>all industrial, commercial and "
+   "Morton Grove is among the broadest: <strong>all industrial, commercial and "
    "home-based businesses</strong> are required to hold an active licence and renew it "
    "annually, on a licence year running <strong>January 1 to December 31</strong>. The "
    "village is explicit that the licence is a compliance check &mdash; it verifies the "
@@ -582,7 +582,10 @@ def build():
   <p class="eyebrow">{county} County &middot; {township}</p>
   <h1>Accounting &amp; Tax Services in {name}, IL</h1>
   <p class="lead" style="max-width:60ch">Accounting, controller and tax work for {name}
-  businesses, from a practice in {BASE_CITY}.</p>
+  businesses, from a practice in {BASE_CITY}. Bookkeeping and the monthly close, controller-level
+  reporting, CFO advisory and tax planning, done remotely with in-person meetings when they help.
+  Every engagement is quoted in writing after a free 30-minute call, as a fixed figure for your
+  scope.</p>
   {extra_html}
   <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
     <a href="../contact.html" class="btn gold lg">Book a Free Consultation</a>
@@ -593,7 +596,7 @@ def build():
 <section class="alt pad-s">
   <div class="wrap">
     <div class="split rv">
-      <div class="sh"><h2>Registering a business in {name}</h2>
+      <div class="sh"><h2>What does {name} require to register a business?</h2>
         <p>Every village on the North Shore sets its own rule, and they diverge more
         than most owners expect.</p></div>
       <div class="sb"><p class="lead" style="max-width:62ch">{lic_html}</p>
@@ -646,10 +649,18 @@ def build():
 </section>
 """
 
-        jsonld = {
-            "@context": "https://schema.org",
-            "@graph": [
-                {"@type": "AccountingService", "name": FIRM, "url": f"{SITE}/service-areas/{slug}",
+        # One block per type, each with its own @context, so dateModified sits at
+        # the top level of the WebPage where readers look for it (same shape as
+        # the pillars and the contact page).
+        jsonld = [
+                {"@context": "https://schema.org", "@type": "WebPage",
+                 "name": f"Accounting & Tax Services in {name}, IL",
+                 "url": f"{SITE}/service-areas/{slug}",
+                 "datePublished": G.PUBDATE, "dateModified": G.LASTMOD,
+                 "isPartOf": {"@type": "WebSite", "name": FIRM, "url": SITE},
+                 "about": {"@type": "City", "name": name}},
+                {"@context": "https://schema.org",
+                 "@type": "AccountingService", "name": FIRM, "url": f"{SITE}/service-areas/{slug}",
                  "email": EMAIL, "telephone": "+1-847-644-2288",
                  "image": f"{SITE}/assets/og-image.jpg", "priceRange": "$$",
                  "founder": {"@type": "Person", "name": G.FOUNDER,
@@ -660,22 +671,22 @@ def build():
                                 "containedInPlace": {"@type": "AdministrativeArea",
                                                      "name": f"{county} County, Illinois"}},
                  "serviceType": [s[0] for s in SERVICES]},
-                {"@type": "FAQPage", "mainEntity": [
+                {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
                     {"@type": "Question", "name": q,
                      "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]},
-                {"@type": "BreadcrumbList", "itemListElement": [
+                {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
                     {"@type": "ListItem", "position": 2, "name": "Service Areas",
                      "item": f"{SITE}/service-areas"},
                     {"@type": "ListItem", "position": 3, "name": name,
                      "item": f"{SITE}/service-areas/{slug}"}]},
-            ]}
+            ]
 
         W(f"service-areas/{slug}.html", shell(
             title=f"Accountant in {name}, IL | NorthPeak",
-            desc=(f"Bookkeeping, controller, CFO advisory and tax services for {name}, "
-                  f"Illinois businesses. Based in {BASE_CITY}. Free 30-minute "
-                  f"consultation — call (847) 644-2288."),
+            desc=(f"Bookkeeping, controller, CFO advisory and tax services for {name}, IL "
+                  f"businesses, from a {BASE_CITY} practice. Free 30-minute "
+                  f"consultation: (847) 644-2288."),
             canon=f"{SITE}/service-areas/{slug}", body=body, active="", depth=1,
             keywords=(f"accountant {name} IL, bookkeeping {name}, tax preparation {name}, "
                       f"small business accountant {name} Illinois"),

@@ -159,7 +159,7 @@ ARTICLES = [
             ("Expense Documentation", "Assemble categorized expenses with receipts — supplies, rent, utilities, software, professional fees, and mileage logs. Clean categories make deductions easy to claim."),
             ("Payroll and Contractor Forms", "If you have workers, gather payroll summaries and copies of the 1099s and W-2s you issued. These need to match what you filed with the IRS."),
             ("Prior-Year Return", "Last year's return is a roadmap — it shows carryovers, depreciation schedules, and comparisons that flag anything unusual this year."),
-            ("Big Purchases and Asset Changes", "Note any major equipment purchases, vehicle changes, or asset sales. These affect depreciation and may unlock deductions like Section 179."),
+            ("Big Purchases and Asset Changes", "Note any major equipment purchases, vehicle changes, or asset sales. These affect depreciation and may open deductions like Section 179."),
         ],
     },
     {
@@ -396,7 +396,7 @@ ARTICLES = [
         "lede": "The last weeks of the year are your final window to influence your tax bill. A few deliberate moves before December 31 can pay off in April.",
         "sections": [
             ("Time Your Income and Expenses", "If you expect a lower-tax year ahead, you may defer income into January and pull deductible expenses into December. Cash-basis businesses have the most flexibility here."),
-            ("Make Needed Purchases", "If you genuinely need equipment, buying and placing it in service before year-end can unlock a current-year deduction under Section 179, as covered in our equipment guide."),
+            ("Make Needed Purchases", "If you genuinely need equipment, buying and placing it in service before year-end can open a current-year deduction under Section 179, as covered in our equipment guide."),
             ("Fund Retirement Accounts", "Contributing to a SEP-IRA or Solo 401(k) lowers taxable income while building your future. Some deadlines fall at or after year-end, but planning happens now."),
             ("Review Your Books", "A year-end review catches missed deductions, miscategorized expenses, and surprises while there's still time to act. Don't wait for your preparer to find them in April."),
             ("Check Your Estimated Payments", "Make sure you've paid enough through the year to avoid a penalty. A catch-up payment before the deadline can save you interest."),
@@ -637,6 +637,287 @@ SEO_TITLES.update({
     "how-to-calculate-estimated-taxes": "How to Work Out What You Owe in Quarterly Taxes",
     "uneven-income-estimated-taxes": "Estimated Taxes When Your Income Is Uneven",
 })
+
+# 2026-09 readiness pass. The twenty original articles gain one section heading
+# phrased as the question a reader types, and a three-question FAQ that
+# build_articles_shell.py renders as visible <details> and FAQPage markup.
+# Keyed by slug, like SEO_TITLES, so the article data above stays readable.
+# The answers restate what the article already says: no new figures, no
+# outcomes, no credentials.
+QUESTION_HEADINGS = {
+    "retirement-plans-self-employed": ("Which One Fits", "Which plan fits your business?"),
+    "when-to-hire-accountant": ("Bookkeeper vs. Accountant", "Do you need a bookkeeper or an accountant?"),
+    "1099-vs-w2": ("When You're Not Sure", "What if you are not sure how to classify a worker?"),
+    "avoiding-irs-audit": ("If You Do Get a Notice", "What should you do if you get an IRS notice?"),
+    "bookkeeping-basics": ("Know What to Keep and For How Long", "What should you keep, and for how long?"),
+    "business-expense-categories": ("Why Categories Matter", "Why do expense categories matter?"),
+    "cash-flow-management": ("Forecast the Next 90 Days", "How do you forecast the next 90 days?"),
+    "cash-vs-accrual": ("Which One You're Allowed to Use", "Which method are you allowed to use?"),
+    "deductible-vs-nondeductible": ("The Basic Test", "What makes an expense deductible?"),
+    "home-office-deduction": ("The Qualification Rules", "Who qualifies for the home office deduction?"),
+    "llc-vs-s-corp": ("How to Decide", "How do you decide between an LLC and an S-Corp?"),
+    "mileage-deduction-guide": ("What Counts as Business Miles", "What counts as business miles?"),
+    "personal-tax-tips": ("Standard Deduction vs. Itemizing", "Should you take the standard deduction or itemize?"),
+    "quarterly-estimated-taxes": ("Why You Have to Pay Quarterly", "Why do you have to pay quarterly?"),
+    "sales-tax-guide": ("What Sales Tax Nexus Means", "What does sales tax nexus mean?"),
+    "section-179-deduction": ("What Qualifies", "What qualifies for Section 179?"),
+    "sep-ira-with-employees": ("Who counts as eligible", "Who counts as an eligible employee?"),
+    "tax-planning-vs-tax-prep": ("Where the Savings Live", "Where do the savings actually come from?"),
+    "tax-prep-checklist": ("Prior-Year Return", "Why does last year's return matter?"),
+    "startup-tax-tips": ("Choose Your Structure Deliberately", "Which business structure should you choose?"),
+}
+
+ARTICLE_FAQS = {
+    "retirement-plans-self-employed": [
+        ("What is the main difference between a SEP-IRA and a Solo 401(k)?",
+         "A SEP-IRA is the simpler plan to open and maintain, with contributions set as a percentage of net "
+         "self-employment income. A Solo 401(k) is for a business with no employees other than an owner and "
+         "spouse, and it often allows larger contributions because you contribute as both employee and employer."),
+        ("Do contributions to these plans lower my taxes this year?",
+         "Contributions to either plan are generally deductible in the year they are made, which reduces taxable "
+         "income now while the savings build for later. That is why the choice of plan is a tax decision as much "
+         "as a retirement one."),
+        ("When do I have to open and fund the plan?",
+         "Setup and funding deadlines differ by plan, and some fall before the return is filed. Missing the "
+         "deadline means the deduction for that year is gone, so choose and open the plan before year end rather "
+         "than at filing time."),
+    ],
+    "when-to-hire-accountant": [
+        ("How do I know it is time to hire an accountant?",
+         "When the hours you spend on the books are hours you would otherwise spend earning, when your taxes have "
+         "grown complicated through hiring or multi-state sales or a change of structure, or when a decision with "
+         "tax consequences is coming up. Any one of those is the signal."),
+        ("What is the difference between a bookkeeper and an accountant?",
+         "A bookkeeper records transactions. An accountant interprets them, handles the filings and helps with "
+         "planning. Match the level of help to what the business needs now, and move up when the questions change."),
+        ("What does a first conversation with NorthPeak involve?",
+         "A free 30-minute call about your business and where the books stand. We say what would help most, and "
+         "if the honest answer is that you do not need an accountant yet, we say that too."),
+    ],
+    "1099-vs-w2": [
+        ("What decides whether a worker is a contractor or an employee?",
+         "Control, not the job title or the contract. An employee works under your direction; a contractor runs "
+         "their own business and decides how the work gets done. The IRS weighs behavioral control, financial "
+         "control and the relationship between the parties as a whole."),
+        ("What happens if I misclassify an employee as a contractor?",
+         "You can owe back payroll taxes and penalties for the period the worker should have been on payroll. "
+         "Long-term, full-time workers doing core business functions usually look like employees whatever the "
+         "paperwork says."),
+        ("Can I fix a classification mistake before it becomes a problem?",
+         "Yes. Reviewing gray-area roles before tax season and correcting them is far cheaper than correcting them "
+         "after an audit. A short professional review of the working relationship is the place to start."),
+    ],
+    "avoiding-irs-audit": [
+        ("Can I make my tax return audit-proof?",
+         "No. What you can do is avoid the patterns that draw attention: income that does not match the forms the "
+         "IRS already holds, deductions out of proportion to income and figures that look estimated rather than "
+         "recorded."),
+        ("Are home office and vehicle deductions worth the risk?",
+         "They are legitimate deductions and you should claim them when you qualify. Keep the measurements, photos "
+         "and logs that prove them, and the claim becomes a documented fact rather than a flag."),
+        ("What should I do if an IRS notice arrives?",
+         "Read it, do not ignore it and do not respond in a hurry. Most notices are routine and resolved with the "
+         "right paperwork. Have a professional look at it before you reply."),
+    ],
+    "bookkeeping-basics": [
+        ("What is the first bookkeeping step for a new business?",
+         "Open a dedicated business bank account and card before the first sale. Mixing personal and business "
+         "spending is the single biggest bookkeeping mistake new owners make, and it complicates everything that "
+         "follows."),
+        ("How long should I keep tax records?",
+         "As a general rule, at least three years, and longer for anything involving property or major assets. "
+         "When in doubt, keep it. Digital copies are fine."),
+        ("How often should I reconcile my books?",
+         "Monthly. Matching the books to the bank statement once a month catches errors while they are small and "
+         "gives you a true picture of the business instead of a year-end surprise."),
+    ],
+    "business-expense-categories": [
+        ("Which expense categories does a small business need?",
+         "Advertising, supplies, rent, utilities, insurance, professional fees, travel, meals and equipment cover "
+         "most small businesses. Matching your bookkeeping to the categories on the tax return means deductions "
+         "transfer directly at filing time."),
+        ("What records do meals and travel need?",
+         "Who was there, what the expense was and the business purpose. A vague note does not hold up; a specific "
+         "one does. Record it at the time rather than reconstructing it later."),
+        ("Is a purchase an expense or an asset?",
+         "Small consumables are supplies you deduct now. Larger, longer-lasting purchases are assets that are "
+         "depreciated or expensed under special rules such as Section 179. The line matters because it changes "
+         "how and when you claim the cost."),
+    ],
+    "cash-flow-management": [
+        ("How can a profitable business run out of cash?",
+         "Profit is recorded when a sale is made; cash arrives when the customer pays. Slow-paying customers, "
+         "inventory bought up front and large bills landing in a weak month can leave a profitable business short "
+         "at the bank."),
+        ("What is the simplest way to forecast cash flow?",
+         "A rolling forecast of expected money in and out for the coming quarter, updated as invoices and bills "
+         "change. It does not need to be elaborate; it needs to be honest."),
+        ("How big should a cash reserve be?",
+         "Enough to cover a few months of expenses, built gradually from stronger months. A reserve turns an "
+         "emergency into an inconvenience, so protect it once it exists."),
+    ],
+    "cash-vs-accrual": [
+        ("What is the difference between cash and accrual accounting?",
+         "Cash accounting records income when money lands and expenses when they are paid. Accrual records income "
+         "when it is earned and expenses when they are incurred, whichever way the cash moves. Cash mirrors the "
+         "bank balance; accrual shows profitability over time."),
+        ("Which method should a small business start with?",
+         "Most small businesses start on cash because it is simple and tracks the bank balance. Accrual fits once "
+         "there is inventory, receivables or an investor who wants a true performance picture."),
+        ("Can I switch from cash to accrual later?",
+         "Yes, but the change requires IRS approval and careful handling of the transition year. Choosing well at "
+         "the start avoids that work."),
+    ],
+    "deductible-vs-nondeductible": [
+        ("What is the test for a deductible business expense?",
+         "The expense must be ordinary and necessary for your business. That is the standard the IRS applies, and "
+         "most legitimate business costs meet it."),
+        ("What can never be written off?",
+         "Personal expenses, most commuting, political contributions and fines or penalties. No framing changes that."),
+        ("How do I handle an expense that is part business and part personal?",
+         "Split it. Deduct only the business portion of the meal, the trip, the car or the phone, and keep the "
+         "record that shows how the split was made."),
+    ],
+    "home-office-deduction": [
+        ("Does a spare room used only for work qualify?",
+         "Yes, if it is used regularly and exclusively for business and is generally your principal place of "
+         "business. The kitchen table does not qualify, because it is not used exclusively for work."),
+        ("Should I use the simplified method or actual expenses?",
+         "The simplified method deducts a flat rate per square foot with minimal records, which suits smaller "
+         "offices. The actual-expense method deducts the business share of real home costs and takes more "
+         "paperwork, but often produces a larger deduction for a bigger office."),
+        ("Can a W-2 employee claim a home office?",
+         "Under current rules, generally not. The deduction is for the self-employed and business owners."),
+    ],
+    "llc-vs-s-corp": [
+        ("Does forming an LLC lower my taxes?",
+         "Not by itself. An LLC is a legal structure, and a single-member LLC is taxed as a sole proprietorship by "
+         "default, with all profit subject to self-employment tax. The liability protection is real; the tax "
+         "saving, by default, is not."),
+        ("Where does the S-Corp saving come from?",
+         "After the election you pay yourself a reasonable salary, which carries payroll tax, and take the "
+         "remaining profit as distributions, which do not carry self-employment tax. The split between the two is "
+         "the saving."),
+        ("What is the reasonable salary rule?",
+         "S-Corp owners must pay themselves a reasonable salary before taking distributions. Setting it too low to "
+         "avoid payroll tax is a common audit trigger, so the salary has to be defensible for the work you do."),
+    ],
+    "mileage-deduction-guide": [
+        ("Does my commute count as business mileage?",
+         "No. The regular trip from home to a main workplace is commuting and is not deductible. Driving between "
+         "job sites, to clients, to the bank or to buy supplies does count."),
+        ("Standard mileage rate or actual expenses?",
+         "The standard rate multiplies business miles by the IRS figure for the year and is the simpler route for "
+         "most people. Actual expenses track the real cost of running the vehicle and deduct the business percentage."),
+        ("What does a mileage log need to show?",
+         "The date, the destination, the business purpose and the miles for each trip, recorded at the time. An "
+         "app that tracks trips from your phone removes most of the effort, and a contemporaneous log beats a "
+         "reconstructed one every time."),
+    ],
+    "personal-tax-tips": [
+        ("Should I itemize or take the standard deduction?",
+         "Run it both ways and take the larger figure. Most filers now take the standard deduction, but significant "
+         "mortgage interest, state taxes or charitable giving can tip the balance toward itemizing."),
+        ("Which deductions can I take without itemizing?",
+         "Above-the-line deductions such as student loan interest, HSA contributions and self-employed health "
+         "insurance reduce your income whether or not you itemize. They are the ones most often overlooked."),
+        ("Is a big refund a good thing?",
+         "It means you lent the government money interest-free all year. A large bill can mean a penalty. "
+         "Adjusting your W-4 aims for break-even, where the money stays in your pocket through the year."),
+    ],
+    "quarterly-estimated-taxes": [
+        ("Who has to pay quarterly estimated taxes?",
+         "Anyone whose income is not covered by withholding, which usually means the self-employed. Employees have "
+         "tax taken from each paycheck; when you work for yourself, that job is yours."),
+        ("When are estimated payments due?",
+         "Generally in April, June, September and January of the following year. The dates do not move to suit "
+         "your cash flow, so put them on the calendar. The IRS publishes the exact dates each year."),
+        ("What is the safe-harbor rule?",
+         "If you pay at least the required percentage of last year's tax liability across the year, you generally "
+         "avoid the underpayment penalty even if you owe more at filing. It is the simplest way to stay protected "
+         "when income is hard to forecast."),
+    ],
+    "sales-tax-guide": [
+        ("Do I have to collect sales tax in states where I have no office?",
+         "Possibly. Since a landmark Supreme Court decision, states can require out-of-state sellers to collect "
+         "once sales into the state cross a threshold. If you sell online, you may owe tax in states you have "
+         "never visited."),
+        ("What is the first step before collecting sales tax?",
+         "Register with each state's tax authority. Collecting without registering causes problems, and so does "
+         "registering and then not filing."),
+        ("Is the sales tax I collect my money?",
+         "No. You collect it, hold it and remit it on the state's schedule. It is pass-through money held in "
+         "trust, never revenue."),
+    ],
+    "section-179-deduction": [
+        ("What does Section 179 let me deduct?",
+         "The full cost of qualifying equipment in the year you put it into service, instead of depreciating it "
+         "over its useful life. In a profitable year that front-loaded deduction can lower the tax bill meaningfully."),
+        ("What kind of purchases qualify?",
+         "Business equipment, machinery, computers, off-the-shelf software and certain vehicles, provided the item "
+         "is used more than half the time for business. IRS Publication 946 has the specifics."),
+        ("Should I buy equipment just for the deduction?",
+         "No. The deduction is optional, so the right use is to time purchases you already need into the years "
+         "when the write-off helps most, and to plan how it sits alongside bonus depreciation."),
+    ],
+    "sep-ira-with-employees": [
+        ("Can I contribute a higher percentage for myself than for my staff?",
+         "No. The contribution rate must be uniform for every eligible employee. Whatever percentage you put in "
+         "for yourself, the same percentage of compensation goes in for everyone who qualifies."),
+        ("Do part-time employees count?",
+         "They can. Eligibility is set by the plan document within IRS limits, based on age, years of service and "
+         "a minimum compensation floor, and part-time and seasonal staff can qualify. Read the terms before "
+         "adopting the plan; they are easier to set than to change."),
+        ("What are the alternatives if I plan to hire?",
+         "Tighter eligibility terms within the rules, a solo 401(k) while you are still the only employee, or a "
+         "SIMPLE IRA where the employer obligation is a defined match or fixed contribution. Each is modelled at "
+         "your real payroll before anything is opened."),
+    ],
+    "tax-planning-vs-tax-prep": [
+        ("What is the difference between tax planning and tax preparation?",
+         "Preparation reports what already happened and files it correctly. Planning shapes decisions during the "
+         "year, such as when to buy equipment or how to structure the business, so that next April's bill is lower "
+         "before it is set."),
+        ("When does tax planning happen?",
+         "At the moments that matter: mid-year, before a large purchase and whenever income shifts. Once at the "
+         "deadline is preparation, not planning."),
+        ("Is planning worth it for a small business?",
+         "The largest tax savings almost always come from planning rather than preparation. Moving from reactive "
+         "to proactive is the highest-value change most small businesses make with their finances."),
+    ],
+    "tax-prep-checklist": [
+        ("What income records do I need for filing?",
+         "Sales reports, the 1099s you received, merchant statements and bank deposits. Your reported income "
+         "should reconcile to these before the return is prepared."),
+        ("What do I need if I have employees or contractors?",
+         "Payroll summaries and copies of the W-2s and 1099s you issued. These have to match what was filed with "
+         "the IRS."),
+        ("Why does my accountant want last year's return?",
+         "It is the roadmap: carryovers, depreciation schedules and the comparisons that flag anything unusual "
+         "this year. Starting from it saves time and catches omissions."),
+    ],
+    "startup-tax-tips": [
+        ("Which structure should a new business choose?",
+         "Sole proprietorship, LLC and S-Corp each carry different tax and liability consequences, and the default "
+         "is not always the best fit. A short professional conversation before you register settles it while it "
+         "is still easy to change."),
+        ("Can I deduct money spent before the business opened?",
+         "Often, yes. Research, legal setup and initial marketing spent before opening can be deducted or amortized "
+         "within the limits the IRS sets. Capture the figures now; reconstructing them later is painful."),
+        ("What surprises first-year owners most at tax time?",
+         "Self-employment tax and the quarterly payments that come with it. Set money aside from the first dollar "
+         "so the first payment is never a shock."),
+    ],
+}
+
+for _a in ARTICLES:
+    _qh = QUESTION_HEADINGS.get(_a["slug"])
+    if _qh:
+        _old, _new = _qh
+        _i = [h for h, _ in _a["sections"]].index(_old)   # ValueError if the heading moved
+        _a["sections"][_i] = (_new, _a["sections"][_i][1])
+    if _a["slug"] in ARTICLE_FAQS and not _a.get("faq"):
+        _a["faq"] = ARTICLE_FAQS[_a["slug"]]
 
 if __name__ == "__main__":
     raise SystemExit(

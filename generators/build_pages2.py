@@ -261,7 +261,7 @@ about_body = f"""
 </section>
 """
 W("about.html", shell(
-    title=f"About | {FIRM}",
+    title=f"About {FIRM} | Strategic Consulting",
     desc="NorthPeak Financial Partners brings controller-level financial leadership to growing businesses: accurate reporting, clear visibility, and strategic guidance.",
     canon=f"{SITE}/about", body=about_body, active="About",
     keywords="about northpeak financial partners, controller services, financial consulting firm",
@@ -357,7 +357,7 @@ res_body = f"""
         </div>
       </div>
       <p class="disc">Estimate only. Assumes $75/hour owner opportunity cost and 1.2% expense recapture.
-      Not a guarantee of results or a substitute for professional advice.</p>
+      It does not predict your results and is not a substitute for professional advice.</p>
     </div>
     <div class="rv">
       <div class="viz" style="margin-bottom:24px">
@@ -382,7 +382,7 @@ res_body = f"""
         <p class="cap">General guidance &mdash; confirm specifics for your situation</p>
         <ul style="list-style:none">
         {"".join(f'<li style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:.92rem"><span style="color:var(--soft)">{k}</span><strong style="color:var(--ink-2);white-space:nowrap">{v}</strong></li>' for k,v in [
-          ("Tax returns &amp; supporting docs","3&ndash;7 years"),("Payroll records","4+ years"),
+          ("Tax returns &amp; supporting docs","3&ndash;7 years"),("Payroll records","4 years or more"),
           ("Bank &amp; credit card statements","3&ndash;7 years"),("Receipts for deductions","3&ndash;7 years"),
           ("Asset purchase records","Life of asset + 3 yrs"),("Corporate formation docs","Permanently")])}
         </ul>

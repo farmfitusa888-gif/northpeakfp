@@ -43,10 +43,14 @@ for i, a in enumerate(ARTS):
       <h3>{html.escape(b["title"])}</h3>
       <span class="rd">{b["read"]}</span></a>''' for b in sibs)
 
-    # The cluster bar sits under the byline, above the fold: which service the
-    # guide belongs to, the pillar link, the consultation action and the
-    # tap-to-call number. Only cluster articles carry it.
-    cluster_bar = ""
+    # The bar under the byline, above the fold: the consultation action and the
+    # tap-to-call number on every article; a cluster article also names its
+    # service and links to the pillar.
+    cluster_bar = (
+        '<p class="acluster">Questions about your own numbers? '
+        '<a href="../contact.html">Book a free consultation</a> or call '
+        '<a href="tel:+18476442288">(847) 644-2288</a>. NorthPeak is in Wilmette, IL, '
+        'and works with clients nationwide.</p>')
     if pillar:
         cluster_bar = (
             f'<p class="acluster">This guide is part of our '
