@@ -68,15 +68,15 @@ home_body = f"""
           <div class="lrow"><div class="ln">01</div><h3>Accounting &amp; Bookkeeping</h3>
             <p>Clean, reconciled books you can trust &mdash; transaction categorization, monthly closes, and
             reporting delivered on a predictable schedule.</p>
-            <a class="lgo" href="services.html">Details &rarr;</a></div>
+            <a class="lgo" href="accounting-services.html">Details &rarr;</a></div>
           <div class="lrow"><div class="ln">02</div><h3>Controller Services</h3>
             <p>Oversight, structured month-end close, budget-vs-actual reporting, and KPI tracking that turns
             raw data into visibility.</p>
-            <a class="lgo" href="services.html">Details &rarr;</a></div>
+            <a class="lgo" href="controller-services.html">Details &rarr;</a></div>
           <div class="lrow"><div class="ln">03</div><h3>CFO Advisory</h3>
             <p>Cash-flow forecasting, margin analysis, strategic modeling, and decision support &mdash;
             executive financial leadership without a full-time hire.</p>
-            <a class="lgo" href="services.html">Details &rarr;</a></div>
+            <a class="lgo" href="cfo-advisory.html">Details &rarr;</a></div>
           <div class="lrow"><div class="ln">04</div><h3>Tax Planning &amp; Prep</h3>
             <p>Proactive planning through the year, not just filing in April. Entity strategy, deduction
             capture, and quarterly estimate management.</p>

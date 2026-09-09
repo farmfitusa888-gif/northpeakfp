@@ -3,8 +3,12 @@ import os, sys, json, html, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from build_site import shell, W, ROOT, SITE, FIRM, EMAIL, CAL_PLACEHOLDER, FORM_PLACEHOLDER
 import generate_articles_northpeak as G
+from build_pillars import PILLARS
 
 ARTS = G.ARTICLES
+# Pillar slug -> label, for the tier cards. Imported rather than restated so a
+# renamed pillar cannot leave a dead link on the services page.
+PILLAR_OF = {p["package"]: (p["slug"], p["label"]) for p in PILLARS}
 CATS = sorted({a["cat"] for a in ARTS})
 TICK = ('<svg class="tick" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
         'stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>')
@@ -51,25 +55,56 @@ for tid, name, price, per, who, feats, fit, feat in TIERS:
         <div class="{pcls}">{price}<small> {per}</small></div>
         <ul>{"".join(f"<li>{f}</li>" for f in feats)}</ul>
         <p class="fit"><strong>Best for:</strong> {fit}</p>
+        <p class="fit"><a href="{PILLAR_OF[tid][0]}.html">What {PILLAR_OF[tid][1].lower()} include &rarr;</a></p>
         <a href="contact.html?plan={tid}" class="btn{' gold' if feat else ' ghost'}" style="justify-content:center">
           {"Request a Quote" if price=="Custom" else "Get Started"}</a>
       </div>"""
+
+SERVICES_FAQS = [
+    ("How much do NorthPeak's services cost?",
+     "Every engagement is quoted individually after a free 30-minute call, because scope depends on "
+     "transaction volume and entity count, and on how much clean-up is needed. You receive a fixed "
+     "figure in writing before any work begins, with no hourly billing."),
+    ("Which package should I start with?",
+     "Starter if you need clean books, monthly reports, and tax preparation. Growth if you need a "
+     "structured close, statements a lender would accept, and budget against actual reporting. CFO if "
+     "the questions are about the year ahead. The first call is where we say which fits, including "
+     "if none does yet."),
+    ("Can I move between packages?",
+     "Yes. Each level includes everything below it, and you move up when the complexity of the "
+     "business does. Nothing is locked in."),
+    ("Is tax preparation included in every package?",
+     "Yes. Individual and business tax preparation is part of Starter and carries through Growth "
+     "and CFO."),
+    ("Do you work with businesses outside the Chicago area?",
+     "Yes. The practice is based in Wilmette, Illinois. Engagements run remotely with scheduled "
+     "video reviews, so clients anywhere in the country get the same monthly rhythm."),
+]
+svc_faq_html = "".join(f'<details class="faq"><summary>{q}</summary><p>{a}</p></details>'
+                       for q, a in SERVICES_FAQS)
 
 svc_body = f"""
 {crumb([("Home","index.html"),("Services",None)])}
 <div class="wrap pagehead">
   <p class="eyebrow">Services &amp; Pricing</p>
   <h1>Three levels of financial support</h1>
-  <p class="lead" style="max-width:640px">Start where you are. Every engagement is scoped to your business,
-  and you can move up a tier whenever complexity grows.</p>
+  <p class="lead" style="max-width:66ch">NorthPeak offers three levels of support. Starter covers
+  bookkeeping, reconciliations, monthly reports, and tax preparation. Growth adds controller-level
+  oversight, a structured monthly close, and budget against actual reporting. CFO adds forecasting,
+  modelling, and a standing strategy call. Every engagement is quoted individually as a fixed figure
+  in writing after a free 30-minute call, and you move up a level when complexity grows.</p>
+  <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
+    <a href="contact.html" class="btn gold lg">Book a Free Consultation</a>
+    <a href="tel:+18476442288" class="btn ghost lg">(847) 644-2288</a>
+  </div>
 </div>
 <section style="padding-top:44px">
   <div class="wrap">
     <div class="grid g3" style="align-items:stretch">{tier_html}</div>
     <p style="text-align:center;color:var(--mute);font-size:.88rem;margin-top:30px">
       Every engagement is quoted individually based on your scope.
-      <a href="contact.html">Book a free consultation</a> and we'll tell you honestly which level fits
-      &mdash; including if you don't need us yet.</p>
+      <a href="contact.html">Book a free consultation</a> and we'll tell you honestly which level fits,
+      including if you don't need us yet.</p>
   </div>
 </section>
 
@@ -86,9 +121,9 @@ svc_body = f"""
         <tbody>
         {"".join(f'''<tr style="border-bottom:1px solid var(--rule)">
           <td style="padding:13px 10px;font-size:.92rem;color:var(--soft)">{r[0]}</td>
-          <td style="text-align:center;padding:13px 10px">{TICK if r[1] else '<span style="color:var(--rule)">&mdash;</span>'}</td>
-          <td style="text-align:center;padding:13px 10px">{TICK if r[2] else '<span style="color:var(--rule)">&mdash;</span>'}</td>
-          <td style="text-align:center;padding:13px 10px">{TICK if r[3] else '<span style="color:var(--rule)">&mdash;</span>'}</td></tr>'''
+          <td style="text-align:center;padding:13px 10px">{TICK if r[1] else '<span style="color:var(--rule)" aria-label="not included">&ndash;</span>'}</td>
+          <td style="text-align:center;padding:13px 10px">{TICK if r[2] else '<span style="color:var(--rule)" aria-label="not included">&ndash;</span>'}</td>
+          <td style="text-align:center;padding:13px 10px">{TICK if r[3] else '<span style="color:var(--rule)" aria-label="not included">&ndash;</span>'}</td></tr>'''
         for r in [
           ("Bookkeeping &amp; categorization",1,1,1),("Bank reconciliations",1,1,1),
           ("Monthly financial reports",1,1,1),
@@ -103,10 +138,18 @@ svc_body = f"""
   </div>
 </section>
 
-<section>
+<section class="pad-s" id="faq">
+  <div class="wrap narrow" style="padding:0">
+    <div class="sec-head rv" style="margin-bottom:26px"><p class="eyebrow">FAQ</p>
+      <h2>Common questions about our services</h2></div>
+    <div class="rv">{svc_faq_html}</div>
+  </div>
+</section>
+
+<section class="alt">
   <div class="wrap"><div class="split rv">
     <div class="sh"><h2>Not sure where you fit?</h2></div>
-    <div class="sb"><p class="lead" style="max-width:54ch">Tell us about your business in a free 30-minute call and we'll recommend the right level &mdash;
+    <div class="sb"><p class="lead" style="max-width:54ch">Tell us about your business in a free 30-minute call and we'll recommend the right level,
     or tell you if you're not ready for one yet.</p>
       <div style="margin-top:22px"><a href="contact.html" class="btn gold lg">Book a Free Consultation</a></div></div>
   </div></div>
@@ -118,13 +161,19 @@ W("services.html", shell(
     desc="Compare NorthPeak's Starter, Growth, and CFO packages: bookkeeping, controller services, and fractional CFO advisory with transparent monthly pricing.",
     canon=f"{SITE}/services", body=svc_body, active="Services",
     keywords="accounting packages, bookkeeping pricing, controller services, fractional CFO pricing",
-    jsonld={"@context":"https://schema.org","@type":"Service","serviceType":"Accounting and CFO Advisory",
+    jsonld=[{"@context":"https://schema.org","@type":"WebPage","name":"Services & Pricing",
+             "url":f"{SITE}/services","dateModified":G.LASTMOD,
+             "isPartOf":{"@type":"WebSite","name":FIRM,"url":SITE}},
+            {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+              {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}}
+              for q,a in SERVICES_FAQS]},
+            {"@context":"https://schema.org","@type":"Service","serviceType":"Accounting and CFO Advisory",
             "provider":{"@type":"AccountingService","name":FIRM,"url":SITE},
             "hasOfferCatalog":{"@type":"OfferCatalog","name":"Advisory Packages","itemListElement":[
               {"@type":"Offer","name":"Starter Package",
                "description":"Bookkeeping, reconciliations, monthly reports, and individual and business tax preparation."},
               {"@type":"Offer","name":"Growth Package","description":"Controller-level oversight, monthly close, KPI tracking."},
-              {"@type":"Offer","name":"CFO Package","description":"Fractional CFO advisory, forecasting, strategic modeling."}]}}))
+              {"@type":"Offer","name":"CFO Package","description":"Fractional CFO advisory, forecasting, strategic modeling."}]}}]))
 
 # ============================================================ ABOUT
 about_body = f"""
@@ -409,15 +458,18 @@ FAQS = [
     ("How quickly will I hear back?", "Every inquiry gets a reply within one business day. If it's "
      "urgent, call (847) 644-2288 directly."),
     ("What happens on the first call?", "It's a free 30-minute conversation about your business, your "
-     "current books, and where the gaps are. No pitch deck &mdash; we'll tell you honestly what would help most, "
+     "current books, and where the gaps are. No pitch deck. We'll tell you honestly what would help most, "
      "including if you don't need us yet."),
+    ("What should I have ready for the call?", "Nothing formal. The last bank statement, whatever your "
+     "accounting software shows, and a sense of what is not working. If the books are behind, say so. "
+     "It changes nothing about the call."),
     ("Do I need to switch accounting software?", "Usually not. We work with the major platforms and will "
      "tell you plainly if your current setup is holding you back before recommending any change."),
     ("How is pricing structured?", "Every engagement is quoted individually after the discovery call, "
      "because scope depends on transaction volume, entity count, complexity, and how much clean-up is "
      "needed. There is no one-size-fits-all package price. You'll receive a fixed figure in writing "
-     "before any work begins &mdash; no hourly surprises."),
-    ("Can you clean up books that are behind?", "Yes &mdash; catch-up and clean-up work is common. We'll scope "
+     "before any work begins, with no hourly surprises."),
+    ("Can you clean up books that are behind?", "Yes. Catch-up and clean-up work is common. We'll scope "
      "it separately from ongoing service so you know exactly what the one-time effort costs."),
     ("Do you work with businesses outside your state?", "Yes. Engagements are handled remotely with "
      "scheduled video reviews, so location isn't a constraint."),
@@ -429,9 +481,12 @@ contact_body = f"""
 <div class="wrap pagehead">
   <p class="eyebrow">Get Started</p>
   <h1>Request a free consultation</h1>
-  <p class="lead" style="max-width:620px">A 30-minute conversation about your business and your numbers.
-  No obligation, no pressure &mdash; just a clear read on where you stand. We reply to every message
-  within one business day.</p>
+  <p class="lead" style="max-width:66ch">A free 30-minute conversation about your business and your
+  numbers, with no obligation and no pressure. We look at where the books stand, say plainly what would
+  help most, and tell you if you do not need us yet. Every message gets a reply within one business day,
+  and any work that follows is quoted as a fixed figure in writing.</p>
+  <p style="margin-top:18px;font-size:1rem">Prefer to talk now? Call
+    <a href="tel:+18476442288"><strong>(847) 644-2288</strong></a> or use the form below.</p>
 </div>
 
 <section style="padding-top:44px">
@@ -451,7 +506,7 @@ contact_body = f"""
             <span style="display:block;color:var(--soft);font-size:.91rem;margin-top:3px">A real response from us, not an autoresponder.</span></li><li style="counter-increment:cs;position:relative;padding:0 0 20px 44px;border-left:2px solid var(--rule);margin-left:13px">
             <span style="position:absolute;left:-15px;top:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:.8rem;font-weight:700">3</span>
             <strong style="color:var(--ink-2);font-size:.97rem">Free 30-minute call</strong>
-            <span style="display:block;color:var(--soft);font-size:.91rem;margin-top:3px">We review your situation and tell you honestly what would help &mdash; including if you don't need us yet.</span></li><li style="counter-increment:cs;position:relative;padding:0 0 20px 44px;border-left:2px solid var(--rule);margin-left:13px">
+            <span style="display:block;color:var(--soft);font-size:.91rem;margin-top:3px">We review your situation and tell you honestly what would help, including if you don't need us yet.</span></li><li style="counter-increment:cs;position:relative;padding:0 0 20px 44px;border-left:2px solid var(--rule);margin-left:13px">
             <span style="position:absolute;left:-15px;top:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:.8rem;font-weight:700">4</span>
             <strong style="color:var(--ink-2);font-size:.97rem">Written scope &amp; fixed price</strong>
             <span style="display:block;color:var(--soft);font-size:.91rem;margin-top:3px">You see exactly what's included and what it costs before anything starts.</span></li>
@@ -464,7 +519,7 @@ contact_body = f"""
           <a href="tel:+18476442288" style="text-decoration:none;color:inherit">(847) 644-2288</a></p>
         <p style="font-size:.97rem;margin-bottom:14px"><a href="mailto:{EMAIL}">{EMAIL}</a></p>
         <p style="font-size:.9rem;color:var(--soft);border-top:1px solid var(--rule);padding-top:14px;margin:0">
-          Wilmette, IL &mdash; serving clients remotely nationwide.</p>
+          Wilmette, IL, serving clients remotely nationwide.</p>
       </div>
     </div>
 
@@ -487,7 +542,7 @@ contact_body = f"""
             <input id="company" name="company" type="text" autocomplete="organization"></div>
           <div class="fg"><label for="service">What do you need help with?</label>
             <select id="service" name="service">
-              <option>Not sure yet &mdash; need guidance</option>
+              <option>Not sure yet, need guidance</option>
               <option>Bookkeeping &amp; monthly reporting</option>
               <option>Controller services</option>
               <option>CFO advisory</option>
@@ -526,14 +581,17 @@ W("contact.html", shell(
     desc="Book a free 30-minute consultation with NorthPeak Financial Partners, or send an inquiry. We reply to every message within one business day.",
     canon=f"{SITE}/contact", body=contact_body, active="Contact",
     keywords="book accounting consultation, contact accountant, financial consultation",
-    jsonld={"@context":"https://schema.org","@graph":[
-      {"@type":"FAQPage","mainEntity":[
-        {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a.replace("&mdash;","—")}}
+    jsonld=[
+      {"@context":"https://schema.org","@type":"WebPage","name":"Contact & Book a Consultation",
+       "url":f"{SITE}/contact","dateModified":G.LASTMOD,
+       "isPartOf":{"@type":"WebSite","name":FIRM,"url":SITE}},
+      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+        {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}}
         for q,a in FAQS]},
-      {"@type":"AccountingService","name":FIRM,"url":SITE,"email":EMAIL,
+      {"@context":"https://schema.org","@type":"AccountingService","name":FIRM,"url":SITE,"email":EMAIL,
        "telephone":"+1-847-644-2288",
        "address":{"@type":"PostalAddress","addressLocality":"Wilmette","addressRegion":"IL","addressCountry":"US"},
-       "areaServed":{"@type":"Country","name":"United States"}}]}))
+       "areaServed":{"@type":"Country","name":"United States"}}]))
 
 # ============================================================ 404 + robots + sitemap
 W("404.html", shell(title=f"Page Not Found | {FIRM}",
@@ -550,6 +608,7 @@ W("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 
 pages = [("", "1.0", "weekly"), ("services", "0.9", "monthly"), ("about", "0.7", "monthly"),
          ("articles/", "0.9", "weekly"), ("resources", "0.8", "monthly"), ("contact", "0.8", "monthly")]
+pages += [(p["slug"], "0.9", "monthly") for p in PILLARS]
 urls = "".join(f"  <url>\n    <loc>{SITE}/{p}</loc>\n    <lastmod>{G.LASTMOD}</lastmod>\n    <changefreq>{c}</changefreq>\n    <priority>{pr}</priority>\n  </url>\n"
                for p, pr, c in pages)
 urls += "".join(f"  <url>\n    <loc>{SITE}/articles/{a['slug']}</loc>\n    <lastmod>{G.LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
@@ -577,7 +636,7 @@ W("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http:/
 #
 # Enumerating from ARTS means adding an article automatically adds its rule, so
 # the two can never drift apart.
-STATIC_PAGES = ["about", "services", "contact", "resources"]
+STATIC_PAGES = ["about", "services", "contact", "resources"] + [p["slug"] for p in PILLARS]
 
 redir = ["# GENERATED by build_pages2.py — do not edit by hand.",
          "# Verify any change with: ./tools/check_redirects.sh",

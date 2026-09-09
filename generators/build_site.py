@@ -309,6 +309,12 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
 .acta h3{color:#fff;font-size:1.35rem;margin-bottom:10px}
 .acta p{color:#b6cdc3;margin-bottom:22px;font-size:.97rem}
 .adisc{font-size:.85rem;color:var(--mute);font-style:italic;border-top:1px solid var(--rule);padding-top:18px}
+.acluster{font-size:.92rem;color:var(--soft);background:var(--paper-2);border-left:3px solid var(--gold);
+  padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0 4px}
+.acluster a{color:var(--accent)}
+.afaq{margin-bottom:34px;border-top:1px solid var(--rule)}
+.afaq .faq summary{font-size:1rem}
+.afaq .faq p{font-size:.95rem;margin-bottom:0}
 .arel{margin:46px 0 10px}
 .arel h3{font-size:1.25rem;color:var(--deep);margin-bottom:16px}
 .arel .arts{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
@@ -638,7 +644,14 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
         f'{" aria-current=\"page\"" if active in (n, pre + n) else ""}>'
         f'{f"<span class=\"nav-long\">{pre}</span>" if pre else ""}{n}</a>'
         for n, pre, h, cls in nav_items)
-    ld = f'<script type="application/ld+json">\n{json.dumps(jsonld, indent=2)}\n</script>' if jsonld else ""
+    # One dict is one block. A list is one block per item, so a page can carry
+    # Article + BreadcrumbList + FAQPage (or WebPage + Service + ...) with each
+    # type, and its dateModified, at the top level where readers look for it.
+    if isinstance(jsonld, (list, tuple)):
+        ld = "\n".join(f'<script type="application/ld+json">\n{json.dumps(b, indent=2)}\n</script>'
+                       for b in jsonld if b)
+    else:
+        ld = f'<script type="application/ld+json">\n{json.dumps(jsonld, indent=2)}\n</script>' if jsonld else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -702,10 +715,10 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
         -->
       </div>
       <div><h2>Services</h2><ul>
-        <li><a href="{p}services.html#starter">Starter Package</a></li>
-        <li><a href="{p}services.html#growth">Growth Package</a></li>
-        <li><a href="{p}services.html#cfo">CFO Package</a></li>
-        <li><a href="{p}services.html">Compare Plans</a></li></ul></div>
+        <li><a href="{p}accounting-services.html">Accounting Services</a></li>
+        <li><a href="{p}controller-services.html">Controller Services</a></li>
+        <li><a href="{p}cfo-advisory.html">CFO Advisory</a></li>
+        <li><a href="{p}services.html">Compare Packages</a></li></ul></div>
       <div><h2>Learn</h2><ul>
         <li><a href="{p}articles/index.html">All Articles</a></li>
         <li><a href="{p}resources.html">Free Tools</a></li>

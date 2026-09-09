@@ -9,8 +9,10 @@ and rebuild; anything typed directly into `site/` is destroyed on the next build
 python3 generators/build.py
 ```
 
-Writes 32 HTML pages plus assets into `site/`. No dependencies, no build step at
-runtime, no framework. Override the output path with `NP_ROOT=/some/path`.
+Writes every HTML page plus assets into `site/`. No dependencies, no build step at
+runtime, no framework. Needs Python 3.12 or newer (the shell's f-strings use
+3.12 syntax; Netlify is pinned to 3.12 in `netlify.toml`). Override the output
+path with `NP_ROOT=/some/path`.
 
 ## Verify
 
@@ -41,6 +43,10 @@ Must report 0 errors before any deploy.
 | Homepage | `generators/build_pages.py` |
 | Services / About / Contact / Resources | `generators/build_pages2.py` |
 | Article page layout | `generators/build_articles_shell.py` |
+| Service pillar pages (accounting, controller, CFO) | `generators/build_pillars.py` |
+| Service cluster articles (the guides under each pillar) | `generators/articles_cluster.py` |
+| Retirement and quarterly-tax article clusters | `generators/articles_retirement.py`, `generators/articles_quarterly.py` |
+| Town pages and local guides | `generators/build_areas.py` |
 | Redirects and security headers | `generators/static/_redirects`, `generators/static/netlify.toml` |
 
 ## Hard constraints

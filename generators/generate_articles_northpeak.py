@@ -622,6 +622,13 @@ ARTICLES.extend(_RETIREMENT)
 from articles_quarterly import ARTICLES as _QUARTERLY
 ARTICLES.extend(_QUARTERLY)
 
+# Service cluster (2026-09 cluster month): the articles under the three pillar
+# pages built by build_pillars.py. Each carries a "pillar" key, question h2s,
+# a visible FAQ and section bodies as lists of paragraphs. See
+# articles_cluster.py for which buyer intents were chosen and why.
+from articles_cluster import ARTICLES as _CLUSTER
+ARTICLES.extend(_CLUSTER)
+
 SEO_TITLES.update({
     "solo-401k-vs-sep-ira-switch": "When to Move From a SEP-IRA to a Solo 401(k)",
     "403b-vs-sep-ira": "403(b) vs. SEP-IRA: Using Both With a Side Business",

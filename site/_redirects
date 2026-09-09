@@ -26,6 +26,9 @@ https://www.northpeakfp.com/*   https://northpeakfp.com/:splat   301!
 /services.html          /services         301!
 /contact.html           /contact          301!
 /resources.html         /resources        301!
+/accounting-services.html /accounting-services 301!
+/controller-services.html /controller-services 301!
+/cfo-advisory.html      /cfo-advisory     301!
 /articles/index.html      /articles/        301!
 /articles/tax-deductions-small-business.html /articles/tax-deductions-small-business 301!
 /articles/llc-vs-s-corp.html /articles/llc-vs-s-corp 301!
@@ -67,6 +70,17 @@ https://www.northpeakfp.com/*   https://northpeakfp.com/:splat   301!
 /articles/how-to-pay-estimated-taxes.html /articles/how-to-pay-estimated-taxes 301!
 /articles/uneven-income-estimated-taxes.html /articles/uneven-income-estimated-taxes 301!
 /articles/first-year-self-employed-taxes.html /articles/first-year-self-employed-taxes 301!
+/articles/accountant-cost-small-business.html /articles/accountant-cost-small-business 301!
+/articles/diy-bookkeeping-or-hire.html /articles/diy-bookkeeping-or-hire 301!
+/articles/bookkeeping-mistakes-that-cost-money.html /articles/bookkeeping-mistakes-that-cost-money 301!
+/articles/questions-to-ask-an-accountant.html /articles/questions-to-ask-an-accountant 301!
+/articles/controller-cost-fractional-vs-full-time.html /articles/controller-cost-fractional-vs-full-time 301!
+/articles/bookkeeper-vs-controller-vs-cfo.html /articles/bookkeeper-vs-controller-vs-cfo 301!
+/articles/how-controller-services-work.html /articles/how-controller-services-work 301!
+/articles/how-long-month-end-close-takes.html /articles/how-long-month-end-close-takes 301!
+/articles/fractional-cfo-cost.html /articles/fractional-cfo-cost 301!
+/articles/how-to-choose-a-fractional-cfo.html /articles/how-to-choose-a-fractional-cfo 301!
+/articles/do-you-need-a-cfo-yet.html /articles/do-you-need-a-cfo-yet 301!
 
 /service-areas/index.html   /service-areas/   301!
 /service-areas/wilmette.html /service-areas/wilmette 301!
@@ -91,6 +105,9 @@ https://www.northpeakfp.com/*   https://northpeakfp.com/:splat   301!
 /services                 /services.html     200
 /contact                  /contact.html      200
 /resources                /resources.html    200
+/accounting-services      /accounting-services.html 200
+/controller-services      /controller-services.html 200
+/cfo-advisory             /cfo-advisory.html 200
 /articles/                /articles/index.html   200
 /articles/:slug           /articles/:slug.html   200
 /service-areas/           /service-areas/index.html  200

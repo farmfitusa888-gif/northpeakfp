@@ -30,7 +30,8 @@ STAGES = [
     ("build_site.py", "assets: style.css, app.js, favicon"),
     ("build_pages.py", "homepage"),
     ("build_pages2.py", "services, about, hub, resources, contact, 404, robots, sitemap"),
-    ("build_articles_shell.py", "25 article pages"),
+    ("build_articles_shell.py", "article pages"),
+    ("build_pillars.py", "service pillar pages: accounting, controller, CFO"),
     ("build_areas.py", "service-area hub + town pages"),
 ]
 
