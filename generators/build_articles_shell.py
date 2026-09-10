@@ -103,6 +103,9 @@ for i, a in enumerate(ARTS):
                    "worksFor": {"@type": "Organization", "name": FIRM, "url": SITE}},
         "publisher": {"@type": "Organization", "name": FIRM,
                       "logo": {"@type": "ImageObject", "url": f"{SITE}/assets/favicon.svg"}},
+        # Money content: the reviewer is named, not implied. G.REVIEWER is the
+        # founder as the About page describes him, and nothing more.
+        "reviewedBy": G.REVIEWER,
         "datePublished": a.get("published", G.PUBDATE), "dateModified": G.LASTMOD,
         "articleSection": a["cat"],
         "mainEntityOfPage": {"@type": "WebPage", "@id": f"{SITE}/articles/{a['slug']}"},

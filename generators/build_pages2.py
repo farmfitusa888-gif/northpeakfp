@@ -168,7 +168,8 @@ W("services.html", shell(
             {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
               {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}}
               for q,a in SERVICES_FAQS]},
-            {"@context":"https://schema.org","@type":"Service","serviceType":"Accounting and CFO Advisory",
+            {"@context":"https://schema.org","@type":"Service","name":"Accounting and CFO Advisory",
+             "serviceType":"Accounting and CFO Advisory",
             "provider":{"@type":"AccountingService","name":FIRM,"url":SITE},
             "hasOfferCatalog":{"@type":"OfferCatalog","name":"Advisory Packages","itemListElement":[
               {"@type":"Offer","name":"Starter Package",
@@ -605,7 +606,8 @@ W("404.html", shell(title=f"Page Not Found | {FIRM}",
   <a href="articles/index.html" class="btn ghost lg" style="margin-left:10px">Browse Articles</a>
   </div></section>"""))
 
-W("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+W("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n"
+                f"# llms.txt: {SITE}/llms.txt\n")
 
 # lastmod is each page's OWN content date, not the build clock: every page in
 # this site is regenerated on every run, so one shared date told crawlers all
@@ -616,28 +618,67 @@ W("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 def _lm(page_file):
     return page_dates.lastmod_mark(page_file)
 
-pages = [("", "1.0", "weekly", "index.html"), ("services", "0.9", "monthly", "services.html"),
-         ("about", "0.7", "monthly", "about.html"), ("articles/", "0.9", "weekly", "articles/index.html"),
-         ("resources", "0.8", "monthly", "resources.html"), ("contact", "0.8", "monthly", "contact.html")]
-pages += [(p["slug"], "0.9", "monthly", f"{p['slug']}.html") for p in PILLARS]
-urls = "".join(f"  <url>\n    <loc>{SITE}/{p}</loc>\n    <lastmod>{_lm(f)}</lastmod>\n    <changefreq>{c}</changefreq>\n    <priority>{pr}</priority>\n  </url>\n"
-               for p, pr, c, f in pages)
-for _a in ARTS:
-    _slug = _a["slug"]
-    urls += (f"  <url>\n    <loc>{SITE}/articles/{_slug}</loc>\n"
-             f"    <lastmod>{_lm(f'articles/{_slug}.html')}</lastmod>\n"
-             f"    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n")
-
 # Service-area URLs. Imported from build_areas rather than restated, so adding a
 # town cannot leave the sitemap or the redirects behind.
 from build_areas import (TOWNS as _TOWNS, TOWN_PAGES_READY as _TOWN_PAGES,
                          LOCAL_GUIDES as _GUIDES)
-urls += f"  <url>\n    <loc>{SITE}/service-areas/</loc>\n    <lastmod>{_lm('service-areas/index.html')}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n"
-urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{t[1]}</loc>\n    <lastmod>{_lm(f'service-areas/{t[1]}.html')}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
-                for t in (_TOWNS if _TOWN_PAGES else []))
-urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{g[0]}</loc>\n    <lastmod>{_lm(f'service-areas/{g[0]}.html')}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
-                for g in _GUIDES)
+
+# ONE list of every indexable URL, in crawl order. sitemap.xml and llms.txt are
+# both written from it, so a page can never appear in one and be missing from
+# the other. Each row is (path under SITE, priority, changefreq, output file,
+# link text, llms.txt section). The link text is the page's own name as the page
+# itself uses it, never a fresh description written for this file.
+SITE_PAGES = [
+    ("",                  "1.0", "weekly",  "index.html",           "Accounting, Controller & CFO", "Main pages"),
+    ("services",          "0.9", "monthly", "services.html",        "Services & Pricing",           "Main pages"),
+    ("about",             "0.7", "monthly", "about.html",           "About NorthPeak",              "Main pages"),
+    ("articles/",         "0.9", "weekly",  "articles/index.html",  "Articles & Guides",            "Main pages"),
+    ("resources",         "0.8", "monthly", "resources.html",       "Free Tools & Resources",       "Main pages"),
+    ("contact",           "0.8", "monthly", "contact.html",         "Contact & Book a Consultation", "Main pages"),
+]
+SITE_PAGES += [(p["slug"], "0.9", "monthly", f"{p['slug']}.html", p["label"], "Services")
+               for p in PILLARS]
+SITE_PAGES += [(f"articles/{a['slug']}", "0.7", "monthly", f"articles/{a['slug']}.html",
+                a["title"], "Articles") for a in ARTS]
+SITE_PAGES += [("service-areas/", "0.8", "monthly", "service-areas/index.html",
+                "Service Areas", "Service areas")]
+SITE_PAGES += [(f"service-areas/{t[1]}", "0.7", "monthly", f"service-areas/{t[1]}.html",
+                f"Accounting & Tax Services in {t[0]}, IL", "Service areas")
+               for t in (_TOWNS if _TOWN_PAGES else [])]
+SITE_PAGES += [(f"service-areas/{g[0]}", "0.7", "monthly", f"service-areas/{g[0]}.html",
+                g[1], "Local guides") for g in _GUIDES]
+
+urls = "".join(f"  <url>\n    <loc>{SITE}/{path}</loc>\n    <lastmod>{_lm(f)}</lastmod>\n"
+               f"    <changefreq>{c}</changefreq>\n    <priority>{pr}</priority>\n  </url>\n"
+               for path, pr, c, f, _t, _sec in SITE_PAGES)
 W("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
+
+# ============================================================ llms.txt
+#
+# The same URLs the sitemap carries, as a list an answer engine can read in one
+# request instead of crawling 77 pages. The summary line is the home page's own
+# meta description, so the file cannot drift into saying something the site does
+# not say. robots.txt points at it as a comment: no robots parser knows the word
+# "llms", and inventing a directive every crawler skips says less than a line a
+# person will read.
+_LLMS_SECTIONS = ["Main pages", "Services", "Articles", "Service areas", "Local guides"]
+_llms = [f"# {FIRM}", "",
+         "> Accounting, controller services, and CFO-level advisory that give growing "
+         "businesses real financial clarity. Based in Wilmette, Illinois, working with "
+         "clients nationwide.", ""]
+for _sec in _LLMS_SECTIONS:
+    _rows = [(path, text) for path, _pr, _c, _f, text, s2 in SITE_PAGES if s2 == _sec]
+    if not _rows:
+        continue
+    _llms.append(f"## {_sec}")
+    _llms += [f"- [{text}]({SITE}/{path})" for path, text in _rows]
+    _llms.append("")
+_llms += ["## Notes", "",
+          "- Articles are general information, not individualized tax, legal, or "
+          "financial advice.",
+          "- Every engagement is quoted individually; no fees are published on the site.",
+          "- Founder and principal: " + G.FOUNDER + ". He is not a CPA.", ""]
+W("llms.txt", "\n".join(_llms))
 
 # ============================================================ _redirects
 #

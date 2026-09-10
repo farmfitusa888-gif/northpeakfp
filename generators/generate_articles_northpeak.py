@@ -18,6 +18,20 @@ PHONE      = "(847) 644-2288"
 LOCATION   = "Wilmette, IL"
 FOUNDER    = "Chaudhry Ahmad"
 FOUNDER_TITLE = "Founder &amp; Principal"
+
+# Who stands behind the money content. Tax, retirement and cash-flow pages are
+# the kind a reader acts on, so their Article markup names the human who checked
+# them rather than leaving the firm as a faceless byline. Chaudhry Ahmad is the
+# only person the site names, and he is described here exactly as the About page
+# describes him: founder, principal, controller-level experience. No credential,
+# licence or title is added that the pages do not already print. He is not a CPA.
+REVIEWER = {
+    "@type": "Person",
+    "name": FOUNDER,
+    "jobTitle": "Founder & Principal",
+    "url": SITE + "/about",
+    "worksFor": {"@type": "Organization", "name": FIRM, "url": SITE},
+}
 SHOW_DATE  = False       # visible post date hidden; schema dates still used
 # Neither date is typed here and neither is the build clock. PUBDATE used to be
 # one hand-typed day shared by every article no matter when it was written, and

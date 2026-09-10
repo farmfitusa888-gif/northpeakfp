@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://northpeakfp.com/sitemap.xml
+# llms.txt: https://northpeakfp.com/llms.txt

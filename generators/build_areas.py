@@ -738,6 +738,7 @@ def build():
                                "jobTitle": "Founder & Principal",
                                "worksFor": {"@type": "Organization", "name": FIRM, "url": SITE}},
                     "publisher": {"@type": "Organization", "name": FIRM, "url": SITE},
+                    "reviewedBy": G.REVIEWER,
                     "datePublished": G.PUBDATE, "dateModified": G.LASTMOD,
                     "mainEntityOfPage": f"{SITE}/service-areas/{slug}",
                     "about": {"@type": "AdministrativeArea", "name": "Cook and Lake Counties, Illinois"}}))
