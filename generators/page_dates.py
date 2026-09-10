@@ -179,10 +179,16 @@ def _data_row_date(rel):
 
 
 def _derive(rel):
-    """(published, modified) for a page with no record yet."""
+    """(published, modified) for a page with no record yet.
+
+    The day the rendered page first appeared is the answer whenever git has
+    it, because that is the day the page existed and no earlier. The data row
+    is the fallback for a page too new to have a history of its own, and it is
+    only a fallback: a slug like "bathroom-remodeling" is also a service that
+    has been in the data since long before the page was written, and reading
+    that as the page's birthday would date it years early."""
     first, last = _history()
-    cands = [d for d in (first.get(rel), _data_row_date(rel)) if d]
-    published = min(cands) if cands else _repo_birth()
+    published = first.get(rel) or _data_row_date(rel) or _repo_birth()
     modified = last.get(rel) or published
     return published, max(modified, published)
 
