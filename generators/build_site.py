@@ -2,6 +2,7 @@
 """Build the complete NorthPeak Financial Partners website."""
 import os, sys, json, shutil, html, pathlib, re, posixpath
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import page_dates
 import generate_articles_northpeak as G
 
 # Output directory. Defaults to <repo>/site so the build is machine-independent.
@@ -800,6 +801,13 @@ def canonicalize_links(markup, page_path):
 def W(path, content):
     if path.endswith(".html"):
         content = canonicalize_links(content, path)
+        # The one place holding both a page's output path and its finished
+        # bytes, which is what its two dates are made of. page_dates hashes the
+        # page with the date marks still in it, so the hash describes what the
+        # page says and nothing about when the build ran.
+        content = page_dates.resolve(path, content)
+        assert page_dates.PUBLISHED_MARK not in content and \
+            page_dates.MODIFIED_MARK not in content, ("unstamped date", path)
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     open(full, "w").write(content)

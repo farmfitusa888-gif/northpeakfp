@@ -434,7 +434,7 @@ def build():
         webpage = {
             "@context": "https://schema.org", "@type": "WebPage",
             "name": html.unescape(p["title"].split(" | ")[0]), "url": url,
-            "datePublished": "2026-09-09", "dateModified": G.LASTMOD,
+            "datePublished": G.PUBDATE, "dateModified": G.LASTMOD,
             "isPartOf": {"@type": "WebSite", "name": FIRM, "url": SITE},
             "about": {"@type": "Service", "name": p["label"], "url": url},
         }

@@ -172,6 +172,25 @@ def main() -> None:
                 shutil.copy2(src, dst)
                 print(f"   {src.relative_to(static)}")
 
+    # The sitemap is written by build_pages2, before the articles and the town
+    # pages exist, so it carries one mark per URL instead of a date. Every page
+    # has been stamped by now, so each mark can be swapped for that page's own
+    # recorded content date. A page whose words did not move keeps the date it
+    # already had, which is the whole point.
+    print("\n\033[1m── dates\033[0m")
+    sys.path.insert(0, str(HERE))
+    import page_dates
+    sitemap = ROOT / "sitemap.xml"
+    if sitemap.exists():
+        before = sitemap.read_text()
+        after = page_dates.resolve_lastmods(before)
+        if "@lastmod:" in after:
+            raise SystemExit("sitemap.xml has a lastmod mark no page record could fill")
+        if after != before:
+            sitemap.write_text(after)
+        days = sorted(set(re.findall(r"<lastmod>([^<]+)</lastmod>", after)))
+        print(f"   sitemap lastmod: {len(days)} distinct date(s) — {', '.join(days)}")
+
     print("\n\033[1m── fingerprint\033[0m")
     fingerprint()
 

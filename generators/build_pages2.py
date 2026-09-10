@@ -2,6 +2,7 @@
 import os, sys, json, html, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from build_site import shell, W, ROOT, SITE, FIRM, EMAIL, CAL_PLACEHOLDER, FORM_PLACEHOLDER
+import page_dates
 import generate_articles_northpeak as G
 from build_pillars import PILLARS
 
@@ -606,22 +607,35 @@ W("404.html", shell(title=f"Page Not Found | {FIRM}",
 
 W("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 
-pages = [("", "1.0", "weekly"), ("services", "0.9", "monthly"), ("about", "0.7", "monthly"),
-         ("articles/", "0.9", "weekly"), ("resources", "0.8", "monthly"), ("contact", "0.8", "monthly")]
-pages += [(p["slug"], "0.9", "monthly") for p in PILLARS]
-urls = "".join(f"  <url>\n    <loc>{SITE}/{p}</loc>\n    <lastmod>{G.LASTMOD}</lastmod>\n    <changefreq>{c}</changefreq>\n    <priority>{pr}</priority>\n  </url>\n"
-               for p, pr, c in pages)
-urls += "".join(f"  <url>\n    <loc>{SITE}/articles/{a['slug']}</loc>\n    <lastmod>{G.LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
-                for a in ARTS)
+# lastmod is each page's OWN content date, not the build clock: every page in
+# this site is regenerated on every run, so one shared date told crawlers all
+# 77 URLs had changed whenever anyone rebuilt. The articles and the town pages
+# are written by later stages and have no record yet at this point, so the
+# sitemap writes a mark per URL naming the page it belongs to and build.py
+# swaps each one for that page's recorded date once every page is stamped.
+def _lm(page_file):
+    return page_dates.lastmod_mark(page_file)
+
+pages = [("", "1.0", "weekly", "index.html"), ("services", "0.9", "monthly", "services.html"),
+         ("about", "0.7", "monthly", "about.html"), ("articles/", "0.9", "weekly", "articles/index.html"),
+         ("resources", "0.8", "monthly", "resources.html"), ("contact", "0.8", "monthly", "contact.html")]
+pages += [(p["slug"], "0.9", "monthly", f"{p['slug']}.html") for p in PILLARS]
+urls = "".join(f"  <url>\n    <loc>{SITE}/{p}</loc>\n    <lastmod>{_lm(f)}</lastmod>\n    <changefreq>{c}</changefreq>\n    <priority>{pr}</priority>\n  </url>\n"
+               for p, pr, c, f in pages)
+for _a in ARTS:
+    _slug = _a["slug"]
+    urls += (f"  <url>\n    <loc>{SITE}/articles/{_slug}</loc>\n"
+             f"    <lastmod>{_lm(f'articles/{_slug}.html')}</lastmod>\n"
+             f"    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n")
 
 # Service-area URLs. Imported from build_areas rather than restated, so adding a
 # town cannot leave the sitemap or the redirects behind.
 from build_areas import (TOWNS as _TOWNS, TOWN_PAGES_READY as _TOWN_PAGES,
                          LOCAL_GUIDES as _GUIDES)
-urls += f"  <url>\n    <loc>{SITE}/service-areas/</loc>\n    <lastmod>{G.LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n"
-urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{t[1]}</loc>\n    <lastmod>{G.LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
+urls += f"  <url>\n    <loc>{SITE}/service-areas/</loc>\n    <lastmod>{_lm('service-areas/index.html')}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n"
+urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{t[1]}</loc>\n    <lastmod>{_lm(f'service-areas/{t[1]}.html')}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
                 for t in (_TOWNS if _TOWN_PAGES else []))
-urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{g[0]}</loc>\n    <lastmod>{G.LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
+urls += "".join(f"  <url>\n    <loc>{SITE}/service-areas/{g[0]}</loc>\n    <lastmod>{_lm(f'service-areas/{g[0]}.html')}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n"
                 for g in _GUIDES)
 W("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n')
 
