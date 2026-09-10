@@ -26,6 +26,7 @@ https://www.northpeakfp.com/*   https://northpeakfp.com/:splat   301!
 /services.html          /services         301!
 /contact.html           /contact          301!
 /resources.html         /resources        301!
+/bookkeeping.html       /bookkeeping      301!
 /accounting-services.html /accounting-services 301!
 /controller-services.html /controller-services 301!
 /cfo-advisory.html      /cfo-advisory     301!
@@ -81,6 +82,23 @@ https://www.northpeakfp.com/*   https://northpeakfp.com/:splat   301!
 /articles/fractional-cfo-cost.html /articles/fractional-cfo-cost 301!
 /articles/how-to-choose-a-fractional-cfo.html /articles/how-to-choose-a-fractional-cfo 301!
 /articles/do-you-need-a-cfo-yet.html /articles/do-you-need-a-cfo-yet 301!
+/articles/how-bookkeeping-works-month-by-month.html /articles/how-bookkeeping-works-month-by-month 301!
+/articles/how-to-choose-a-bookkeeping-service.html /articles/how-to-choose-a-bookkeeping-service 301!
+/articles/questions-to-ask-a-bookkeeper.html /articles/questions-to-ask-a-bookkeeper 301!
+/articles/bookkeeping-alternatives.html /articles/bookkeeping-alternatives 301!
+/articles/how-accounting-services-work.html /articles/how-accounting-services-work 301!
+/articles/how-to-choose-an-accounting-firm.html /articles/how-to-choose-an-accounting-firm 301!
+/articles/how-long-accounting-services-take.html /articles/how-long-accounting-services-take 301!
+/articles/accounting-services-alternatives.html /articles/accounting-services-alternatives 301!
+/articles/how-to-choose-a-controller.html /articles/how-to-choose-a-controller 301!
+/articles/controller-services-mistakes.html /articles/controller-services-mistakes 301!
+/articles/questions-to-ask-a-fractional-controller.html /articles/questions-to-ask-a-fractional-controller 301!
+/articles/diy-controller-work-or-hire.html /articles/diy-controller-work-or-hire 301!
+/articles/controller-services-alternatives.html /articles/controller-services-alternatives 301!
+/articles/how-cfo-advisory-works.html /articles/how-cfo-advisory-works 301!
+/articles/cfo-advisory-mistakes.html /articles/cfo-advisory-mistakes 301!
+/articles/how-long-cfo-advisory-takes.html /articles/how-long-cfo-advisory-takes 301!
+/articles/cfo-advisory-alternatives.html /articles/cfo-advisory-alternatives 301!
 
 /service-areas/index.html   /service-areas/   301!
 /service-areas/wilmette.html /service-areas/wilmette 301!
@@ -105,6 +123,7 @@ https://www.northpeakfp.com/*   https://northpeakfp.com/:splat   301!
 /services                 /services.html     200
 /contact                  /contact.html      200
 /resources                /resources.html    200
+/bookkeeping              /bookkeeping.html  200
 /accounting-services      /accounting-services.html 200
 /controller-services      /controller-services.html 200
 /cfo-advisory             /cfo-advisory.html 200

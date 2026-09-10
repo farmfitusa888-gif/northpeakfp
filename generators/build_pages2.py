@@ -7,9 +7,15 @@ import generate_articles_northpeak as G
 from build_pillars import PILLARS
 
 ARTS = G.ARTICLES
-# Pillar slug -> label, for the tier cards. Imported rather than restated so a
-# renamed pillar cannot leave a dead link on the services page.
-PILLAR_OF = {p["package"]: (p["slug"], p["label"]) for p in PILLARS}
+# Package -> the pillars that sit under it, for the tier cards. Imported rather
+# than restated so a renamed pillar cannot leave a dead link on the services
+# page. A list rather than one entry: bookkeeping and accounting services are
+# both the Starter package seen from a different angle, and when this was a
+# dict keyed by package the second one silently replaced the first, which took
+# the Starter card's link off accounting-services without anyone touching it.
+PILLARS_OF: dict[str, list[tuple[str, str]]] = {}
+for _p in PILLARS:
+    PILLARS_OF.setdefault(_p["package"], []).append((_p["slug"], _p["label"]))
 CATS = sorted({a["cat"] for a in ARTS})
 TICK = ('<svg class="tick" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
         'stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>')
@@ -56,7 +62,7 @@ for tid, name, price, per, who, feats, fit, feat in TIERS:
         <div class="{pcls}">{price}<small> {per}</small></div>
         <ul>{"".join(f"<li>{f}</li>" for f in feats)}</ul>
         <p class="fit"><strong>Best for:</strong> {fit}</p>
-        <p class="fit"><a href="{PILLAR_OF[tid][0]}.html">What {PILLAR_OF[tid][1].lower()} include &rarr;</a></p>
+        {"".join(f'<p class="fit"><a href="{s}.html">What {l.lower()} {"include" if l.endswith("s") else "includes"} &rarr;</a></p>' for s, l in PILLARS_OF[tid])}
         <a href="contact.html?plan={tid}" class="btn{' gold' if feat else ' ghost'}" style="justify-content:center">
           {"Request a Quote" if price=="Custom" else "Get Started"}</a>
       </div>"""

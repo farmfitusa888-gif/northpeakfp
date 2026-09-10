@@ -3,388 +3,478 @@
  "pages": {
   "404.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "1acbca8a2d761f11"
+   "modified": "2026-09-10",
+   "hash": "29dc7ddb00f72d7e"
   },
   "about.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "5b944ae3e01d467f"
+   "modified": "2026-09-10",
+   "hash": "01f9275bf0f53d22"
   },
   "accounting-services.html": {
    "published": "2026-09-09",
-   "modified": "2026-09-09",
-   "hash": "ffa2240008d27f86"
+   "modified": "2026-09-10",
+   "hash": "8c1beadc002b2836"
   },
   "articles/1099-quarterly-taxes.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "ac3dd416309ed194"
+   "hash": "32edd72adf3246d3"
   },
   "articles/1099-vs-w2.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "cef642ce8e11689d"
+   "hash": "e2966a873180045d"
   },
   "articles/403b-vs-sep-ira.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "326113b3570d72c8"
+   "hash": "74e2e327d931615d"
   },
   "articles/accountant-cost-small-business.html": {
    "published": "2026-09-09",
    "modified": "2026-09-10",
-   "hash": "d4dfc6a465e43874"
+   "hash": "bab8aaefbb2ff451"
+  },
+  "articles/accounting-services-alternatives.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "62d1667ba13488e4"
   },
   "articles/avoiding-irs-audit.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "7cf27b3573bbfaf6"
+   "hash": "0579425535b74f8d"
   },
   "articles/bookkeeper-vs-controller-vs-cfo.html": {
    "published": "2026-09-09",
    "modified": "2026-09-10",
-   "hash": "2e6eef2899735024"
+   "hash": "28a28623a843ab68"
+  },
+  "articles/bookkeeping-alternatives.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "427e6e991182734a"
   },
   "articles/bookkeeping-basics.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "a16b0718498feae9"
+   "hash": "4f20deb78e232816"
   },
   "articles/bookkeeping-mistakes-that-cost-money.html": {
    "published": "2026-09-09",
    "modified": "2026-09-10",
-   "hash": "e56cb9a466790770"
+   "hash": "d9de692f86980cb7"
   },
   "articles/business-expense-categories.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "e14b08ebd8cf9ef5"
+   "hash": "99ce1a806fe74e67"
   },
   "articles/cash-flow-management.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "9850edc5d2d96e3e"
+   "hash": "4beeb4e72ad29293"
   },
   "articles/cash-vs-accrual.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "e32eeed274f04db6"
+   "hash": "a7392337971ac542"
+  },
+  "articles/cfo-advisory-alternatives.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "47ce5bf9921817d6"
+  },
+  "articles/cfo-advisory-mistakes.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "618b19a87c85dedc"
   },
   "articles/choosing-business-entity.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "23ae2dd887853512"
+   "hash": "c588527ec8d5ce01"
   },
   "articles/controller-cost-fractional-vs-full-time.html": {
    "published": "2026-09-09",
    "modified": "2026-09-10",
-   "hash": "fa72a74b63187aad"
+   "hash": "de5f6955928faf4f"
+  },
+  "articles/controller-services-alternatives.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "3d24033fdc57dff0"
+  },
+  "articles/controller-services-mistakes.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "99d6df2865122287"
   },
   "articles/deductible-vs-nondeductible.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "83a594c4c81763dd"
+   "hash": "3357da7772c6ff3d"
   },
   "articles/diy-bookkeeping-or-hire.html": {
    "published": "2026-09-09",
    "modified": "2026-09-10",
-   "hash": "e983b7342acb8702"
+   "hash": "faf9b6da07de16af"
+  },
+  "articles/diy-controller-work-or-hire.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "19c7abe2f370b604"
   },
   "articles/do-you-need-a-cfo-yet.html": {
    "published": "2026-09-09",
    "modified": "2026-09-10",
-   "hash": "742c5f6a760885e0"
+   "hash": "0ee13e97d208991b"
   },
   "articles/estimated-tax-safe-harbor.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "f560cc954b15658f"
+   "hash": "9de56b3ab26a64b0"
   },
   "articles/financial-statements-explained.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "6d8a2facea4a7fc1"
+   "hash": "e1fa265323376653"
   },
   "articles/first-year-self-employed-taxes.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "1e1da6f47591bbe0"
+   "hash": "d7b44543e6cca6e2"
   },
   "articles/fractional-cfo-cost.html": {
    "published": "2026-09-09",
    "modified": "2026-09-10",
-   "hash": "dd0f595c249ffd04"
+   "hash": "30cd155a1587ad6e"
   },
   "articles/home-office-deduction.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "5c27e0f6ff644789"
+   "hash": "e854cb4c54c30a5c"
+  },
+  "articles/how-accounting-services-work.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "b9fa8041d2a881e1"
+  },
+  "articles/how-bookkeeping-works-month-by-month.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "7998892804b5a0b9"
+  },
+  "articles/how-cfo-advisory-works.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "b2817fef9571233c"
   },
   "articles/how-controller-services-work.html": {
    "published": "2026-09-09",
    "modified": "2026-09-10",
-   "hash": "ccfa8d2cef72a826"
+   "hash": "c6a4e61f3d9ce824"
+  },
+  "articles/how-long-accounting-services-take.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "719d980d9d9e8069"
+  },
+  "articles/how-long-cfo-advisory-takes.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "1613e1f54ad41147"
   },
   "articles/how-long-month-end-close-takes.html": {
    "published": "2026-09-09",
    "modified": "2026-09-10",
-   "hash": "8527dd7973bc198c"
+   "hash": "132fcfbcb46d1fcf"
   },
   "articles/how-to-calculate-estimated-taxes.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "4e803db6e9ab0935"
+   "hash": "50d8a87992178e6c"
+  },
+  "articles/how-to-choose-a-bookkeeping-service.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "61f70b064d6f02bd"
+  },
+  "articles/how-to-choose-a-controller.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "748dfb54dcfae6fa"
   },
   "articles/how-to-choose-a-fractional-cfo.html": {
    "published": "2026-09-09",
    "modified": "2026-09-10",
-   "hash": "7f46f1f67eba9536"
+   "hash": "7bf08406bdf81801"
+  },
+  "articles/how-to-choose-an-accounting-firm.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "b86e1a52ffeab547"
   },
   "articles/how-to-pay-estimated-taxes.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "fb9a3503d4aed8c2"
+   "hash": "43cf70b8f0cf6983"
   },
   "articles/index.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "55f046c7097e9caa"
+   "modified": "2026-09-10",
+   "hash": "682ea94f2c791f0b"
   },
   "articles/ira-options-self-employed.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "2faaf607c6e94676"
+   "hash": "08e3b8822b811381"
   },
   "articles/llc-vs-s-corp.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "f88de4135664c7ba"
+   "hash": "8388fefe4838ab22"
   },
   "articles/mileage-deduction-guide.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "6ccab99ba4e617ce"
+   "hash": "acea80a66f3d2a0f"
   },
   "articles/missed-quarterly-tax-payment.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "f73a0941462c8242"
+   "hash": "26ba61dbfc7f2d36"
   },
   "articles/payroll-setup-guide.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "b7612380b61f3bcc"
+   "hash": "7e27a5a1e038b43f"
   },
   "articles/personal-tax-tips.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "0df5bee3a132c6cc"
+   "hash": "bd8aa6ba883597b7"
   },
   "articles/quarterly-estimated-taxes.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "91df85865148522a"
+   "hash": "e654750bb1e8776f"
+  },
+  "articles/questions-to-ask-a-bookkeeper.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "538d1e88406887f5"
+  },
+  "articles/questions-to-ask-a-fractional-controller.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "821a7fd1c48cd01a"
   },
   "articles/questions-to-ask-an-accountant.html": {
    "published": "2026-09-09",
    "modified": "2026-09-10",
-   "hash": "2233dac6b847c747"
+   "hash": "b283e7f20cbb9279"
   },
   "articles/retirement-plans-self-employed.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "24630aefbadaf1c1"
+   "hash": "6aa3df4ea9df4b5f"
   },
   "articles/sales-tax-guide.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "fc7345b3f93d9d3c"
+   "hash": "3fc283034cf062ee"
   },
   "articles/section-179-deduction.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "dd59bcbc86fb1384"
+   "hash": "86850abf7ba69dbd"
   },
   "articles/sep-ira-alternatives.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "44ea535151f4f86a"
+   "hash": "9cdff7a2467f68e7"
   },
   "articles/sep-ira-contribution-rules.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "d6c0aa6d2771daea"
+   "hash": "e8188f247bc7e571"
   },
   "articles/sep-ira-vs-traditional-ira.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "9ab37aa709800696"
+   "hash": "5d95014a404c9e33"
   },
   "articles/sep-ira-with-employees.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "517a407979ca40a9"
+   "hash": "2ba2a72fccf4d89f"
   },
   "articles/simple-ira-vs-sep-ira.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "6354ac3f0f667840"
+   "hash": "d6d98139e20f68dd"
   },
   "articles/small-business-tax-credits.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "4cafe287d137f35d"
+   "hash": "eeb1d4c2703832da"
   },
   "articles/solo-401k-vs-sep-ira-switch.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "dd6d7cc13bfa0502"
+   "hash": "9a55b6df4b608d76"
   },
   "articles/startup-tax-tips.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "5c6229e07a292086"
+   "hash": "9c0d8883b74fc789"
   },
   "articles/tax-deductions-small-business.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "5c37d600ab11a658"
+   "hash": "f1b48cd664c47576"
   },
   "articles/tax-planning-vs-tax-prep.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "a5e646dbe972cf56"
+   "hash": "c565d9b8da190b4a"
   },
   "articles/tax-prep-checklist.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "4a648a9f351f6ca8"
+   "hash": "bc0826497498a29e"
   },
   "articles/uneven-income-estimated-taxes.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "ea10eb8dbb0284d4"
+   "hash": "d30dafea4d2c310b"
   },
   "articles/when-to-hire-accountant.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "8a5b0053be197994"
+   "hash": "bf1d21da0eb38b99"
   },
   "articles/year-end-tax-moves.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "6df75b4cb1781f93"
+   "hash": "a4a737bdfd6d7794"
+  },
+  "bookkeeping.html": {
+   "published": "2026-09-10",
+   "modified": "2026-09-10",
+   "hash": "e3b1fd2fc966c702"
   },
   "cfo-advisory.html": {
    "published": "2026-09-09",
-   "modified": "2026-09-09",
-   "hash": "c7c50c0a7b4f6706"
+   "modified": "2026-09-10",
+   "hash": "2c4ac652e6b4a99a"
   },
   "contact.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "64ff3977574b363d"
+   "modified": "2026-09-10",
+   "hash": "0195a5bfe25eb660"
   },
   "controller-services.html": {
    "published": "2026-09-09",
-   "modified": "2026-09-09",
-   "hash": "49cf68d2f26158b5"
+   "modified": "2026-09-10",
+   "hash": "046f415c2016092a"
   },
   "index.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "827e762112398fe7"
+   "modified": "2026-09-10",
+   "hash": "1db33cc8a399343a"
   },
   "resources.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "8603a52fba3b2c94"
+   "modified": "2026-09-10",
+   "hash": "119ed2374cb15205"
   },
   "service-areas/cook-county-property-tax-appeals.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "6d31ad1097e72adf"
+   "hash": "4ea247cd948d3c5c"
   },
   "service-areas/cook-county-vs-lake-county.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "def231b0a64a3872"
+   "hash": "a79b7f4e116ad470"
   },
   "service-areas/deerfield.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "f736c81dceef9c36"
+   "modified": "2026-09-10",
+   "hash": "90b19efbe5330a9e"
   },
   "service-areas/evanston.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "8d081814b085e4ff"
+   "modified": "2026-09-10",
+   "hash": "c0069285f629bada"
   },
   "service-areas/glenview.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "2fac7939c3d53832"
+   "modified": "2026-09-10",
+   "hash": "9cb382c689af142b"
   },
   "service-areas/highland-park.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "d05e80556c9415d6"
+   "modified": "2026-09-10",
+   "hash": "824bb0bc602f5bca"
   },
   "service-areas/index.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "2768394a6d9c5734"
+   "modified": "2026-09-10",
+   "hash": "dab40f8c0e3d9194"
   },
   "service-areas/morton-grove.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "5022d09fc7b7f119"
+   "modified": "2026-09-10",
+   "hash": "2056d38dd50a7716"
   },
   "service-areas/niles.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "1670d9350952c63f"
+   "modified": "2026-09-10",
+   "hash": "0d730939133ad07a"
   },
   "service-areas/northbrook.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "8a6ef4cf712e34fc"
+   "modified": "2026-09-10",
+   "hash": "719f217d6d26fccb"
   },
   "service-areas/park-ridge.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "a4e417375c60930f"
+   "modified": "2026-09-10",
+   "hash": "b0767faf680d16ea"
   },
   "service-areas/skokie.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "4f550d7b77ae60aa"
+   "modified": "2026-09-10",
+   "hash": "f7cc9a3ee8fc6d4d"
   },
   "service-areas/wheeling-sales-tax-lake-cook-road.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "ba10a366742fde9a"
+   "hash": "01c9c465928c9d12"
   },
   "service-areas/wheeling.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "822de5f998cf6de6"
+   "modified": "2026-09-10",
+   "hash": "27e6a5fcc48ed349"
   },
   "service-areas/wilmette.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "5ed2617c1adfdf8c"
+   "modified": "2026-09-10",
+   "hash": "6f566563ea2efe1e"
   },
   "service-areas/winnetka.html": {
    "published": "2026-08-19",
-   "modified": "2026-09-09",
-   "hash": "d9564218b51ccafe"
+   "modified": "2026-09-10",
+   "hash": "5818223aff404fb9"
   },
   "services.html": {
    "published": "2026-08-19",
    "modified": "2026-09-10",
-   "hash": "b831ba77a4eb6355"
+   "hash": "dbefdce8d2141843"
   }
  }
 }

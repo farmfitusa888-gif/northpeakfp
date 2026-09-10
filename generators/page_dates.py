@@ -167,14 +167,23 @@ def _repo_birth():
 def _data_row_date(rel):
     """The first commit that introduced this page's row in the generators. The
     rendered page can be regenerated at any time; the row is where the words
-    were actually written."""
+    were actually written.
+
+    The search is for the row, `"slug": "x"`, and not for the bare slug. A slug
+    that is also an ordinary word is the failure this guards against: searching
+    the generators for "bookkeeping" finds the first commit of a repo that has
+    said the word bookkeeping since the day it was created, and the bookkeeping
+    pillar page written in September 2026 would have been stamped as published
+    in August. Both the pillar rows and the article rows are written as
+    `"slug": "..."`, so one pattern covers every page that has a row at all.
+    """
     slug = os.path.basename(rel)[:-5] if rel.endswith('.html') else os.path.basename(rel)
     if slug in ('index', ''):
         slug = os.path.basename(os.path.dirname(rel))
     if not slug:
         return ''
     got = [l.strip() for l in _git('log', '--reverse', '--date=short', '--format=%ad',
-                                   '-S' + slug, '--', *_SOURCES).splitlines() if l.strip()]
+                                   '-S"slug": "%s"' % slug, '--', *_SOURCES).splitlines() if l.strip()]
     return got[0] if got else ''
 
 

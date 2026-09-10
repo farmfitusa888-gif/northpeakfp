@@ -12,11 +12,19 @@ in plain words, names the town, says how to choose, and collects the links from
 every article about the service, so the site reads as one authority on it
 rather than a set of scattered posts.
 
-Three pillars: accounting services (bookkeeping folds in here, since on this
-site it is the first line of the Starter package), controller services, and
-CFO advisory. The articles under each are in articles_cluster.py and carry a
-"pillar" key that points back here; the existing articles that belong to a
-cluster are listed below by slug.
+Four pillars. Bookkeeping, accounting services, controller services and CFO
+advisory. Bookkeeping used to fold into the accounting pillar, on the reasoning
+that on this site it is the first line of the Starter package. The 2026-09-10
+engine run read that as a service with no pillar of its own, and it was right:
+"bookkeeping" and "accounting services" are different things to the owner
+typing them, and one page cannot open with both. So bookkeeping is its own
+page, aimed at the owner who wants the monthly numbers and nothing more, and
+the accounting pillar is the level above it that adds the tax work. The two
+link to each other rather than compete: neither one claims the other's ground.
+
+The articles under each are in articles_cluster.py and articles_cluster_b.py
+and carry a "pillar" key that points back here; the existing articles that
+belong to a cluster are listed below by slug.
 
 WHAT THE COPY MAY SAY
 Only what the site already says. The packages and their contents, the free
@@ -51,6 +59,94 @@ def _a(href, text):
 # slug, nav label, title, description, keywords, eyebrow, h1, lede, sections,
 # includes (label, items), fit, existing article slugs, faq
 PILLARS = [
+{
+ "slug": "bookkeeping",
+ "label": "Bookkeeping",
+ "title": "Bookkeeping Services in Wilmette, IL | NorthPeak",
+ "desc": "Monthly bookkeeping, transaction categorisation, and bank reconciliations for small businesses, from a Wilmette, IL practice working with clients nationwide.",
+ "keywords": "bookkeeping Wilmette, bookkeeping services Wilmette IL, small business bookkeeper Wilmette, monthly bookkeeping north shore",
+ "eyebrow": "Bookkeeping &middot; Wilmette, IL",
+ "h1": "Bookkeeping in Wilmette, IL",
+ "lede": ("What does bookkeeping cost in Wilmette? It follows the volume and the state of your books, "
+          "so NorthPeak quotes every engagement individually, as a fixed figure in writing, after a "
+          "free 30-minute call. Choose a bookkeeper by who does the work, what arrives each month and "
+          "what is left out. We are in Wilmette, Illinois, and work with clients nationwide."),
+ "package": "starter",
+ "package_name": "Starter Package",
+ "sections": [
+   ("What does bookkeeping cost in Wilmette?",
+    ["The work follows the numbers. A business with a few dozen transactions a month and two accounts "
+     "is a different job from one with hundreds of transactions, a credit line and payroll, and no "
+     "price list can tell those apart. That is why there is not one on this site.",
+     "What you get instead is a fixed figure in writing after the discovery call, and it does not move "
+     "unless the scope does. If the books are behind, the catch-up is scoped and priced on its own so "
+     "the one-time effort never hides inside the monthly fee. Our guide to "
+     + _a("articles/accountant-cost-small-business.html", "what an accountant costs a small business")
+     + " goes through what drives the number."]),
+   ("What does bookkeeping actually include?",
+    ["Transaction categorisation as the month runs, bank and credit card reconciliations at the end of "
+     "it, monthly financial reports and basic profit and loss reporting, on a reporting date agreed at "
+     "the start. That is the foundation every other level of service stands on.",
+     "It runs on a rhythm rather than a scramble. Transactions are categorised while everyone can still "
+     "remember what they were, every account is matched against its statement, and anything that cannot "
+     "be identified from a bank line comes back to you as a short list of questions. Our article on "
+     + _a("articles/how-bookkeeping-works-month-by-month.html", "how bookkeeping works month by month")
+     + " walks through the whole cycle."]),
+   ("How do you choose a bookkeeper in Wilmette?",
+    ["Ask who will actually see your transactions and whether you can reach that person. Ask what "
+     "happens to a transaction nobody can identify, because the only correct answer is that it comes to "
+     "you. Ask what arrives each month and on what date. Ask what is excluded, which is the question "
+     "that decides whether the first invoice surprises you. And ask whether the firm will say so if you "
+     "do not need it yet.",
+     "At NorthPeak the founder is the person you deal with, the fee is fixed in writing, and the first "
+     "call sometimes ends with the advice to keep doing your own books for another year. Our "
+     + _a("articles/how-to-choose-a-bookkeeping-service.html", "guide to choosing a bookkeeping service")
+     + " and the " + _a("articles/questions-to-ask-a-bookkeeper.html", "questions to ask a bookkeeper")
+     + " have the full lists."]),
+   ("Who is bookkeeping for, and when is it not enough?",
+    ["Owners who have been doing their own books and have reached the point where the hours cost more "
+     "than the help would. Businesses whose records are behind and need a scoped clean-up before "
+     "anything else. Startups and small service businesses that want reliable monthly numbers without a "
+     "finance department.",
+     "It stops being enough when you need the tax work in the same place, which is "
+     + _a("accounting-services.html", "accounting services") + ", or when the questions become "
+     "structural, which is " + _a("controller-services.html", "controller services") + ": a structured "
+     "monthly close, financial statement preparation, budget against actual reporting and KPI tracking. "
+     "Each level includes everything below it, so moving up is a conversation rather than a new firm."]),
+   ("Does bookkeeping have to be local?",
+    ["No. The practice is in Wilmette and meets North Shore clients in person when that is useful, but "
+     "the work itself runs on connected bank feeds, shared software and scheduled video reviews. "
+     "Clients in other states get the same monthly rhythm as clients a few streets away, and we work "
+     "with the major platforms rather than requiring a switch. If you are elsewhere on the North Shore, "
+     "the " + _a("service-areas/index.html", "service areas") + " page lists the towns we are in most "
+     "often."]),
+ ],
+ "includes": ("What bookkeeping covers each month",
+              ["Transaction categorisation as the month runs",
+               "Bank and credit card reconciliations",
+               "A monthly list of questions on anything unclear",
+               "Monthly financial reports on an agreed date",
+               "Basic profit and loss reporting"]),
+ "fit": "Startups, solopreneurs, and small service businesses that want reliable monthly numbers.",
+ "cluster": ["how-bookkeeping-works-month-by-month", "how-to-choose-a-bookkeeping-service",
+             "questions-to-ask-a-bookkeeper", "bookkeeping-alternatives",
+             "bookkeeping-basics", "diy-bookkeeping-or-hire",
+             "bookkeeping-mistakes-that-cost-money", "cash-vs-accrual",
+             "business-expense-categories"],
+ "faq": [
+   ("Do you publish prices for bookkeeping?",
+    "No. Every engagement is quoted individually after a free 30-minute call, because the work follows transaction volume, the number of accounts and entities, and how much clean-up is waiting. You receive a fixed figure in writing before any work begins."),
+   ("Can you take over books that are a year behind?",
+    "Yes. Catch-up and clean-up work is common, and it is scoped separately from the ongoing service so you know exactly what the one-time effort costs."),
+   ("Do I have to change accounting software?",
+    "Usually not. We work with the major platforms and will say plainly if your current setup is holding you back before recommending any change."),
+   ("Is tax preparation included with bookkeeping?",
+    "Not at this level. Individual and business tax preparation is part of accounting services, which includes everything bookkeeping covers and adds the tax work."),
+   ("How much of my time does this take each month?",
+    "A few minutes. What comes to you is a short list of questions about transactions that cannot be identified from a bank line alone."),
+ ],
+},
+
 {
  "slug": "accounting-services",
  "label": "Accounting Services",
@@ -109,7 +205,10 @@ PILLARS = [
      "but the work itself is remote: connected bank feeds, shared software, and scheduled video "
      "reviews. Clients in other states get the same monthly rhythm as clients a few streets away. "
      "If you are elsewhere on the North Shore, the "
-     + _a("service-areas/index.html", "service areas") + " page lists the towns we are in most often."]),
+     + _a("service-areas/index.html", "service areas") + " page lists the towns we are in most often.",
+     "If the monthly numbers are all you need and the tax work is handled elsewhere, "
+     + _a("bookkeeping.html", "bookkeeping on its own") + " is the level below this one, and it is "
+     "the right place to start for a lot of businesses."]),
  ],
  "includes": ("What the Starter package covers",
               ["Bookkeeping and transaction categorisation", "Bank and credit card reconciliations",

@@ -426,9 +426,18 @@ ARTICLES = [
 
 ]
 
+# The 2026-09 cluster month lives in its own file so a month's work can be read,
+# reviewed and reverted as one thing. It is appended rather than merged in place,
+# so no existing article moves position in any related list.
+from articles_cluster_b import ARTICLES_B as _ARTICLES_2026_09
+ARTICLES.extend(_ARTICLES_2026_09)
+
 # Pillar slug -> the label used in the cluster bar and the Article "about" markup.
 PILLAR_LABELS = {
+    "bookkeeping": "Bookkeeping",
     "accounting-services": "Accounting Services",
     "controller-services": "Controller Services",
     "cfo-advisory": "CFO Advisory",
 }
+_unplaced = {a["pillar"] for a in ARTICLES if a.get("pillar")} - set(PILLAR_LABELS)
+assert not _unplaced, ("cluster article pointing at a pillar with no label", _unplaced)

@@ -716,6 +716,7 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
         -->
       </div>
       <div><h2>Services</h2><ul>
+        <li><a href="{p}bookkeeping.html">Bookkeeping</a></li>
         <li><a href="{p}accounting-services.html">Accounting Services</a></li>
         <li><a href="{p}controller-services.html">Controller Services</a></li>
         <li><a href="{p}cfo-advisory.html">CFO Advisory</a></li>

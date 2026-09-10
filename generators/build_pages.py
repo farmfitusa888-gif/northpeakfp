@@ -96,7 +96,8 @@ home_body = f"""
         <h2>What does NorthPeak do beyond bookkeeping?</h2>
         <p>We help owners move past basic data entry and actually understand what their numbers
         are telling them, so decisions get made on evidence instead of instinct. Start with
-        <a href="accounting-services.html">accounting services</a>, add
+        <a href="bookkeeping.html">bookkeeping</a> or the wider
+        <a href="accounting-services.html">accounting services</a> that add the tax work, add
         <a href="controller-services.html">controller services</a> when the month-end close needs
         an owner, and bring in <a href="cfo-advisory.html">CFO advisory</a> when the decisions get
         expensive to reverse.</p>
@@ -105,7 +106,8 @@ home_body = f"""
         <div class="ledger">
           <div class="lrow"><div class="ln">01</div><h3>Accounting &amp; Bookkeeping</h3>
             <p>Clean, reconciled books you can trust: transaction categorization, monthly closes, and
-            reporting delivered on a predictable schedule.</p>
+            reporting delivered on a predictable schedule. Start at
+            <a href="bookkeeping.html">bookkeeping</a> and add the tax work when you need it.</p>
             <a class="lgo" href="accounting-services.html">Details &rarr;</a></div>
           <div class="lrow"><div class="ln">02</div><h3>Controller Services</h3>
             <p>Oversight, structured month-end close, budget-vs-actual reporting, and KPI tracking that turns
