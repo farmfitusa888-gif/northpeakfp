@@ -139,8 +139,36 @@ function mount(canvas, host, opt) {
   } catch (e) {
     return;                         // no WebGL — the gradient carries this host
   }
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  // Render resolution. A GPU fills this canvas at the device's own ratio
+  // (capped at 2) and nothing below ever changes that. A browser drawing WebGL
+  // in software is another matter: it composites the canvas by reading every
+  // frame back through the CPU, and at 2 megapixels each frame held the main
+  // thread for 300 to 500 ms (measured 2026-09-21, headless Chromium with no
+  // GPU), during which a tap on the hero's buttons waited. Such a renderer
+  // names itself, and starts at a quarter of the pixels; pace() below is the
+  // general case, lowering the ratio only while frames measure slow.
+  let ratio = Math.min(devicePixelRatio, 2);
+  try {
+    const gl = renderer.getContext();
+    const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+    const name = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)) : '';
+    if (/swiftshader|llvmpipe|softpipe|software|mesa offscreen/i.test(name)) ratio = 0.5;
+  } catch (e) { /* the pacing below still applies */ }
+  renderer.setPixelRatio(ratio);
   renderer.setClearColor(0x000000, 0);
+  let slowRun = 0;
+  function pace(interval) {
+    // Three frames in a row over 80 ms (under 12.5 fps) is a device that cannot
+    // fill this many pixels, not a hiccup. Aim at 30 ms a frame, never below
+    // half a pixel per CSS pixel, and never back up: a device that was slow once
+    // is not asked to prove it again.
+    if (interval <= 0.08) { slowRun = 0; return; }
+    if (++slowRun < 3 || ratio <= 0.5) return;
+    ratio = Math.max(0.5, ratio * Math.max(0.5, Math.sqrt(0.03 / interval)));
+    renderer.setPixelRatio(ratio);
+    resize();
+    slowRun = 0;
+  }
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const scene = new Scene();
@@ -277,8 +305,10 @@ function mount(canvas, host, opt) {
 
   function frame(now) {
     if (!onScreen || !awake) return;
-    const dt = Math.min((now - last) / 1000, 0.05);
+    const interval = (now - last) / 1000;
+    const dt = Math.min(interval, 0.05);
     last = now;
+    pace(interval);
 
     o = Math.min(o + dt * 0.85, 1);
     canvas.style.opacity = String(o * opt.max);
@@ -328,8 +358,31 @@ if (!frugal) {
     ['summit-band', { max: 1.00, snowO: 0.85, snow: 1050, fov: 50, fog: 0.0034,
                       wire: 0.09, flake: [1.8, 3.2], cam: [4, 20, 34],  at: [0, 15, -80] }],
   ];
-  for (const [id, opt] of MOUNTS) {
+  // Three tasks, not one. The terrain's 22k vertices are generated first, on
+  // their own; the hero mounts next; the band, a screen or more below the
+  // hero, mounts when it comes within a viewport of the screen, which is
+  // before its fade-in can start (the fade waits for the section to be on
+  // screen, as it always has). Booted as one task the three together held the
+  // main thread for up to 865 ms (measured 2026-09-21, headless Chromium
+  // without a GPU), and a tap on the hero's buttons in that window waited.
+  const later = fn => ('requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 1000 }) : setTimeout(fn, 0));
+  const mountOne = (id, opt) => {
     const c = document.getElementById(id);
     if (c && c.parentElement) mount(c, c.parentElement, opt);
-  }
+  };
+  later(() => {
+    terrain();
+    later(() => {
+      mountOne(...MOUNTS[0]);
+      const band = document.getElementById(MOUNTS[1][0]);
+      if (!band || !band.parentElement) return;
+      if (!('IntersectionObserver' in window)) { mountOne(...MOUNTS[1]); return; }
+      const io = new IntersectionObserver(es => {
+        if (!es.some(e => e.isIntersecting)) return;
+        io.disconnect();
+        mountOne(...MOUNTS[1]);
+      }, { rootMargin: '100% 0px' });
+      io.observe(band.parentElement);
+    });
+  });
 }

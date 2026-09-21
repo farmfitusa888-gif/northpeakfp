@@ -677,7 +677,7 @@ _llms += ["## Notes", "",
           "- Articles are general information, not individualized tax, legal, or "
           "financial advice.",
           "- Every engagement is quoted individually; no fees are published on the site.",
-          "- Founder and principal: " + G.FOUNDER + ". He is not a CPA.", ""]
+          "- Founder and principal: " + G.FOUNDER + ". He is not a certified public accountant.", ""]
 W("llms.txt", "\n".join(_llms))
 
 # ============================================================ _redirects
