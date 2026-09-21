@@ -609,13 +609,13 @@ if(cf){cf.addEventListener('submit',async ev=>{
   const ep=cf.dataset.endpoint||'';
   if(!ep||ep.includes('PASTE_YOUR')){ev.preventDefault();
     const d=new FormData(cf),g=k=>encodeURIComponent(d.get(k)||'');
-    location.href=`mailto:${cf.dataset.email}?subject=${encodeURIComponent('Inquiry — '+(d.get('service')||'General'))}`+
+    location.href=`mailto:${cf.dataset.email}?subject=${encodeURIComponent('Inquiry: '+(d.get('service')||'General'))}`+
       `&body=${g('name')}%0D%0A${g('email')}%0D%0A${g('phone')}%0D%0A%0D%0A${g('message')}`;
     return}
   ev.preventDefault();const st=document.getElementById('fstat');
   st.textContent='Sending…';
   try{const r=await fetch(ep,{method:'POST',body:new FormData(cf),headers:{Accept:'application/json'}});
-    if(r.ok){cf.reset();st.textContent='Thank you — your inquiry has been sent. We reply within one business day.';
+    if(r.ok){cf.reset();st.textContent='Thank you. Your inquiry has been sent, and we reply within one business day.';
       st.style.color='var(--accent)'}else{throw 0}}
   catch{st.textContent='Something went wrong. Please email '+cf.dataset.email+' directly.';st.style.color='#b23b3b'}
 })}
@@ -734,7 +734,7 @@ def shell(*, title, desc, canon, body, active="", extra_head="", jsonld=None,
     </div>
     <div class="fbot">
       <span>&copy; <span class="yr"></span> {FIRM}. All rights reserved.</span>
-      <span>Informational content only &mdash; not individualized tax, legal, or investment advice.</span>
+      <span>Informational content only; not individualized tax, legal, or investment advice.</span>
       <a class="bbs" href="https://builtbysamski.com" rel="noopener" target="_blank"
          title="Site by BuiltBySam">
         <span>Site by</span>

@@ -97,7 +97,7 @@ ARTICLES = [
    ("Why I usually recommend the shortcut instead",
     "That whole calculation depends on forecasting a year you have not lived yet. The "
     "alternative is to base payments on last year's actual tax, which is a known number "
-    "rather than a guess &mdash; and which, done correctly, protects you from the "
+    "rather than a guess, and which, done correctly, protects you from the "
     "underpayment penalty regardless of how this year turns out. That is the safe harbour, "
     "and it is the single most useful thing in this system for anyone with uneven income."),
 
@@ -109,8 +109,8 @@ ARTICLES = [
 
    ("Where the books come in",
     "Every figure above starts with net self-employment income, and that number is only as "
-    "good as your bookkeeping. If the books are three months behind, the estimate is fiction "
-    "&mdash; and the correction arrives with a penalty attached. This is the least glamorous "
+    "good as your bookkeeping. If the books are three months behind, the estimate is fiction, "
+    "and the correction arrives with a penalty attached. This is the least glamorous "
     "argument for current books and the most expensive one to ignore."),
  ],
 },
@@ -140,7 +140,7 @@ ARTICLES = [
 
    ("What that means in practice",
     "Take last year's total tax. Divide it by four. Pay that on schedule. If this year "
-    "explodes, you will owe the difference at filing &mdash; but generally without a penalty, "
+    "explodes, you will owe the difference at filing, but generally without a penalty, "
     "because you met the harbour. If this year collapses, you have overpaid and it comes back "
     "as a refund. The trade you are making is cash-flow timing in exchange for certainty, and "
     "for most people that is the right trade."),
@@ -150,13 +150,13 @@ ARTICLES = [
     "<em>higher</em> percentage of the prior year's tax applies instead of 100%. The IRS "
     "notes the exception on the estimated taxes page and carries the detail in "
     + _a(IRS_505, "Publication 505") + ". If your income is well above average, confirm which "
-    "percentage applies to you before assuming 100% is enough &mdash; that assumption is the "
+    "percentage applies to you before assuming 100% is enough. That assumption is the "
     "expensive version of this mistake."),
 
    ("Withholding counts, and it is treated generously",
     "If you also have W-2 income, tax withheld from those wages counts toward the harbour. "
     "It is also generally treated as paid evenly across the year regardless of when it was "
-    "actually withheld &mdash; which is why increasing withholding late in the year can "
+    "actually withheld. That is why increasing withholding late in the year can "
     "repair an underpayment in a way that a late estimated payment cannot. That asymmetry is "
     "genuinely useful in a year that went sideways."),
 
@@ -181,7 +181,7 @@ ARTICLES = [
  "sections": [
    ("Nothing was withheld, and that is the whole story",
     "A 1099 payment arrives gross. No federal income tax, no Social Security, no Medicare. "
-    "The full amount hits your account and it all looks like yours. It is not &mdash; some "
+    "The full amount hits your account and it all looks like yours. It is not; some "
     "portion of it belongs to a tax bill that has not arrived yet."),
 
    ("You now pay both halves",
@@ -194,14 +194,14 @@ ARTICLES = [
    ("There is an offset, and it is not the one people think",
     "You get to deduct the employer-equivalent half of your self-employment tax as an "
     "adjustment to income. That softens the blow. It does not eliminate it, and it is not a "
-    "credit &mdash; it reduces taxable income, not the tax itself. People routinely "
+    "credit: it reduces taxable income, not the tax itself. People routinely "
     "overestimate what this is worth."),
 
    ("Business expenses are the real lever",
     "Self-employment tax is computed on <em>net</em> earnings, not gross receipts. Legitimate "
     "business expenses reduce the base for both income tax and self-employment tax, which "
     "makes each properly documented deduction worth more to a contractor than to an employee. "
-    "This is why sloppy records cost contractors more than anyone else &mdash; and why "
+    "This is why sloppy records cost contractors more than anyone else, and why "
     "reconstructing them in April never recovers everything."),
 
    ("Whether you owe quarterly at all",
@@ -226,7 +226,7 @@ ARTICLES = [
  "desc": "The underpayment penalty is interest, not a fine, and it keeps accruing. What to do the week you notice, and the two routes to reducing it.",
  "keywords": "missed quarterly tax payment, underpayment penalty, late estimated tax payment",
  "read": "5 min read",
- "lede": "This is not a crisis and it is not nothing. The penalty behaves like interest on the amount you were short, for the time you were short — which means the useful response is speed, not worry.",
+ "lede": "This is not a crisis and it is not nothing. The penalty behaves like interest on the amount you were short, for the time you were short, which means the useful response is speed, not worry.",
  "sections": [
    ("What the penalty actually is",
     "It is not a flat fine. It is computed on how much you underpaid and for how long, which "
@@ -235,20 +235,20 @@ ARTICLES = [
     "full amount. Partial and immediate beats complete and later."),
 
    ("Do not skip the next one to compensate",
-    "The instinct is to treat the year as already lost. It is not &mdash; the calculation runs "
+    "The instinct is to treat the year as already lost. It is not, because the calculation runs "
     "period by period. Missing the next payment as well compounds a manageable problem into a "
     "worse one. Pay what you can now, and pay the next one on schedule."),
 
    ("Route one: the safe harbour may already cover you",
     "Before assuming you owe a penalty, check whether you have already paid at least 100% of "
-    "last year's tax through a combination of estimated payments and withholding &mdash; or "
+    "last year's tax through a combination of estimated payments and withholding, or "
     "90% of this year's. " + _a(IRS_EST, "Either generally avoids the penalty") + ". People "
     "who front-loaded payments or have W-2 withholding alongside a business are sometimes "
     "covered without realising it."),
 
    ("Route two: annualise, if your income is lumpy",
     "The default calculation assumes you earned evenly across the year. If you did not "
-    "&mdash; a seasonal business, one large project in the autumn, a slow start &mdash; you "
+    "(a seasonal business, one large project in the autumn, a slow start), you "
     "can annualise your income and compute unequal required payments, which often reduces or "
     "eliminates the penalty. This is done on "
     + _a(IRS_2210, "Form 2210") + ", and it is the most commonly missed remedy in this whole "
@@ -272,10 +272,10 @@ ARTICLES = [
  "slug": "how-to-pay-estimated-taxes",
  "cat": "Tax Planning",
  "title": "How to Actually Pay Your Estimated Taxes",
- "desc": "The mechanics — which payment channels exist, what to keep as proof, and the state half that people forget until it is late.",
+ "desc": "The mechanics: which payment channels exist, what to keep as proof, and the state half that people forget until it is late.",
  "keywords": "how to pay estimated taxes, self employed estimated tax payments, pay quarterly taxes",
  "read": "5 min read",
- "lede": "Working out the number is the hard part. Paying it is not — but people still get tripped up, almost always on the same three things: applying a payment to the wrong year, keeping no proof, and forgetting the state entirely.",
+ "lede": "Working out the number is the hard part. Paying it is not, but people still get tripped up, almost always on the same three things: applying a payment to the wrong year, keeping no proof, and forgetting the state entirely.",
  "sections": [
    ("The channels",
     "The IRS offers several ways to pay, including direct transfer from a bank account, card "
@@ -307,7 +307,7 @@ ARTICLES = [
     "who set reminders three months apart and end up late. Due dates also shift when they land "
     "on a weekend or holiday. Take the dates from "
     + _a(IRS_1040ES, "the current Form 1040-ES") + " each year rather than from memory or from "
-    "an article &mdash; including this one."),
+    "an article, including this one."),
  ],
 },
 
@@ -319,7 +319,7 @@ ARTICLES = [
  "desc": "The default rules assume you earn steadily across the year. If you do not, the annualized income method can cut or remove a penalty you would otherwise owe.",
  "keywords": "uneven income estimated taxes, annualized income installment method, seasonal business quarterly taxes",
  "read": "6 min read",
- "lede": "Four equal payments assume four equal quarters. Plenty of businesses do not work that way — a seasonal trade, a practice that bills in one lump, a year where the big project closed in November. There is a method for exactly this, and it is badly under-used.",
+ "lede": "Four equal payments assume four equal quarters. Plenty of businesses do not work that way: a seasonal trade, a practice that bills in one lump, a year where the big project closed in November. There is a method for exactly this, and it is badly under-used.",
  "sections": [
    ("Why equal payments punish uneven income",
     "The default treats your annual income as if it arrived evenly. If you earned almost "
@@ -337,8 +337,8 @@ ARTICLES = [
    ("Who it helps most",
     "Seasonal businesses. Anyone paid on completion of long projects. Consultants with a "
     "small number of large invoices. People who started self-employment partway through the "
-    "year. And anyone whose year contained one unusual event &mdash; a property sale, a "
-    "settlement, a single outsized contract &mdash; that landed late."),
+    "year. And anyone whose year contained one unusual event that landed late: a property "
+    "sale, a settlement, a single outsized contract."),
 
    ("What it costs you",
     "Record-keeping. To annualise, you need income and deductions by period, not just an "
@@ -350,7 +350,7 @@ ARTICLES = [
     "If your prior year's tax was modest, the safe harbour may be simpler and cheaper than "
     "annualising. Paying based on last year's known figure sidesteps the whole question of "
     "when this year's income arrived. Annualising is the better tool when last year's tax was "
-    "high and this year's income is both lower and lumpy &mdash; which is a narrower situation "
+    "high and this year's income is both lower and lumpy, which is a narrower situation "
     "than people assume. Work out which applies before doing the extra work."),
  ],
 },
@@ -363,7 +363,7 @@ ARTICLES = [
  "desc": "What changes the moment you have self-employment income, when the first payment is due, and the safe harbor quirk that makes year one easier than year two.",
  "keywords": "first year self employed taxes, when to start paying quarterly taxes, new business estimated tax",
  "read": "6 min read",
- "lede": "Year one has a quirk almost nobody takes advantage of: the safe harbour is measured against last year's tax, and last year you may have had very little. That can make your first year the cheapest one to get through — and your second the one that surprises you.",
+ "lede": "Year one has a quirk almost nobody takes advantage of: the safe harbour is measured against last year's tax, and last year you may have had very little. That can make your first year the cheapest one to get through; the second is the one that surprises you.",
  "sections": [
    ("What changes immediately",
     "The moment you have self-employment income, two things are true that were not before. "
@@ -380,8 +380,8 @@ ARTICLES = [
     "The safe harbour lets you avoid the penalty by paying 100% of your <em>prior</em> year's "
     "tax. If your prior year was a W-2 job with full withholding, or a low-income year, that "
     "figure may be small or already satisfied. "
-    + _a(IRS_EST, "The IRS rule is here") + ". It does not reduce what you eventually owe "
-    "&mdash; it removes the penalty while you find your footing."),
+    + _a(IRS_EST, "The IRS rule is here") + ". It does not reduce what you eventually owe; "
+    "it removes the penalty while you find your footing."),
 
    ("Which is exactly why year two bites",
     "Your first profitable year becomes the prior year for the safe harbour calculation in "
@@ -396,8 +396,8 @@ ARTICLES = [
 
    ("The one thing worth doing early",
     "Get the bookkeeping running from the first transaction rather than reconstructing it "
-    "later. Every calculation in this cluster &mdash; the estimate, the safe harbour, the "
-    "annualisation &mdash; starts from net self-employment income. Year one is the cheapest "
+    "later. Every calculation in this cluster (the estimate, the safe harbour, the "
+    "annualisation) starts from net self-employment income. Year one is the cheapest "
     "time to set that up properly and the most expensive to skip."),
  ],
 },

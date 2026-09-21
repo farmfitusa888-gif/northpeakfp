@@ -54,7 +54,7 @@ BASE_CITY = "Wilmette"
 
 COOK_ASSESS = (
     "{town} is assessed by the Cook County Assessor, and it sits in the north suburban "
-    "township group &mdash; reassessed in 2016, 2019, 2022 and 2025, which puts the next "
+    "township group, reassessed in 2016, 2019, 2022 and 2025, which puts the next "
     "one in <strong>2028</strong>. In a reassessment year there are two chances to contest "
     "a value; in an off year, generally one. "
     "<a href=\"cook-county-property-tax-appeals.html\">How the Cook County appeal cycle "
@@ -63,7 +63,7 @@ COOK_ASSESS = (
 
 LAKE_ASSESS = (
     "{town} is in Lake County, which means the <strong>township assessor</strong> values "
-    "your property rather than a county assessor &mdash; Cook is the exception in Illinois, "
+    "your property rather than a county assessor. Cook is the exception in Illinois, "
     "not the rule. Lake County also asks you to contact that township assessor before "
     "filing with the Board of Review. "
     "<a href=\"cook-county-vs-lake-county.html\">What changes at the county line &rarr;</a>"
@@ -73,7 +73,7 @@ LAKE_ASSESS = (
 TOWNS = [
     ("Wilmette", "wilmette", "Cook", "New Trier Township", COOK_ASSESS,
      ["evanston", "winnetka", "skokie", "glenview"],
-     "This is where the practice is based, so Wilmette work is as local as it gets — "
+     "This is where the practice is based, so Wilmette work is as local as it gets: "
      "in person when that is useful, remote when it is faster."),
 
     ("Evanston", "evanston", "Cook", "Evanston Township", COOK_ASSESS,
@@ -85,7 +85,7 @@ TOWNS = [
     ("Skokie", "skokie", "Cook", "Niles Township", COOK_ASSESS,
      ["evanston", "morton-grove", "niles", "wilmette"],
      "Skokie shares Niles Township with Lincolnwood, Golf, and parts of Morton Grove, "
-     "Niles and Glenview — so several of the businesses we work with a few streets "
+     "Niles and Glenview, so several of the businesses we work with a few streets "
      "apart are on the same township assessment cycle."),
 
     ("Glenview", "glenview", "Cook", "split across New Trier, Niles and Northfield Townships",
@@ -96,7 +96,7 @@ TOWNS = [
 
     ("Northbrook", "northbrook", "Cook", "Northfield Township", COOK_ASSESS,
      ["glenview", "deerfield", "winnetka", "wheeling"],
-     "Northbrook borders Deerfield, and the county line runs between them — a short "
+     "Northbrook borders Deerfield, and the county line runs between them; a short "
      "drive changes which assessment system a property falls under."),
 
     ("Winnetka", "winnetka", "Cook", "New Trier Township", COOK_ASSESS,
@@ -106,7 +106,7 @@ TOWNS = [
 
     ("Morton Grove", "morton-grove", "Cook", "Niles Township", COOK_ASSESS,
      ["skokie", "niles", "glenview", "park-ridge"],
-     "Morton Grove is split across townships, with a portion in Niles Township — one "
+     "Morton Grove is split across townships, with a portion in Niles Township, one "
      "more case where the address, not the village name, decides the cycle."),
 
     ("Niles", "niles", "Cook", "Niles and Maine Townships", COOK_ASSESS,
@@ -138,7 +138,7 @@ TOWNS = [
      "collects. The village publishes this split itself, along with the sales tax "
      "consequence: the "
      "<a href=\"wheeling-sales-tax-lake-cook-road.html\">Cook portion carries a 10% total "
-     "sales tax rate and the Lake portion 8% &mdash; which side of the road you are on "
+     "sales tax rate and the Lake portion 8%, so which side of the road you are on "
      "is a real number on your return &rarr;</a>",
      ["northbrook", "deerfield", "glenview"],
      None),
@@ -207,16 +207,16 @@ LOCAL_GUIDES = [
    "you own your building, and where an accountant stops and an attorney starts.",
    "cook county property tax appeal, north suburbs reassessment, business property tax illinois",
    f"""
-<p class="lead">If your business owns the building it operates from &mdash; or you are on a
-lease that passes the property tax through to you &mdash; the Cook County reassessment cycle
+<p class="lead">If your business owns the building it operates from (or you are on a
+lease that passes the property tax through to you), the Cook County reassessment cycle
 is one of the few large, predictable costs you can actually do something about. Most owners
 find out about it after the bill arrives, which is the one point in the process where the
 options are worst.</p>
 
 <h2>The cycle is fixed, and every town we work in is on the same one</h2>
-<p>Cook County does not reassess everything at once. It splits the county into three groups
-&mdash; the City of Chicago, the north and northwest suburbs, and the south and west suburbs
-&mdash; and reassesses one group each year, so any given property is reassessed every three
+<p>Cook County does not reassess everything at once. It splits the county into three groups:
+the City of Chicago, the north and northwest suburbs, and the south and west suburbs. It
+reassesses one group each year, so any given property is reassessed every three
 years.</p>
 <p>Every Cook County community in our service area sits in the <strong>north suburban
 group</strong>: {", ".join(COOK_TOWNS[:-1])} and {COOK_TOWNS[-1]}. That group was reassessed
@@ -228,7 +228,7 @@ property in any of those towns, you are on the same clock as every one of your n
 the <a href="https://www.cookcountyassessoril.gov/" rel="noopener" target="_blank">Assessor's
 office</a>, and then, independently, with the
 <a href="https://www.cookcountyboardofreview.com/" rel="noopener" target="_blank">Board of
-Review</a>. In an off year you generally get one &mdash; the Board of Review window only.</p>
+Review</a>. In an off year you generally get one: the Board of Review window only.</p>
 <p>Both windows are short, they open by township rather than county-wide, and they do not
 move because you were busy. That is the entire practical argument for knowing which year you
 are in before it arrives rather than after.</p>
@@ -254,7 +254,7 @@ as counsel. What we do is the part that sits upstream of the filing: keeping the
 and lease records in a state where evidence can actually be pulled from them, modelling what
 a given assessment change does to your cash position across the year, and telling you plainly
 whether the amount at stake justifies the cost of pursuing it. When a filing is worth making,
-we will say so and point you to a property tax attorney &mdash; several work in these
+we will say so and point you to a property tax attorney; several work in these
 townships specifically.</p>
 <p>Illinois also runs a state-level
 <a href="http://www.ptab.illinois.gov/getstarted.html" rel="noopener" target="_blank">Property
@@ -270,7 +270,7 @@ Tax Appeal Board</a> for owners who want to go further than the county Board of 
    """
 <p class="lead">Northbrook and Deerfield share a border. So do Highland Park and the towns
 below it. A business a mile apart from another can be operating under a different assessment
-authority, a different appeal procedure, and a different sales tax rate &mdash; and nothing
+authority, a different appeal procedure, and a different sales tax rate, and nothing
 about the neighbourhood tells you which.</p>
 
 <h2>Who values your property</h2>
@@ -278,14 +278,14 @@ about the neighbourhood tells you which.</p>
 <ul>
   <li><strong>Cook County</strong> is the exception in Illinois. A single <em>county</em>
   assessor values property, working through a three-year township cycle.</li>
-  <li><strong>Lake County</strong> &mdash; like every other Illinois county &mdash; assesses
+  <li><strong>Lake County</strong>, like every other Illinois county, assesses
   through the <strong>township assessor</strong>. There are many of them, and yours depends on
   your township, not your village.</li>
 </ul>
 <p>The practical consequence is that the first phone call is different. In Cook, you are
 dealing with a county office and its published township calendar. In Lake, the county
 <a href="https://www.lakecountyil.gov/503/Appeal-Process" rel="noopener" target="_blank">asks
-you to contact your township assessor before filing</a> with the Board of Review &mdash; and
+you to contact your township assessor before filing</a> with the Board of Review, and
 for factual-error and commercial-vacancy appeals, that contact is required rather than
 suggested.</p>
 
@@ -298,7 +298,7 @@ systems.</p>
 <p>It shows up in sales tax too. The village publishes the numbers itself: the
 <a href="https://www.wheelingil.gov/245/Sales-Tax" rel="noopener" target="_blank">Cook County
 portion of Wheeling carries a 10% total sales tax rate and the Lake County portion 8%</a>. On
-a retail or restaurant business that is not a rounding difference &mdash; it is two points of
+a retail or restaurant business that is not a rounding difference; it is two points of
 every taxable dollar, on the same street.</p>
 
 <h2>What this changes if you are choosing a location</h2>
@@ -316,8 +316,8 @@ answering before you sign rather than after:</p>
 
 <h2>Where we help</h2>
 <p>We are not attorneys and we do not file appeals or give legal advice on property matters.
-What we do is model the actual cash difference between two locations &mdash; rate differences,
-assessment exposure, and the timing of when each hits &mdash; so the decision is made on a
+What we do is model the actual cash difference between two locations (rate differences,
+assessment exposure, and the timing of when each hits) so the decision is made on a
 number rather than a hunch.</p>
 """,
    ["cash-flow-management", "sales-tax-guide", "choosing-business-entity"]),
@@ -342,7 +342,7 @@ Lake County Treasurer collects.</p>
 portion of Wheeling carries a total sales tax rate of 10%, and the Lake County portion 8%</a>.</p>
 
 <h2>Two points is not a rounding difference</h2>
-<p>For a business selling taxable goods, the rate is not a cost you absorb &mdash; you collect
+<p>For a business selling taxable goods, the rate is not a cost you absorb. You collect
 and remit it. But it is a real competitive fact. A customer comparing two shops a few minutes
 apart pays a different total, and for larger-ticket items that difference is visible on the
 receipt. If you are choosing between two Wheeling storefronts, the county line belongs in the
@@ -354,7 +354,7 @@ comparison alongside the rent.</p>
   rate. The parcel does. Verify which side of Lake Cook Road your location sits on before you
   configure anything.</li>
   <li><strong>Set the rate at the point of sale correctly from day one.</strong> Under-collecting
-  is not a discount you gave &mdash; it is a liability you still owe, and it compounds quietly
+  is not a discount you gave; it is a liability you still owe, and it compounds quietly
   until someone looks.</li>
   <li><strong>Check it again if you move, add a second location, or start shipping.</strong>
   Destination rules can change which rate applies to a given sale.</li>
@@ -394,7 +394,7 @@ LICENSING = {
  "wilmette": (
    "Wilmette requires an annual business licence for <strong>all businesses located in "
    "the village</strong>, and the fee is set by the gross interior square footage of the "
-   "premises rather than a flat rate &mdash; so the same business pays differently "
+   "premises rather than a flat rate, so the same business pays differently "
    "depending on the space it takes. The licence year runs from <strong>January 1</strong>. "
    "New businesses other than home occupations also need an occupancy inspection before "
    "opening.",
@@ -405,7 +405,7 @@ LICENSING = {
    "operating within the city must register, explicitly including home-based occupations "
    "and businesses already licensed under state or federal law. Registration renews "
    "annually by <strong>April 1</strong>, and the city states a penalty of $500 for each "
-   "day a business operates unregistered &mdash; which makes this one of the more expensive "
+   "day a business operates unregistered. That makes this one of the more expensive "
    "things to overlook in the north suburbs.",
    "https://www.cityofevanston.org/business/business-licenses"),
 
@@ -420,8 +420,8 @@ LICENSING = {
    "Glenview requires a licence for any business with a location inside the village, and it "
    "has an unusual structure: the general business licence is issued once and "
    "<strong>does not require annual renewal</strong>. A new licence is triggered instead by "
-   "a change of location, name, or ownership. Certain categories &mdash; food "
-   "establishments, day care, massage therapy &mdash; do renew annually and carry different "
+   "a change of location, name, or ownership. Certain categories (food "
+   "establishments, day care, massage therapy) do renew annually and carry different "
    "fees.",
    "https://www.glenview.il.us/658/Business-Licenses-Registration"),
 
@@ -444,7 +444,7 @@ LICENSING = {
    "Morton Grove is among the broadest: <strong>all industrial, commercial and "
    "home-based businesses</strong> are required to hold an active licence and renew it "
    "annually, on a licence year running <strong>January 1 to December 31</strong>. The "
-   "village is explicit that the licence is a compliance check &mdash; it verifies the "
+   "village is explicit that the licence is a compliance check: it verifies the "
    "business against local zoning, building, health and fire codes, not just its existence.",
    "https://www.mortongroveil.org/business-development/doing-business-in-morton-grove/"),
 
@@ -460,7 +460,7 @@ LICENSING = {
    "One requirement worth flagging specifically, because it catches trades and building "
    "businesses: <strong>contractor registration</strong> carries a fee per firm, waived for "
    "contractors already licensed by the State of Illinois. Confirm what applies to your "
-   "specific activity with the city directly &mdash; the categories are narrower than the "
+   "specific activity with the city directly, because the categories are narrower than the "
    "blanket rules some neighbouring villages use.",
    "https://www.parkridge.us/business_services/licenses_and_registration/index.php"),
 
@@ -485,7 +485,7 @@ LICENSING = {
    "Wheeling requires a valid Business Certificate under its municipal code "
    "<strong>before operations begin</strong>, on a licence year running May 1 to April 30. "
    "Two practical details: <strong>home-based businesses do not need the licence</strong>, "
-   "though some need a zoning certificate from Community Development &mdash; and the "
+   "though some need a zoning certificate from Community Development; and the "
    "village advises a <strong>minimum six-week processing time</strong>, which is by some "
    "distance the longest lead time in this group. If you are signing a lease in Wheeling, "
    "start this before you need it.",
@@ -505,7 +505,7 @@ SERVICES = [
      "Cash-flow forecasting, margin analysis, and the modelling behind decisions that "
      "are expensive to reverse."),
     ("Tax planning and preparation",
-     "Planned across the year rather than reconstructed in April — entity strategy, "
+     "Planned across the year rather than reconstructed in April: entity strategy, "
      "quarterly estimates, and filing for the business and the people who own it."),
 ]
 
@@ -534,7 +534,7 @@ def faq_for(town, county, township, extra):
          plain),
         (f"Which county and township handle assessment for a {town} business?",
          f"{town} is in {county} County, {township}. That decides who values your "
-         f"property, which appeal window applies, and who you call first — and it is "
+         f"property, which appeal window applies, and who you call first. It is "
          f"not the same answer a few miles away."),
     ]
 
@@ -631,7 +631,7 @@ def build():
   <div class="wrap">
     <div class="split rv">
       <div class="sh"><h2>Also serving</h2>
-        <p>Neighbouring communities we work in regularly &mdash; each with its own
+        <p>Neighbouring communities we work in regularly, each with its own
         registration rule.</p></div>
       <div class="sb">
         <ul style="columns:2;gap:30px;list-style:none;line-height:2.1">{near}</ul>
@@ -715,7 +715,7 @@ def build():
     <div class="split rv">
       <div class="sh"><h2>Want this looked at properly?</h2></div>
       <div class="sb"><p class="lead" style="max-width:54ch">A free 30-minute call gets you a
-      straight read on whether any of this is worth your time in your situation &mdash;
+      straight read on whether any of this is worth your time in your situation,
       including if the answer is that it is not.</p>
       <div style="margin-top:22px"><a href="../contact.html" class="btn gold lg">Book a Free Consultation</a></div></div>
     </div>
@@ -760,14 +760,14 @@ def build():
     GROUPS = [
         ("Cook County", "Cook",
          "Assessed by the <strong>Cook County Assessor</strong>. Every one of these "
-         "sits in the north suburban triennial group — reassessed 2016, 2019, 2022 "
-         "and 2025, so the next is <strong>2028</strong>."),
+         "sits in the north suburban triennial group (reassessed 2016, 2019, 2022 "
+         "and 2025), so the next is <strong>2028</strong>."),
         ("Lake County", "Lake",
          "Assessed by the <strong>township assessor</strong>, not a county assessor. "
          "Cook is the exception in Illinois; every other county works this way, and "
          "Lake asks you to contact that township office before filing an appeal."),
         ("Both counties", "Cook and Lake",
-         "Split at <strong>Lake Cook Road</strong> — Cook County system to the south, "
+         "Split at <strong>Lake Cook Road</strong>: Cook County system to the south, "
          "Lake County system to the north, with different sales tax rates either side."),
     ]
 
@@ -801,7 +801,7 @@ def build():
   <h1>Service Areas</h1>
   <p class="lead" style="max-width:64ch">NorthPeak is based in {BASE_CITY} and works with
   businesses across Chicago's north suburbs in person, and with clients nationwide
-  remotely. Below is where we are most often &mdash; and, because it matters more than
+  remotely. Below is where we are most often and, because it matters more than
   most owners expect, who actually assesses property in each one.</p>
   <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
     <a href="../contact.html" class="btn gold lg">Book a Free Consultation</a>
@@ -853,7 +853,7 @@ def build():
   <div class="wrap"><div class="split rv">
     <div class="sh"><h2>Not on the list?</h2></div>
     <div class="sb"><p class="lead" style="max-width:56ch">Most of the work is done
-    remotely, so the table above is about where we turn up in person &mdash; not where we
+    remotely, so the table above is about where we turn up in person, not where we
     can help. If you are elsewhere in Illinois or in another state, the answer is almost
     always yes.</p>
     <div style="margin-top:22px"><a href="../contact.html" class="btn gold lg">Book a Free Consultation</a></div></div>
@@ -864,7 +864,7 @@ def build():
     W("service-areas/index.html", shell(
         title=f"Service Areas | {FIRM}",
         desc=("Accounting, bookkeeping and tax services for businesses across Chicago's "
-              "north suburbs — Evanston, Skokie, Glenview, Northbrook and more, "
+              "north suburbs (Evanston, Skokie, Glenview, Northbrook and more), "
               "from Wilmette, IL."),
         canon=f"{SITE}/service-areas/", body=hub_body, active="", depth=1,
         keywords="accountant north shore chicago, bookkeeping north suburbs, tax services wilmette",

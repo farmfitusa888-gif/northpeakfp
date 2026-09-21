@@ -34,14 +34,14 @@ TIERS = [
      ["<strong>Everything in Starter, plus:</strong>", "Controller-level oversight",
       "Structured monthly close process", "Financial statement preparation",
       "Budget vs. actual reporting", "KPI &amp; performance tracking", "Monthly financial review call"],
-     "$500K&ndash;$5M revenue businesses scaling operations", True),
+     "$500K to $5M revenue businesses scaling operations", True),
     ("cfo", "CFO Package", "Quoted", "for your scope",
      "For established businesses that need strategic financial leadership",
      ["<strong>Everything in Growth, plus:</strong>", "Fractional CFO advisory",
       "Cash flow forecasting &amp; planning", "Strategic budgeting &amp; modeling",
       "Profitability &amp; margin analysis", "Executive-level financial reporting",
       "Weekly or bi-weekly strategy calls", "Growth &amp; decision support"],
-     "$2M&ndash;$100M revenue companies needing financial leadership", False),
+     "$2M to $100M revenue companies needing financial leadership", False),
 ]
 
 tier_html = ""
@@ -122,9 +122,9 @@ svc_body = f"""
         <tbody>
         {"".join(f'''<tr style="border-bottom:1px solid var(--rule)">
           <td style="padding:13px 10px;font-size:.92rem;color:var(--soft)">{r[0]}</td>
-          <td style="text-align:center;padding:13px 10px">{TICK if r[1] else '<span style="color:var(--rule)" aria-label="not included">&ndash;</span>'}</td>
-          <td style="text-align:center;padding:13px 10px">{TICK if r[2] else '<span style="color:var(--rule)" aria-label="not included">&ndash;</span>'}</td>
-          <td style="text-align:center;padding:13px 10px">{TICK if r[3] else '<span style="color:var(--rule)" aria-label="not included">&ndash;</span>'}</td></tr>'''
+          <td style="text-align:center;padding:13px 10px">{TICK if r[1] else '<span style="color:var(--rule)" aria-label="not included">&minus;</span>'}</td>
+          <td style="text-align:center;padding:13px 10px">{TICK if r[2] else '<span style="color:var(--rule)" aria-label="not included">&minus;</span>'}</td>
+          <td style="text-align:center;padding:13px 10px">{TICK if r[3] else '<span style="color:var(--rule)" aria-label="not included">&minus;</span>'}</td></tr>'''
         for r in [
           ("Bookkeeping &amp; categorization",1,1,1),("Bank reconciliations",1,1,1),
           ("Monthly financial reports",1,1,1),
@@ -192,7 +192,7 @@ about_body = f"""
     <div class="rv">
       <h2 style="font-size:1.7rem;margin-bottom:16px">Why NorthPeak exists</h2>
       <p style="color:var(--soft);margin-bottom:16px">Most businesses don't struggle because they lack
-      revenue. They struggle because they lack financial clarity &mdash; the reporting is late, the
+      revenue. They struggle because they lack financial clarity: the reporting is late, the
       categories are inconsistent, and nobody can answer simple questions about margin or runway with confidence.</p>
       <p style="color:var(--soft);margin-bottom:16px">We help owners move beyond basic bookkeeping and
       gain a real understanding of their financial performance, so they can make confident, data-driven decisions.</p>
@@ -222,7 +222,7 @@ about_body = f"""
       <ul style="list-style:none">
         {"".join(f'<li style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--rule);align-items:flex-start"><span style="color:var(--accent);flex-shrink:0;margin-top:3px">{TICK}</span><span style="font-size:.95rem;color:var(--soft)"><strong style="color:var(--ink-2)">{t}</strong><br>{d}</span></li>' for t,d in [
           ("Accurate, timely reporting","Financials that close on schedule, every month."),
-          ("Clear performance visibility","You know your margins, trends, and drivers &mdash; not just your balance."),
+          ("Clear performance visibility","You know your margins, trends, and drivers, not just your balance."),
           ("Strong internal controls","Process safeguards that scale with the business."),
           ("Strategic growth guidance","Decision support grounded in your actual numbers.")])}
       </ul>
@@ -257,7 +257,7 @@ about_body = f"""
       To deliver financial clarity and strategic guidance that helps businesses grow with confidence,
       control, and long-term stability.</h2>
     <p style="margin-bottom:32px">We believe strong financial systems are the foundation of every
-    successful business &mdash; and that businesses simply perform better when they understand their numbers.</p>
+    successful business, and that businesses simply perform better when they understand their numbers.</p>
     <a href="contact.html" class="btn gold lg">Work With Us</a>
   </div>
 </section>
@@ -296,12 +296,12 @@ hub_body = f"""
   <p class="eyebrow">Insights &amp; Guides</p>
   <h1>Financial guidance, written plainly</h1>
   <p class="lead" style="max-width:640px">{len(ARTS)} practical guides on tax, bookkeeping, payroll,
-  entity structure, and financial strategy &mdash; for business owners and individuals.</p>
+  entity structure, and financial strategy, written for business owners and individuals.</p>
 </div>
 <section style="padding-top:40px">
   <div class="wrap">
     <label for="asearch" class="visually-hidden" style="position:absolute;left:-9999px">Search articles</label>
-    <input class="search" id="asearch" type="search" placeholder="Search articles &mdash; try &lsquo;deductions&rsquo;, &lsquo;payroll&rsquo;, &lsquo;LLC&rsquo;&hellip;">
+    <input class="search" id="asearch" type="search" placeholder="Search articles: try &lsquo;deductions&rsquo;, &lsquo;payroll&rsquo;, &lsquo;LLC&rsquo;&hellip;">
     <div class="filters">{chips}</div>
     <h2 class="vh">All guides</h2>
     <div class="elist">{cards}</div>
@@ -334,8 +334,8 @@ res_body = f"""
 <div class="wrap pagehead">
   <p class="eyebrow">Free Tools</p>
   <h1>Resources for business owners</h1>
-  <p class="lead" style="max-width:620px">Practical tools and checklists you can use right now &mdash;
-  no signup required.</p>
+  <p class="lead" style="max-width:620px">Practical tools and checklists you can use right now.
+  No signup required.</p>
 </div>
 <section style="padding-top:44px">
   <div class="wrap grid g2" style="gap:36px;align-items:start">
@@ -381,11 +381,11 @@ res_body = f"""
       </div>
       <div class="viz">
         <h2>Records Retention Quick Guide</h2>
-        <p class="cap">General guidance &mdash; confirm specifics for your situation</p>
+        <p class="cap">General guidance; confirm specifics for your situation</p>
         <ul style="list-style:none">
         {"".join(f'<li style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:.92rem"><span style="color:var(--soft)">{k}</span><strong style="color:var(--ink-2);white-space:nowrap">{v}</strong></li>' for k,v in [
-          ("Tax returns &amp; supporting docs","3&ndash;7 years"),("Payroll records","4 years or more"),
-          ("Bank &amp; credit card statements","3&ndash;7 years"),("Receipts for deductions","3&ndash;7 years"),
+          ("Tax returns &amp; supporting docs","3 to 7 years"),("Payroll records","4 years or more"),
+          ("Bank &amp; credit card statements","3 to 7 years"),("Receipts for deductions","3 to 7 years"),
           ("Asset purchase records","Life of asset + 3 yrs"),("Corporate formation docs","Permanently")])}
         </ul>
       </div>
@@ -555,8 +555,8 @@ contact_body = f"""
             </select></div>
           <div class="fg"><label for="revenue">Approximate annual revenue</label>
             <select id="revenue" name="revenue">
-              <option>Prefer not to say</option><option>Under $250K</option><option>$250K &ndash; $500K</option>
-              <option>$500K &ndash; $2M</option><option>$2M &ndash; $10M</option><option>$10M+</option>
+              <option>Prefer not to say</option><option>Under $250K</option><option>$250K to $500K</option>
+              <option>$500K to $2M</option><option>$2M to $10M</option><option>$10M+</option>
             </select></div>
           <div class="fg"><label for="message">Tell us about your situation <span class="req">*</span></label>
             <textarea id="message" name="message" required

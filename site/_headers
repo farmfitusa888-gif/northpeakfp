@@ -11,7 +11,7 @@
   # the attack this actually defends against. Style is inline throughout.
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://formspree.io; form-action 'self' https://formspree.io; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
 
-# Hashed-by-content assets are safe to cache forever. style.c7520cb0f3.css and app.d64b1f4747.js are
+# Hashed-by-content assets are safe to cache forever. style.c7520cb0f3.css and app.c7e6a959d6.js are
 # NOT content-hashed, so they get a short cache with revalidation instead —
 # otherwise a rebuild would leave visitors on a stale stylesheet for a year.
 /assets/*.jpg
@@ -25,7 +25,7 @@
 
 /assets/style.c7520cb0f3.css
   Cache-Control: public, max-age=3600, must-revalidate
-/assets/app.d64b1f4747.js
+/assets/app.c7e6a959d6.js
   Cache-Control: public, max-age=3600, must-revalidate
 
 # summit.6cf4baf113.js and the three bundle are not content-hashed either, so they follow
@@ -42,7 +42,7 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/summit.6cf4baf113.js
   Cache-Control: public, max-age=31536000, immutable
-/assets/app.d64b1f4747.js
+/assets/app.c7e6a959d6.js
   Cache-Control: public, max-age=31536000, immutable
 /assets/style.c7520cb0f3.css
   Cache-Control: public, max-age=31536000, immutable
